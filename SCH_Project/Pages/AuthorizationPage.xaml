@@ -1,0 +1,49 @@
+﻿<Page x:Class="SCH_Project.Pages.AuthorizationPage"
+       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SCH_Project.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1920"
+      Title="AuthorizationPage" FontFamily="Consolas">
+
+    <Grid>
+        <Rectangle Fill="#663B82F3" 
+                   Width ="946" 
+                   Height="940" 
+                   RadiusX="50" RadiusY="50"/>
+        <TabControl 
+                   Width="750"
+                   Height="800"
+                   materialDesign:ColorZoneAssist.Foreground="Crimson"
+                   materialDesign:ColorZoneAssist.Mode="Custom"
+                   > 
+            <TabItem Height="70">
+                <TabItem.Header>
+                    <TextBlock Text="Вход" 
+                               Foreground="White"
+                               FontSize="45" />
+                </TabItem.Header>
+                <TextBox
+                      VerticalAlignment="Center"
+                      BorderBrush="White"
+                      Width="650"
+                      materialDesign:HintAssist.Hint="Email"
+                      Foreground="White"
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="TextBox_TextChanged" FontWeight="Bold" />
+            </TabItem>
+            <TabItem Height="70">
+                <TabItem.Header>
+                <TextBlock Text="Регистрация" 
+               Foreground="White"
+               FontSize="45"/>
+                </TabItem.Header>
+                <TextBlock
+                   Margin="8"
+                   Text="Custom Tab 2" />
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Page>
