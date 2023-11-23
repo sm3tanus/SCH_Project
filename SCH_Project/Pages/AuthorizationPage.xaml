@@ -15,6 +15,7 @@
                    Height="940" 
                    RadiusX="50" RadiusY="50"/>
         <TabControl 
+                   Name="TabControl"
                    Width="750"
                    Height="800"
                    materialDesign:ColorZoneAssist.Foreground="Crimson"
@@ -39,11 +40,11 @@
                                materialDesign:HintAssist.Foreground="White"
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                               Margin="0 120 0 0"/>
+                               Margin="0 120 0 0"
+                               Name="loginTb"/>
 
 
                             <PasswordBox
-                               x:Name="FloatingPasswordBox"
                                materialDesign:HintAssist.Foreground="White"
                                BorderBrush="White"
                                Foreground="White"
@@ -52,6 +53,7 @@
                                Margin="0 120 0 0"
                                materialDesign:HintAssist.Hint="Password"
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
+                               Name="PasswordTb"
                                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                         </StackPanel>
                         <StackPanel>
@@ -60,11 +62,12 @@
                                    Width="590">
                                 <Button
                                     Height="89"
+                                    Name="EnterBt"
                                     materialDesign:ButtonAssist.CornerRadius="40"
                                     Background="#FF5858"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="EnterBt_Click">
                                     <TextBlock
                                                 Foreground="Black"
                                                 Text="Enter"
@@ -106,30 +109,31 @@
                     <StackPanel>
                         <StackPanel>
                             <TextBox
-                   VerticalAlignment="Center"
-                   BorderBrush="White"
-                   Width="650"
-                   FontSize="29"
-                   materialDesign:HintAssist.Hint="Logn"
-                   Foreground="White"
-                   materialDesign:HintAssist.Foreground="White"
-                   materialDesign:TextFieldAssist.UnderlineBrush="White"
-                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                   Margin="0 120 0 0"/>
+                    VerticalAlignment="Center"
+                    BorderBrush="White"
+                    Width="650"
+                    FontSize="29"
+                    materialDesign:HintAssist.Hint="Login"
+                    Foreground="White"
+                    materialDesign:HintAssist.Foreground="White"
+                    materialDesign:TextFieldAssist.UnderlineBrush="White"
+                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                    Margin="0 120 0 0"
+                    Name="LoginReg"/>
 
                             <PasswordBox
-        x:Name="FloatingPasswordBoxReg"
-        materialDesign:HintAssist.Foreground="White"
-        BorderBrush="White"
-        Foreground="White"
-        Width="650"
-        FontSize="29"
-        Margin="0 26 0 0"
-        materialDesign:HintAssist.Hint="Password"
-        materialDesign:TextFieldAssist.UnderlineBrush="White"
-        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    Name="PasswordReg"
+                    materialDesign:HintAssist.Foreground="White"
+                    BorderBrush="White"
+                    Foreground="White"
+                    Width="650"
+                    FontSize="29"
+                    Margin="0 26 0 0"
+                    materialDesign:HintAssist.Hint="Password"
+                    materialDesign:TextFieldAssist.UnderlineBrush="White"
+                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
                             <PasswordBox
-                   x:Name="FloatingPasswordBoxRegConf"
+                   Name="PasswordConfirmReg"
                    materialDesign:HintAssist.Foreground="White"
                    BorderBrush="White"
                    Foreground="White"
