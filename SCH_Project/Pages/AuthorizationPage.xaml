@@ -28,26 +28,48 @@
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
-                        <TextBox
-                           VerticalAlignment="Center"
-                           BorderBrush="White"
-                           Width="650"
-                           FontSize="25"
-                           materialDesign:HintAssist.Hint="Email"
-                           Foreground="White"
-                           materialDesign:HintAssist.Foreground="White"
-                           materialDesign:TextFieldAssist.UnderlineBrush="White"
-                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
-                           <PasswordBox
-                           x:Name="FloatingPasswordBox"
-                           materialDesign:HintAssist.Foreground="White"
-                           BorderBrush="White"
-                           Foreground="White"
-                           Width="650"
-                           FontSize="25"
-                           materialDesign:HintAssist.Hint="Floating Password"
-                           materialDesign:TextFieldAssist.UnderlineBrush="White"
-                           Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                        <StackPanel>
+                            <TextBox
+                               VerticalAlignment="Center"
+                               BorderBrush="White"
+                               Width="650"
+                               FontSize="25"
+                               materialDesign:HintAssist.Hint="Login"
+                               Foreground="White"
+                               materialDesign:HintAssist.Foreground="White"
+                               materialDesign:TextFieldAssist.UnderlineBrush="White"
+                               Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                               Margin="0 120 0 0"/>
+                                                        <PasswordBox
+                               x:Name="FloatingPasswordBox"
+                               materialDesign:HintAssist.Foreground="White"
+                               BorderBrush="White"
+                               Foreground="White"
+                               Width="650"
+                               FontSize="25"
+                               Margin="0 120 0 0"
+                               materialDesign:HintAssist.Hint="Password"
+                               materialDesign:TextFieldAssist.UnderlineBrush="White"
+                               Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Grid
+                                Margin="0 120 0 0"
+                                   Width="590">
+                                   <Button
+                                    Height="89"
+                                    materialDesign:ButtonAssist.CornerRadius="50"
+                                    Background="#FF5858"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                                            <TextBlock
+                                                Foreground="Black"
+                                                Text="Enter"
+                                                FontSize="36"/>
+                                   </Button>
+                            </Grid>
+                        </StackPanel>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
