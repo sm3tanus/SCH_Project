@@ -18,7 +18,7 @@
                    Width="750"
                    Height="800"
                    materialDesign:ColorZoneAssist.Foreground="Crimson"
-                   materialDesign:ColorZoneAssist.Mode="Custom"> 
+                   materialDesign:ColorZoneAssist.Mode="Custom">
             <TabItem Height="85" Width="220">
                 <TabItem.Header>
                     <TextBlock Text="Sign In"    
@@ -40,13 +40,15 @@
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
                                Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                Margin="0 120 0 0"/>
-                                                        <PasswordBox
+
+
+                            <PasswordBox
                                x:Name="FloatingPasswordBox"
                                materialDesign:HintAssist.Foreground="White"
                                BorderBrush="White"
                                Foreground="White"
                                Width="650"
-                               FontSize="25"
+                               FontSize="29"
                                Margin="0 120 0 0"
                                materialDesign:HintAssist.Hint="Password"
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
@@ -56,56 +58,126 @@
                             <Grid
                                 Margin="0 120 0 0"
                                    Width="590">
-                                   <Button
+                                <Button
                                     Height="89"
-                                    materialDesign:ButtonAssist.CornerRadius="50"
+                                    materialDesign:ButtonAssist.CornerRadius="40"
                                     Background="#FF5858"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
                                     ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
-                                            <TextBlock
+                                    <TextBlock
                                                 Foreground="Black"
                                                 Text="Enter"
                                                 FontSize="36"/>
-                                   </Button>
+                                </Button>
                             </Grid>
+
+                            <StackPanel>
+                                <Grid
+                                    Margin="0 90 0 0"
+                                    Width="590"
+                                    Height="100"
+                                    >
+                                    <TextBlock
+                                        Foreground="White"
+                                        FontSize="34"
+                                        HorizontalAlignment="Center">
+                                        Software Coding Hub
+                                    </TextBlock>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+
+
+                    </StackPanel>
+                </TabItem.Content>
+            </TabItem>
+
+
+
+            <TabItem Height="85" Width="220">
+                <TabItem.Header>
+                    <TextBlock Text="Sign Up"    
+                   Foreground="White"
+                   FontSize="45" 
+                   Style="{StaticResource CustomFont}"/>
+                </TabItem.Header>
+                <TabItem.Content>
+                    <StackPanel>
+                        <StackPanel>
+                            <TextBox
+                   VerticalAlignment="Center"
+                   BorderBrush="White"
+                   Width="650"
+                   FontSize="29"
+                   materialDesign:HintAssist.Hint="Login"
+                   Foreground="White"
+                   materialDesign:HintAssist.Foreground="White"
+                   materialDesign:TextFieldAssist.UnderlineBrush="White"
+                   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                   Margin="0 120 0 0"/>
+
+                            <PasswordBox
+        x:Name="FloatingPasswordBoxReg"
+        materialDesign:HintAssist.Foreground="White"
+        BorderBrush="White"
+        Foreground="White"
+        Width="650"
+        FontSize="29"
+        Margin="0 26 0 0"
+        materialDesign:HintAssist.Hint="Password"
+        materialDesign:TextFieldAssist.UnderlineBrush="White"
+        Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                            <PasswordBox
+                   x:Name="FloatingPasswordBoxRegConf"
+                   materialDesign:HintAssist.Foreground="White"
+                   BorderBrush="White"
+                   Foreground="White"
+                   Width="650"
+                   FontSize="29"
+                   Margin="0 26 0 0"
+                   materialDesign:HintAssist.Hint="Confirm password"
+                   materialDesign:TextFieldAssist.UnderlineBrush="White"
+                   Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                        </StackPanel>
+                        <StackPanel>
+                            <Grid
+                    Margin="0 120 0 0"
+                       Width="590">
+                                <Button
+                        Height="89"
+                        materialDesign:ButtonAssist.CornerRadius="40"
+                        Background="#FF5858"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                                    <TextBlock
+                                    Foreground="Black"
+                                    Text="Enter"
+                                    FontSize="36"/>
+                                </Button>
+                            </Grid>
+
+                            <StackPanel>
+                                <Grid
+                        Margin="0 90 0 0"
+                        Width="590"
+                        Height="100"
+                        >
+                                    <TextBlock
+                            Foreground="White"
+                            FontSize="34"
+                            HorizontalAlignment="Center">
+                            Software Coding Hub
+                                    </TextBlock>
+                                </Grid>
+                            </StackPanel>
                         </StackPanel>
                     </StackPanel>
                 </TabItem.Content>
             </TabItem>
-            <TabItem Height="70">
-                <TabItem.Header>
-                <TextBlock Text="Sign Up" 
-               Foreground="White"
-               FontSize="45"
-               Style="{StaticResource CustomFont}"/>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                        <TextBox
-            VerticalAlignment="Center"
-            BorderBrush="White"
-            Width="650"
-            materialDesign:HintAssist.Hint="Login"
-            Foreground="White"
-            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
-                        <TextBox
-             VerticalAlignment="Center"
-             BorderBrush="White"
-             Width="650"
-             materialDesign:HintAssist.Hint="Password"
-             Foreground="White"
-             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
-                        <TextBox
-             VerticalAlignment="Center"
-             BorderBrush="White"
-             Width="650"
-             materialDesign:HintAssist.Hint="Confirm password"
-             Foreground="White"
-             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
-                    </StackPanel>
-                </TabItem.Content>
-            </TabItem>
         </TabControl>
+
+
     </Grid>
 </Page>
