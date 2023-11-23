@@ -53,14 +53,36 @@
             </TabItem>
             <TabItem Height="70">
                 <TabItem.Header>
-                <TextBlock Text="Регистрация" 
+                <TextBlock Text="Sign Up" 
                Foreground="White"
                FontSize="45"
                Style="{StaticResource CustomFont}"/>
                 </TabItem.Header>
-                <TextBlock
-                   Margin="8"
-                   Text="Custom Tab 2" />
+                <TabItem.Content>
+                    <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                        <TextBox
+            VerticalAlignment="Center"
+            BorderBrush="White"
+            Width="650"
+            materialDesign:HintAssist.Hint="Login"
+            Foreground="White"
+            Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
+                        <TextBox
+             VerticalAlignment="Center"
+             BorderBrush="White"
+             Width="650"
+             materialDesign:HintAssist.Hint="Password"
+             Foreground="White"
+             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
+                        <TextBox
+             VerticalAlignment="Center"
+             BorderBrush="White"
+             Width="650"
+             materialDesign:HintAssist.Hint="Confirm password"
+             Foreground="White"
+             Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
+                    </StackPanel>
+                </TabItem.Content>
             </TabItem>
         </TabControl>
     </Grid>
