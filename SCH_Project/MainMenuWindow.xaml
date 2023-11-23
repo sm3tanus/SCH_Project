@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SCH_Project"
         mc:Ignorable="d"
-        Title="MainMenuWindow" Height="450" Width="800">
-    <Grid>
-        
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Comfortaa"
+        Title="TaskManager" Height="1080" Width="1920"
+        WindowState="Maximized"
+        ResizeMode="NoResize">
+
+    <Grid Background="#121923">
+        <Frame Name="MainMenuFrame"></Frame>
+        <Rectangle Fill="#263F76" Width="645" Height="1080" HorizontalAlignment="Left"/>
+        <StackPanel>
+            <Button
+              Width="200"
+              Content="LIGHT"
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+              Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+              ToolTip="MaterialDesignFlatButton" />
+          </StackPanel>
     </Grid>
 </Window>

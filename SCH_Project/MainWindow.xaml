@@ -19,8 +19,5 @@
         
     <Grid Background="#121923">
         <Frame Name="MainFrame"></Frame>
-        
-        
-        
     </Grid>
 </Window>
