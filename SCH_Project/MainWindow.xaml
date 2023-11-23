@@ -13,7 +13,7 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Comfortaa"
-        Title="MainWindow" Height="1080" Width="1920"
+        Title="TaskManager" Height="1080" Width="1920"
         WindowState="Maximized"
         ResizeMode="NoResize">
         
