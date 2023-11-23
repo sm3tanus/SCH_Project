@@ -110,7 +110,7 @@
                    BorderBrush="White"
                    Width="650"
                    FontSize="29"
-                   materialDesign:HintAssist.Hint="Login"
+                   materialDesign:HintAssist.Hint="Logn"
                    Foreground="White"
                    materialDesign:HintAssist.Foreground="White"
                    materialDesign:TextFieldAssist.UnderlineBrush="White"
