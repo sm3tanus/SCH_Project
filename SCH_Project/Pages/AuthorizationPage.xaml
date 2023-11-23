@@ -19,7 +19,7 @@
                    Height="800"
                    materialDesign:ColorZoneAssist.Foreground="Crimson"
                    materialDesign:ColorZoneAssist.Mode="Custom"> 
-            <TabItem Height="80" Width="220">
+            <TabItem Height="85" Width="220">
                 <TabItem.Header>
                     <TextBlock Text="Sign In"    
                                Foreground="White"
@@ -33,7 +33,7 @@
                                VerticalAlignment="Center"
                                BorderBrush="White"
                                Width="650"
-                               FontSize="25"
+                               FontSize="29"
                                materialDesign:HintAssist.Hint="Login"
                                Foreground="White"
                                materialDesign:HintAssist.Foreground="White"

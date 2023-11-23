@@ -13,7 +13,10 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Comfortaa"
-        Title="MainWindow" Height="1080" Width="1920">
+        Title="MainWindow" Height="1080" Width="1920"
+        WindowState="Maximized"
+        ResizeMode="NoResize">
+        
     <Grid Background="#121923">
         <Frame Name="MainFrame"></Frame>
         
