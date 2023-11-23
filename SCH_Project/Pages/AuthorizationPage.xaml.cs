@@ -24,5 +24,7 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
         }
+
+      
     }
 }

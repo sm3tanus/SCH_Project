@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SCH_Project.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="AuthorizationPage" >
+      Title="AuthorizationPage" Style="{StaticResource CustomFont}">
 
     <Grid>
         <Rectangle Fill="#663B82F3" 
@@ -18,28 +18,45 @@
                    Width="750"
                    Height="800"
                    materialDesign:ColorZoneAssist.Foreground="Crimson"
-                   materialDesign:ColorZoneAssist.Mode="Custom"
-                   > 
-            <TabItem Height="70">
+                   materialDesign:ColorZoneAssist.Mode="Custom"> 
+            <TabItem Height="80" Width="220">
                 <TabItem.Header>
-                    <TextBlock Text="srthg" 
-                               Style="{StaticResource CustomFont}"
+                    <TextBlock Text="Sign In"    
                                Foreground="White"
-                               FontSize="45" />
+                               FontSize="45" 
+                               Style="{StaticResource CustomFont}"/>
                 </TabItem.Header>
-                <TextBox
-                      VerticalAlignment="Center"
-                      BorderBrush="White"
-                      Width="650"
-                      materialDesign:HintAssist.Hint="Email"
-                      Foreground="White"
-                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
+                <TabItem.Content>
+                    <StackPanel>
+                        <TextBox
+                           VerticalAlignment="Center"
+                           BorderBrush="White"
+                           Width="650"
+                           FontSize="25"
+                           materialDesign:HintAssist.Hint="Email"
+                           Foreground="White"
+                           materialDesign:HintAssist.Foreground="White"
+                           materialDesign:TextFieldAssist.UnderlineBrush="White"
+                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"/>
+                           <PasswordBox
+                           x:Name="FloatingPasswordBox"
+                           materialDesign:HintAssist.Foreground="White"
+                           BorderBrush="White"
+                           Foreground="White"
+                           Width="650"
+                           FontSize="25"
+                           materialDesign:HintAssist.Hint="Floating Password"
+                           materialDesign:TextFieldAssist.UnderlineBrush="White"
+                           Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                    </StackPanel>
+                </TabItem.Content>
             </TabItem>
             <TabItem Height="70">
                 <TabItem.Header>
                 <TextBlock Text="Регистрация" 
                Foreground="White"
-               FontSize="45"/>
+               FontSize="45"
+               Style="{StaticResource CustomFont}"/>
                 </TabItem.Header>
                 <TextBlock
                    Margin="8"
