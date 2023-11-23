@@ -21,6 +21,7 @@ using System.Windows;
 // из модели COM, установите атрибут ComVisible для этого типа в значение true.
 [assembly: ComVisible(false)]
 
+
 //Чтобы начать создание локализуемых приложений, задайте
 //<UICulture>CultureYouAreCodingWith</UICulture> в файле .csproj
 //в <PropertyGroup>. Например, при использовании английского (США)

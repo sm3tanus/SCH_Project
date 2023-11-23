@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SCH_Project.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
-      Title="AuthorizationPage" FontFamily="Consolas">
+      Title="AuthorizationPage" >
 
     <Grid>
         <Rectangle Fill="#663B82F3" 
@@ -22,7 +22,8 @@
                    > 
             <TabItem Height="70">
                 <TabItem.Header>
-                    <TextBlock Text="Вход" 
+                    <TextBlock Text="srthg" 
+                               Style="{StaticResource CustomFont}"
                                Foreground="White"
                                FontSize="45" />
                 </TabItem.Header>
@@ -32,7 +33,7 @@
                       Width="650"
                       materialDesign:HintAssist.Hint="Email"
                       Foreground="White"
-                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" TextChanged="TextBox_TextChanged" FontWeight="Bold" />
+                      Style="{StaticResource MaterialDesignFloatingHintTextBox}" FontWeight="Bold" />
             </TabItem>
             <TabItem Height="70">
                 <TabItem.Header>
