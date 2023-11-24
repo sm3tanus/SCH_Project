@@ -44,7 +44,6 @@
         <Button
               Width="645"
               Height="98"
-            FontFamily="Comfortaa"
               FontSize="30"
             HorizontalContentAlignment="Left"
             
@@ -55,12 +54,13 @@
                   Grid.Row="1"
                   Grid.ColumnSpan="2">
             <Button.Content>
-                <StackPanel>
-                    <TextBlock>My Daydsdfsfds</TextBlock>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="110 0 0 0">My Day</TextBlock>
+                    
+                    <TextBlock Text="2" FontSize="40"  />
                 </StackPanel>
             </Button.Content>
         </Button>
-        <TextBlock Grid.Row="1" Grid.Column="1" Text="2"/>
 
 
     </Grid>
