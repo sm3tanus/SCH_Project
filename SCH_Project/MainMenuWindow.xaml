@@ -17,21 +17,51 @@
         ResizeMode="NoResize">
 
     <Grid Background="#121923">
-        <Frame Name="MainMenuFrame"></Frame>
-        <Rectangle Fill="#263F76" Width="645" Height="1080" HorizontalAlignment="Left"/>
-        <Rectangle Fill="#1E3360" Width="645" Height="145" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-        <StackPanel>
-            <Grid Margin="0 100 0 0">
-                <Button
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Frame Name="MainMenuFrame" Grid.ColumnSpan="2" Grid.RowSpan="2"></Frame>
+        
+        
+        <Rectangle Fill="#263F76" Width="645" Height="1080" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#1E3360" Width="645" Height="145" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+
+
+        <Button
               Width="645"
               Height="98"
-              Content="Мой день"
+            FontFamily="Comfortaa"
+              FontSize="30"
+            HorizontalContentAlignment="Left"
+            
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
               Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
               ToolTip="MaterialDesignFlatButton" 
-                    HorizontalAlignment="Left"/>
-                
-            </Grid>
-        </StackPanel>
+                    HorizontalAlignment="Left"
+                  Grid.Row="1"
+                  Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel>
+                    <TextBlock>My Daydsdfsfds</TextBlock>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="2"/>
+
+
     </Grid>
 </Window>
