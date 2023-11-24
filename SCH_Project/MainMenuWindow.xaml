@@ -42,10 +42,11 @@
 
 
         <Button
-              Width="645"
+              Width="640"
               Height="98"
               FontSize="30"
             HorizontalContentAlignment="Left"
+            Foreground="White"
             
               IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
               Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
@@ -54,14 +55,130 @@
                   Grid.Row="1"
                   Grid.ColumnSpan="2">
             <Button.Content>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="110 0 0 0">My Day</TextBlock>
-                    
-                    <TextBlock Text="2" FontSize="40"  />
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="50" Style="{StaticResource CustomFont}" Margin="80 0 0 0">My Day</TextBlock>
+
+                        <TextBlock Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
                 </StackPanel>
             </Button.Content>
         </Button>
 
+        
+        
+        <Button
+              Width="640"
+              Height="98"
+              FontSize="30"
+            HorizontalContentAlignment="Left"
+            Foreground="White"
+            
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+              Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+              ToolTip="MaterialDesignFlatButton" 
+                    HorizontalAlignment="Left"
+                  Grid.Row="2"
+                  Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="50" Style="{StaticResource CustomFont}" Margin="80 0 0 0">Team Tasks</TextBlock>
+
+                        <TextBlock Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+        
+        
+        
+        <Button
+              Width="640"
+              Height="98"
+              FontSize="30"
+            HorizontalContentAlignment="Left"
+            Foreground="White"
+            
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+              Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+              ToolTip="MaterialDesignFlatButton" 
+                    HorizontalAlignment="Left"
+                  Grid.Row="3"
+                  Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="50" Style="{StaticResource CustomFont}" Margin="80 0 0 0">My Groups</TextBlock>
+
+                        <TextBlock Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
+
+        <Button
+              Width="640"
+              Height="98"
+              FontSize="30"
+            HorizontalContentAlignment="Left"
+            Foreground="White"
+            
+              IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+              Style="{StaticResource MaterialDesignFlatSecondaryLightButton}"
+              ToolTip="MaterialDesignFlatButton" 
+                    HorizontalAlignment="Left"
+                  Grid.Row="4"
+                  Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="50" Style="{StaticResource CustomFont}" Margin="80 0 0 0">Add Group</TextBlock>
+
+                        <TextBlock Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
 
     </Grid>
 </Window>
