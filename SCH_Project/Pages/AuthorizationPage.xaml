@@ -67,7 +67,7 @@
                                     Background="#FF5858"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                                    ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="EnterBt_Click">
                                     <TextBlock
                                                 Foreground="Black"
                                                 Text="Enter"
@@ -152,12 +152,13 @@
                         Height="89"
                         materialDesign:ButtonAssist.CornerRadius="40"
                         Background="#FF5858"
+                        Name="Regbt"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+                        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Regbt_Click">
                                     <TextBlock
                                     Foreground="Black"
-                                    Text="Enter"
+                                    Text="Sign Up"
                                     FontSize="36"/>
                                 </Button>
                             </Grid>
