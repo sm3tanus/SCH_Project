@@ -83,14 +83,14 @@
         FontSize="30"
         HorizontalContentAlignment="Left"
         Foreground="White"
-        
+        Name="MydayBt"
           IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
           Style="{StaticResource MaterialDesignFlatLightButton}"
             
           ToolTip="MaterialDesignFlatButton" 
                 HorizontalAlignment="Left"
               Grid.Row="1"
-              Grid.ColumnSpan="2">
+              Grid.ColumnSpan="2" Click="MydayBt_Click">
             <Button.Content>
                 <StackPanel Orientation="Horizontal" Width="610">
                     <Grid Width="610">

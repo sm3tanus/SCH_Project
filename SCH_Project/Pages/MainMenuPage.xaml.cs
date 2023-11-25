@@ -30,5 +30,10 @@ namespace SCH_Project.Pages
         {
             MainMenuFrame.Navigate(new ProfilePage());
         }
+
+        private void MydayBt_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuFrame.Navigate(new MyDayPage());
+        }
     }
 }

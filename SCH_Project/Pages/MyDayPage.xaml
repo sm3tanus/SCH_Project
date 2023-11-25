@@ -37,14 +37,14 @@
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">Tuesday, December 5</TextBlock>
 
 
-        <DataGrid
+        <!--<DataGrid
   AutoGenerateColumns="False"
   CanUserAddRows="False"
   HeadersVisibility="All"
   ItemsSource="{Binding Items1}"
   SelectionUnit="{Binding ElementName=selectionUnitComboBox, Path=SelectedValue}">
             <DataGrid.Columns>
-                <!-- by default a DataGridCheckBoxColumn will have the MaterialDesignDataGridCheckBoxColumnStyle and MaterialDesignDataGridCheckBoxColumnEditingStyle applied. See DataGridAssist.ApplyMaterialDesignColumnStyles attached property -->
+                --><!-- by default a DataGridCheckBoxColumn will have the MaterialDesignDataGridCheckBoxColumnStyle and MaterialDesignDataGridCheckBoxColumnEditingStyle applied. See DataGridAssist.ApplyMaterialDesignColumnStyles attached property --><!--
                 <DataGridCheckBoxColumn
       Binding="{Binding IsSelected, UpdateSourceTrigger=PropertyChanged}">
                     <DataGridCheckBoxColumn.Header>
@@ -64,11 +64,11 @@
                         </Style>
                     </DataGridCheckBoxColumn.HeaderStyle>
                 </DataGridCheckBoxColumn>
-                <!-- by default a DataGridTextColumn will have the MaterialDesignDataGridTextColumnStyle and MaterialDesignDataGridTextColumnEditingStyle applied. See DataGridAssist.ApplyMaterialDesignColumnStyles attached property -->
+                --><!-- by default a DataGridTextColumn will have the MaterialDesignDataGridTextColumnStyle and MaterialDesignDataGridTextColumnEditingStyle applied. See DataGridAssist.ApplyMaterialDesignColumnStyles attached property --><!--
                 <DataGridTextColumn
       Binding="{Binding Code}"
       Header="Code" />
-                <!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn -->
+                --><!-- if you want to use the pop up style (MaterialDesignDataGridTextColumnPopupEditingStyle), you must use MaterialDataGridTextColumn --><!--
                 <materialDesign:DataGridTextColumn
       EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}"
       ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
@@ -82,7 +82,7 @@
                         </Binding>
                     </materialDesign:DataGridTextColumn.Binding>
                 </materialDesign:DataGridTextColumn>
-                <!-- set a max length to get an indicator in the editor -->
+                --><!-- set a max length to get an indicator in the editor --><!--
                 <DataGridTextColumn
       Header="Description">
                     <DataGridTextColumn.Binding>
@@ -129,20 +129,20 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </materialDesign:DataGridTextColumn>
-                <!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo -->
+                --><!-- use custom combo box column to get better combos. Use ItemsSourceBinding as your binding template to be applied to each combo --><!--
                 <materialDesign:DataGridComboBoxColumn
       Width="100"
       Header="Food with long header"
       IsEditable="True"
       ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.Foods}"
       SelectedValueBinding="{Binding Food}">
-                    <!--Setting the editing element style allows access to all of the combo box's properties
+                    --><!--Setting the editing element style allows access to all of the combo box's properties
                       <materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
                           <Style TargetType="ComboBox" BasedOn="{StaticResource {ComponentResourceKey TypeInTargetAssembly={x:Type ComboBox}, ResourceId=MaterialDataGridComboBoxColumnEditingStyle}}" >
                               <Setter Property="IsEditable" Value="True" />
                           </Style>
                       </materialDesign:MaterialDataGridComboBoxColumn.EditingElementStyle>
-          -->
+          --><!--
                 </materialDesign:DataGridComboBoxColumn>
                 <materialDesign:DataGridComboBoxColumn
       Header="ComboBox with long list"
@@ -169,7 +169,7 @@
                     </DataGridTemplateColumn.CellEditingTemplate>
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
-        </DataGrid>
+        </DataGrid>-->
         
         
     </Grid>

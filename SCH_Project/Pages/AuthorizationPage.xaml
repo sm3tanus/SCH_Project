@@ -25,7 +25,7 @@
                     <TextBlock Text="Sign In"    
                                Foreground="White"
                                FontSize="45" 
-                               Style="{StaticResource CustomFont}"/>
+                               />
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
@@ -50,16 +50,20 @@
                                Foreground="White"
                                Width="650"
                                FontSize="29"
-                               Margin="0 120 0 0"
+                               Margin="0 100 0 0"
                                materialDesign:HintAssist.Hint="Password"
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
                                Name="PasswordTb"
                                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
-                            <TextBlock Name="MessageBoxTb"></TextBlock>
+                            <TextBlock Name="MessageBoxTb"
+                                       Margin="0 30 0 0"
+                                       Foreground="#FF5858"
+                                       HorizontalAlignment="Center"
+                                       FontSize="29"></TextBlock>
                         </StackPanel>
                         <StackPanel>
                             <Grid
-                                Margin="0 120 0 0"
+                                Margin="0 80 0 0"
                                    Width="590">
                                 <Button
                                     Height="89"
@@ -103,8 +107,7 @@
                 <TabItem.Header>
                     <TextBlock Text="Sign Up"    
                    Foreground="White"
-                   FontSize="45" 
-                   Style="{StaticResource CustomFont}"/>
+                   FontSize="45" />
                 </TabItem.Header>
                 <TabItem.Content>
                     <StackPanel>
@@ -144,6 +147,11 @@
                    materialDesign:HintAssist.Hint="Confirm password"
                    materialDesign:TextFieldAssist.UnderlineBrush="White"
                    Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                            <TextBlock Name="MessageBoxRegTb"
+                                       Margin="0 30 0 0"
+                                       Foreground="#FF5858"
+                                       HorizontalAlignment="Center"
+                                       FontSize="29"></TextBlock>
                         </StackPanel>
                         <StackPanel>
                             <Grid

@@ -35,6 +35,7 @@ namespace SCH_Project.Pages
             AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
             AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
             Connection.taskManager.SaveChanges();
+            MessageTb.Text = "сhanges saved";
         }
 
         private void OtdelCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

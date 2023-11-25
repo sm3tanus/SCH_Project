@@ -28,11 +28,17 @@ namespace SCH_Project.Pages
                     user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
                     if (user != null)
                     {
+                        
                         NavigationService.Navigate(new MainMenuPage());
+                    }
+                    else
+                    {
+                        MessageBoxTb.Text = "error";
                     }
                 }
                 catch
                 {
+                    MessageBoxTb.Text = "error";
                 }
             }
         }
@@ -40,24 +46,33 @@ namespace SCH_Project.Pages
         private void Regbt_Click(object sender, RoutedEventArgs e)
         {
             try
-            {
-                if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
+            {   if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
                 {
-                    newUser.Login = LoginReg.Text.Trim().ToLower();
-                    newUser.Password = PasswordReg.Password.Trim().ToLower();
-                    Connection.taskManager.User.Add(newUser);
-                    Connection.taskManager.SaveChanges();                }
+                    if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
+                    {
+                        newUser.Login = LoginReg.Text.Trim().ToLower();
+                        newUser.Password = PasswordReg.Password.Trim().ToLower();
+                        Connection.taskManager.User.Add(newUser);
+                        Connection.taskManager.SaveChanges();
+                        MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
+                        MessageBoxTb.Text = "welcome";
+                    }
+                    else
+                    {
+                        LoginReg.Text = " ";
+                        PasswordReg.Password = " ";
+                        MessageBoxRegTb.Text = "incorrect password";
+                    }
+                }
                 else
                 {
-                    LoginReg.Text = " ";
-                    PasswordReg.Password = " ";
+                    MessageBoxTb.Text = "error";
                 }
             }
             catch
             {
-                MessageBox.Show("Error");
+                MessageBoxRegTb.Text = "incorrect password";
             }
         }
-
     }
 }
