@@ -14,6 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Comfortaa"
         Title="TaskManager" MaxHeight="1080" MaxWidth="1920"
+        MinHeight="1080" MinWidth="1920"
         WindowState="Maximized"
         ResizeMode="NoResize">
         

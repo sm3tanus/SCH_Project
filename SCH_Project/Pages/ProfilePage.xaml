@@ -33,7 +33,7 @@
 
     <!--Профиль-->
 
-    <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Your Profile</TextBlock>
+    <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">My Profile</TextBlock>
 
     <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">Edit your profile</TextBlock>
 
@@ -51,7 +51,7 @@
           Name="LoginTb"
         materialDesign:HintAssist.Hint="login"
         materialDesign:HintAssist.Foreground="#121923"
-        materialDesign:HintAssist.HelperText="less than 10 characters"
+        materialDesign:HintAssist.HelperText="less than 11 characters"
         materialDesign:HintAssist.HelperTextFontSize="17"
         Style="{StaticResource MaterialDesignOutlinedTextBox}">
     </TextBox>
