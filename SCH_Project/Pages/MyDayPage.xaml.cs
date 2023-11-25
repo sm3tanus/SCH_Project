@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace SCH_Project
+namespace SCH_Project.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuWindow.xaml
+    /// Логика взаимодействия для MyDayPage.xaml
     /// </summary>
-    public partial class MainMenuWindow : Window
+    public partial class MyDayPage : Page
     {
-        public MainMenuWindow()
+        public MyDayPage()
         {
             InitializeComponent();
         }

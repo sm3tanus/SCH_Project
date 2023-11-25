@@ -3,12 +3,225 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:SCH_Project.Pages"
+      xmlns:local="clr-namespace:SCH_Project.Pages" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="MainMenuPage">
 
-    <Grid>
+    <Grid Background="#121923">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Frame Name="MainMenuFrame" Grid.Column="2" Grid.ColumnSpan="4" Grid.RowSpan="7"></Frame>
+
+
+        <!--Прямоугольники-->
+
+        <Rectangle Fill="#263F76" Width="645" Height="1080" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2"/>
+        <Rectangle Fill="#1E3360" Width="645" Height="145" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+
+
+        <!--Профиль-->
+
+        <Button
+        Width="640"
+        Height="160"
+        FontSize="30"
+        HorizontalContentAlignment="Left"
+        Foreground="White"
+
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+        Style="{StaticResource MaterialDesignFlatLightButton}"
+        ToolTip="MaterialDesignFlatButton" 
+        HorizontalAlignment="Left"
+        Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon Kind="Account" Margin="20 0 0 0" Foreground="#121923" Width="100" Height="90" />
+
+                        <TextBlock FontSize="55" Style="{StaticResource CustomFont}" Margin="140 0 0 0" VerticalAlignment="Center">meaucat</TextBlock>
+
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
         
+        <!--Навигационные кнопки-->
+
+        <!--My Day-->
+        <Button
+        Width="640"
+        Height="150"
+        FontSize="30"
+        HorizontalContentAlignment="Left"
+        Foreground="White"
+        
+          IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+          Style="{StaticResource MaterialDesignFlatLightButton}"
+            
+          ToolTip="MaterialDesignFlatButton" 
+                HorizontalAlignment="Left"
+              Grid.Row="1"
+              Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon VerticalAlignment="Center" Width="70" Height="70" Kind="WhiteBalanceSunny" />
+
+                        <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="100 0 0 0" VerticalAlignment="Center">My Day</TextBlock>
+
+                        <TextBlock Text="2" FontSize="40" Grid.Column="1" Style="{StaticResource CustomFont}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
+        <!--Team Tasks-->
+        <Button
+        Width="640"
+        Height="150"
+        FontSize="30"
+        HorizontalContentAlignment="Left"
+        Foreground="White"
+        
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+        Style="{StaticResource MaterialDesignFlatLightButton}"
+        ToolTip="MaterialDesignFlatButton" 
+        HorizontalAlignment="Left"
+        Grid.Row="2"
+        Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon VerticalAlignment="Center" Width="70" Height="70" Kind="CheckboxMultipleMarkedCircle" />
+
+                        <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="100 0 0 0" VerticalAlignment="Center">Team Tasks</TextBlock>
+
+                        <TextBlock Style="{StaticResource CustomFont}" Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
+
+        <!--My groups-->
+        <Button
+        Width="640"
+        Height="150"
+        FontSize="30"
+        HorizontalContentAlignment="Left"
+        Foreground="White"
+        
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+        Style="{StaticResource MaterialDesignFlatLightButton}"
+        ToolTip="MaterialDesignFlatButton" 
+        HorizontalAlignment="Left"
+        Grid.Row="3"
+        Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon VerticalAlignment="Center" Width="70" Height="70" Kind="AccountGroup" />
+
+                        <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="100 0 0 0" VerticalAlignment="Center">My Groups</TextBlock>
+
+                        <TextBlock Style="{StaticResource CustomFont}" Text="2" FontSize="40" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
+
+        <!--Add Group-->
+        <Button
+        Width="640"
+        Height="150"
+        FontSize="30"
+        HorizontalContentAlignment="Left"
+        Foreground="White"
+        
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+        Style="{StaticResource MaterialDesignFlatLightButton}"
+        ToolTip="MaterialDesignFlatButton" 
+        HorizontalAlignment="Left"
+        Grid.Row="6"
+        Grid.ColumnSpan="2">
+            <Button.Content>
+                <StackPanel Orientation="Horizontal" Width="610">
+                    <Grid Width="610">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="500"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <materialDesign:PackIcon VerticalAlignment="Center" Width="70" Height="70" Kind="AccountMultiplePlus" />
+
+                        <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="100 0 0 0" VerticalAlignment="Center">Add Group</TextBlock>
+                    </Grid>
+                </StackPanel>
+            </Button.Content>
+        </Button>
+
     </Grid>
 </Page>

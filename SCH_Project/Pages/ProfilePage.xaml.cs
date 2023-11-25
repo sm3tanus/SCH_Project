@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace SCH_Project.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainMenuPage.xaml
+    /// Логика взаимодействия для ProfilePage.xaml
     /// </summary>
-    public partial class MainMenuPage : Page
+    public partial class ProfilePage : Page
     {
-        public MainMenuPage()
+        public ProfilePage()
         {
             InitializeComponent();
-            MainMenuFrame.Navigate(new MyDayPage());
         }
     }
 }

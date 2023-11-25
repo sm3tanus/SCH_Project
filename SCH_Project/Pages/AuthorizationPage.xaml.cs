@@ -20,21 +20,22 @@ namespace SCH_Project.Pages
         private void EnterBt_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             {
-                try
-                {
-                    string login = loginTb.Text.Trim();
-                    string password = PasswordTb.Password.Trim();
-                    var user = Connection.taskManager.User.Where(i => i.Login == login && i.Password == password).ToList();
-                    if (user != null)
-                    {
-                        MessageBox.Show("Welcome");
-                        NavigationService.Navigate(new MainMenuPage());
-                    }
-                }
-                catch
-                {
-                    MessageBox.Show("Error");
-                }
+                NavigationService.Navigate(new MainMenuPage());
+                //try
+                //{
+                //    string login = loginTb.Text.Trim();
+                //    string password = PasswordTb.Password.Trim();
+                //    var user = Connection.taskManager.User.Where(i => i.Login == login && i.Password == password).ToList();
+                //    if (user != null)
+                //    {
+                //        MessageBox.Show("Welcome");
+                //        NavigationService.Navigate(new MainMenuPage());
+                //    }
+                //}
+                //catch
+                //{
+                //    MessageBox.Show("Error");
+                //}
             }
         }
 
@@ -63,5 +64,6 @@ namespace SCH_Project.Pages
                 MessageBox.Show("Error");
             }
         }
+
     }
 }
