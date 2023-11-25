@@ -90,7 +90,7 @@
             materialDesign:HintAssist.Hint="department"
             materialDesign:HintAssist.Foreground="#121923"
             Style="{StaticResource MaterialDesignOutlinedComboBox}"
-            ItemsSource="{Binding otdels}" SelectionChanged="ComboBox_SelectionChanged">
+            ItemsSource="{Binding otdels}" SelectionChanged="OtdelCb_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>
@@ -111,11 +111,12 @@
             Width="600"
             BorderBrush="#121923"
             Height="89"
+            Name="AcceptBt"
             materialDesign:ButtonAssist.CornerRadius="40"
             Background="#121923"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-    ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AcceptBt_Click">
         <TextBlock
                 Foreground="White"
                 Text="Accept"

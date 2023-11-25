@@ -23,36 +23,30 @@ namespace SCH_Project.Pages
             {
                 try
                 {
-                    string login = loginTb.Text.Trim();
-                    string password = PasswordTb.Password.Trim();
+                    string login = loginTb.Text.Trim().ToLower();
+                    string password = PasswordTb.Password.Trim().ToLower();
                     user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
                     if (user != null)
                     {
-                        MessageBox.Show("Welcome");
                         NavigationService.Navigate(new MainMenuPage());
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Error");
                 }
             }
         }
 
         private void Regbt_Click(object sender, RoutedEventArgs e)
         {
-
             try
             {
                 if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
                 {
-                    newUser.Login = LoginReg.Text.Trim();
-                    newUser.Password = PasswordReg.Password.Trim();
+                    newUser.Login = LoginReg.Text.Trim().ToLower();
+                    newUser.Password = PasswordReg.Password.Trim().ToLower();
                     Connection.taskManager.User.Add(newUser);
-                    Connection.taskManager.SaveChanges();
-                    MessageBox.Show("Welcome");
-                    NavigationService.Navigate(new MainMenuPage());
-                }
+                    Connection.taskManager.SaveChanges();                }
                 else
                 {
                     LoginReg.Text = " ";

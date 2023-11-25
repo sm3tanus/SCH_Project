@@ -23,6 +23,11 @@ namespace SCH_Project.Pages
         public MainMenuPage()
         {
             InitializeComponent();
+            MainMenuFrame.Navigate(new MyDayPage());
+        }
+
+        private void ProfileBt_Click(object sender, RoutedEventArgs e)
+        {
             MainMenuFrame.Navigate(new ProfilePage());
         }
     }

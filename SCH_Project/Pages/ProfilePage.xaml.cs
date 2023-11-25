@@ -29,18 +29,17 @@ namespace SCH_Project.Pages
             this.DataContext = this;
         }
         public User user = new User();
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-            AuthorizationPage.user = user;
-            user.Login = LoginTb.Text.Trim();
-            user.Password = passwordTb.Password.Trim();
+
+            AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
+            AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
             Connection.taskManager.SaveChanges();
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void OtdelCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            user.Otdel = OtdelCb.SelectedItem as Otdel;
+            AuthorizationPage.user.Otdel = OtdelCb.SelectedItem as Otdel;
         }
     }
 }

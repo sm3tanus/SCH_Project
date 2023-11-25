@@ -55,6 +55,7 @@
                                materialDesign:TextFieldAssist.UnderlineBrush="White"
                                Name="PasswordTb"
                                Style="{StaticResource MaterialDesignFloatingHintPasswordBox}" />
+                            <TextBlock Name="MessageBoxTb"></TextBlock>
                         </StackPanel>
                         <StackPanel>
                             <Grid
