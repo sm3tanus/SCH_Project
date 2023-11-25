@@ -23,7 +23,7 @@ namespace SCH_Project.Pages
         public MainMenuPage()
         {
             InitializeComponent();
-            MainMenuFrame.Navigate(new MyDayPage());
+            MainMenuFrame.Navigate(new ProfilePage());
         }
     }
 }

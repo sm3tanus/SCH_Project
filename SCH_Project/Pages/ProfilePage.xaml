@@ -45,12 +45,12 @@
           HorizontalAlignment="Center"
           VerticalAlignment="Center"
           Width="450"
-          BorderBrush="Black"
+          BorderBrush="#121923"
           Background="White"
           FontSize="25"
-          
+          Name="LoginTb"
         materialDesign:HintAssist.Hint="login"
-        materialDesign:HintAssist.Foreground="Black"
+        materialDesign:HintAssist.Foreground="#121923"
         materialDesign:HintAssist.HelperText="less than 10 characters"
         materialDesign:HintAssist.HelperTextFontSize="17"
         Style="{StaticResource MaterialDesignOutlinedTextBox}">
@@ -65,36 +65,38 @@
                     VerticalAlignment="Center">
         <PasswordBox
                 Width="450"
-                BorderBrush="Black"
+                BorderBrush="#121923"
                 Background="White"
                 FontSize="22"
-                
+                Name="passwordTb"
         materialDesign:HintAssist.Hint="password"
         materialDesign:TextFieldAssist.HasClearButton="True"
-        materialDesign:HintAssist.Foreground="Black"
+        materialDesign:HintAssist.Foreground="#121923"
         Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}" />
     </StackPanel>
 
 
 
-    <ComboBox
+        <ComboBox
             Grid.Row="4"
             Grid.Column="1"
             Grid.ColumnSpan="2"
             Width="450"
-            BorderBrush="Black"
+            BorderBrush="#121923"
             Background="White"
+            Foreground="#121923"
             FontSize="22"
-            
-  materialDesign:HintAssist.Hint="department"
-  Style="{StaticResource MaterialDesignOutlinedComboBox}">
-        <ComboBoxItem
-    Content="Item 1" />
-        <ComboBoxItem
-    Content="Item 2" />
-        <ComboBoxItem
-    Content="Item 3" />
-        </ComboBox>
+            Name="OtdelCb"
+            materialDesign:HintAssist.Hint="department"
+            materialDesign:HintAssist.Foreground="#121923"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}"
+            ItemsSource="{Binding otdels}" SelectionChanged="ComboBox_SelectionChanged">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+            </ComboBox>
 
 
 
@@ -107,13 +109,13 @@
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
             Width="600"
-            BorderBrush="Black"
-    Height="89"
-    materialDesign:ButtonAssist.CornerRadius="40"
-    Background="#121923"
-    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-    Style="{StaticResource MaterialDesignRaisedDarkButton}"
-    ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+            BorderBrush="#121923"
+            Height="89"
+            materialDesign:ButtonAssist.CornerRadius="40"
+            Background="#121923"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+    ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
         <TextBlock
                 Foreground="White"
                 Text="Accept"

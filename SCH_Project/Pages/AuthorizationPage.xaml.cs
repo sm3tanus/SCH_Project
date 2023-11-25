@@ -11,6 +11,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AuthorizationPage : Page
     {
+        public static User user;
         public static List<User> users { get; set; }
         public AuthorizationPage()
         {
@@ -20,22 +21,21 @@ namespace SCH_Project.Pages
         private void EnterBt_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             {
-                NavigationService.Navigate(new MainMenuPage());
-                //try
-                //{
-                //    string login = loginTb.Text.Trim();
-                //    string password = PasswordTb.Password.Trim();
-                //    var user = Connection.taskManager.User.Where(i => i.Login == login && i.Password == password).ToList();
-                //    if (user != null)
-                //    {
-                //        MessageBox.Show("Welcome");
-                //        NavigationService.Navigate(new MainMenuPage());
-                //    }
-                //}
-                //catch
-                //{
-                //    MessageBox.Show("Error");
-                //}
+                try
+                {
+                    string login = loginTb.Text.Trim();
+                    string password = PasswordTb.Password.Trim();
+                    user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
+                    if (user != null)
+                    {
+                        MessageBox.Show("Welcome");
+                        NavigationService.Navigate(new MainMenuPage());
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
 
