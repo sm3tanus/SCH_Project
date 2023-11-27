@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SCH_Project.Dbconnection;
 
 namespace SCH_Project.Pages
 {
@@ -20,6 +21,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyDayPage : Page
     {
+        public static List<Dbconnection.Task> Tasks = new List<Dbconnection.Task>();
         public MyDayPage()
         {
             InitializeComponent();

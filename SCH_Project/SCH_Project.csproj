@@ -96,7 +96,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dbconnection\Application.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Connection.cs" />
     <Compile Include="Dbconnection\Model1.Context.cs">
@@ -114,23 +114,38 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Dbconnection\ModelBulat.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBulat.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\ModelBulat.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\ModelBulat.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelBulat.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Dbconnection\Otdel.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Subtask.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Task.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Team.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\User.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\UserTeam.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -193,6 +208,13 @@
     <None Include="Dbconnection\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Dbconnection\ModelBulat.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelBulat.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Dbconnection\ModelBulat.edmx.diagram">
+      <DependentUpon>ModelBulat.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -218,6 +240,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dbconnection\ModelBulat.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelBulat.edmx</DependentUpon>
+      <LastGenOutput>ModelBulat.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dbconnection\ModelBulat.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelBulat.edmx</DependentUpon>
+      <LastGenOutput>ModelBulat.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

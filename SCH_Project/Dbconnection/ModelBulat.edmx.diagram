@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d11a7ff70a454dafb755edac4009774f" Name="Diagram1">
+        <EntityTypeShape EntityType="TaskManagerModel.Application" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Otdel" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Subtask" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Task" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.Team" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.User" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TaskManagerModel.UserTeam" Width="1.5" PointX="10.5" PointY="6.375" IsExpanded="true" />
+        <AssociationConnector Association="TaskManagerModel.FK_Application_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_Application_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_User_Otdel" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_Subtask_Task" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_Task_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_Team_User" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_UserTeam_Team" ManuallyRouted="false" />
+        <AssociationConnector Association="TaskManagerModel.FK_UserTeam_User" ManuallyRouted="true" >
+          <ConnectorPoint PointX="4.5" PointY="4.65625" />
+          <ConnectorPoint PointX="6.7275" PointY="4.65625" />
+          <ConnectorPoint PointX="6.7275" PointY="3.781249862164259" />
+          <ConnectorPoint PointX="11.25" PointY="3.781249862164259" />
+          <ConnectorPoint PointX="11.25" PointY="6.375" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

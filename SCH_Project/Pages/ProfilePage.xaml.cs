@@ -31,7 +31,6 @@ namespace SCH_Project.Pages
         public User user = new User();
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-
             AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
             AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
             Connection.taskManager.SaveChanges();
