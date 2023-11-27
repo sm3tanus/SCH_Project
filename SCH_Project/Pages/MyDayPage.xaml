@@ -42,7 +42,7 @@
                 Grid.Row="3"
                 Grid.RowSpan="1"
                 Name="ListTask"
-                ItemsSource="{Binding Tasks}" SelectionChanged="EmployeesList_SelectionChanged">
+                ItemsSource="{Binding Tasks}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -62,6 +62,7 @@
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
+                        
                     </GridView.Columns>
 
                 </GridView>

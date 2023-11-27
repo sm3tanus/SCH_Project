@@ -21,10 +21,11 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyDayPage : Page
     {
-        public static List<Dbconnection.Task> Tasks = new List<Dbconnection.Task>();
+        public static List<Dbconnection.Task> Tasks { get; set; }
         public MyDayPage()
         {
             InitializeComponent();
+            Tasks = Connection.taskManager.Task.ToList();
         }
     }
 }
