@@ -25,7 +25,8 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            Tasks = Connection.taskManager.Task.ToList();
+            Tasks = Dbconnection.Connection.taskManager.Task.ToList();
+            DataContext = this;
         }
     }
 }
