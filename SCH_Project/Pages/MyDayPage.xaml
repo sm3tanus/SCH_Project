@@ -31,7 +31,7 @@
         <Rectangle Fill="#263F76" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Grid.Row="2" Margin="10 0 0 0"></Rectangle>
 
         <!--Профиль-->
-
+        <!--new-->
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">My Day</TextBlock>
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">Tuesday, December 5</TextBlock>
