@@ -40,7 +40,7 @@
 
 
 
-        <!--введите имя-->
+        <!--введите имя -->
         <TextBlock Grid.Row="2"
            Grid.Column="0"
            Grid.ColumnSpan="2"
