@@ -23,6 +23,7 @@
         <AssociationConnector Association="taskTodoListModel.FK_UserTeam_Team" ManuallyRouted="false" />
         <AssociationConnector Association="taskTodoListModel.FK_UserTeam_User" ManuallyRouted="false" />
         <EntityTypeShape EntityType="taskTodoListModel.sysdiagrams" Width="1.5" PointX="5.375" PointY="0.75" />
+        <AssociationConnector Association="taskTodoListModel.FK_Task_Team" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

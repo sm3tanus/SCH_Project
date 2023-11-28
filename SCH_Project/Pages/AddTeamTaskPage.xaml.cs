@@ -24,5 +24,10 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
         }
+
+        private void GroupCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            
+        }
     }
 }

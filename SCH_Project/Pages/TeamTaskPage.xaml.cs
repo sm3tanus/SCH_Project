@@ -21,11 +21,32 @@ namespace SCH_Project.Pages
     public partial class TeamTaskPage : Page
     {
         public static List<Dbconnection.Task> tasks {  get; set; }
+        public static List<Team> teams { get; set; }
         public TeamTaskPage()
         {
             InitializeComponent();
             tasks = Connection.taskManager.Task.ToList();
+            ListTeamTask.ItemsSource = tasks.Where(i => i.User == AuthorizationPage.user);
+            teams = Connection.taskManager.Team.ToList();
+            TeamCb.ItemsSource = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
+            var teamsSort = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
+            if (teamsSort.Count == 0)
+            {
+                VisibStack.Visibility = Visibility.Hidden;
+                ErrorTb.Visibility = Visibility.Visible;
+            }
             DataContext = this;
+            
+        }
+
+        private void AddBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddTeamTaskPage());
+        }
+
+        private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListTeamTask.ItemsSource = tasks.Where(i => i.IdTeam == (TeamCb.SelectedItem as Team).ID).ToList();
         }
     }
 }

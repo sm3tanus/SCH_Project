@@ -7,7 +7,7 @@
       xmlns:local="clr-namespace:SCH_Project.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1280"
-      Title="MyDayPage">
+      Title="MyDayPage"  Style="{StaticResource CustomFont}">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -106,16 +106,16 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Width="600"
-            BorderBrush="#121923"
+            VerticalAlignment="Top"
             Height="80"
             Margin="0 0 0 0"    
             materialDesign:ButtonAssist.CornerRadius="40"
-            Background="#121923"
+            Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
             <TextBlock
-                Foreground="White"
+                Foreground="#121923"
                 Text="Add Task"
                 FontSize="30"/>
         </Button>

@@ -112,7 +112,7 @@
            Margin="0 0 0 10"
            Foreground="#121923"
            FontSize="30"
-           Text="enter the name of the task"
+           Text="enter the discription of the task"
             />
 
 
@@ -152,7 +152,7 @@
            Margin="0 0 0 20"
            Foreground="#121923"
            FontSize="30"
-           Text="select the employee's department"
+           Text="select the group"
    />
 
         <ComboBox
@@ -166,9 +166,10 @@
             Background="White"
             Foreground="#121923"
             FontSize="25"
-            materialDesign:HintAssist.Hint="department"
+            Name="GroupCb"
+            materialDesign:HintAssist.Hint="group"
             materialDesign:HintAssist.Foreground="#121923"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="GroupCb_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Name}"/>

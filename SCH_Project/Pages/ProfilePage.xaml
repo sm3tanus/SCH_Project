@@ -119,16 +119,15 @@
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
             Width="600"
-            BorderBrush="#121923"
             Height="89"
             Name="AcceptBt"
             materialDesign:ButtonAssist.CornerRadius="40"
-            Background="#121923"
+            Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
     ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AcceptBt_Click">
         <TextBlock
-                Foreground="White"
+                Foreground="#121923"
                 Text="Accept"
                 FontSize="30"/>
     </Button>

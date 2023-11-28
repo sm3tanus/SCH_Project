@@ -51,6 +51,7 @@
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="IdUser" Type="int" />
           <Property Name="IdType" Type="int" />
+          <Property Name="IdTeam" Type="int" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -75,7 +76,6 @@
           <Property Name="Login" Type="nvarchar" MaxLength="11" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="IdOtdel" Type="int" />
-          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="UserTeam">
           <Key>
@@ -118,6 +118,18 @@
             </Principal>
             <Dependent Role="Subtask">
               <PropertyRef Name="IdTask" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_Team">
+          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdTeam" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -215,6 +227,10 @@
             <End Role="Task" EntitySet="Task" />
             <End Role="Subtask" EntitySet="Subtask" />
           </AssociationSet>
+          <AssociationSet Name="FK_Task_Team" Association="Self.FK_Task_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
           <AssociationSet Name="FK_Task_TypeTask" Association="Self.FK_Task_TypeTask">
             <End Role="TypeTask" EntitySet="TypeTask" />
             <End Role="Task" EntitySet="Task" />
@@ -287,6 +303,8 @@
           <NavigationProperty Name="Subtask" Relationship="Self.FK_Subtask_Task" FromRole="Task" ToRole="Subtask" />
           <NavigationProperty Name="TypeTask" Relationship="Self.FK_Task_TypeTask" FromRole="Task" ToRole="TypeTask" />
           <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+          <Property Name="IdTeam" Type="Int32" />
+          <NavigationProperty Name="Team" Relationship="taskTodoListModel.FK_Task_Team" FromRole="Task" ToRole="Team" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -298,6 +316,7 @@
           <NavigationProperty Name="Application" Relationship="Self.FK_Application_Team" FromRole="Team" ToRole="Application" />
           <NavigationProperty Name="User" Relationship="Self.FK_Team_User" FromRole="Team" ToRole="User" />
           <NavigationProperty Name="UserTeam" Relationship="Self.FK_UserTeam_Team" FromRole="Team" ToRole="UserTeam" />
+          <NavigationProperty Name="Task" Relationship="taskTodoListModel.FK_Task_Team" FromRole="Team" ToRole="Task" />
         </EntityType>
         <EntityType Name="TypeTask">
           <Key>
@@ -485,6 +504,10 @@
             <End Role="UserTeam" EntitySet="UserTeam" />
           </AssociationSet>
           <EntitySet Name="sysdiagrams" EntityType="taskTodoListModel.sysdiagrams" />
+          <AssociationSet Name="FK_Task_Team" Association="taskTodoListModel.FK_Task_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -496,6 +519,18 @@
           <Property Name="version" Type="Int32" />
           <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
+        <Association Name="FK_Task_Team">
+          <End Type="taskTodoListModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="taskTodoListModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Team">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdTeam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -533,6 +568,7 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="taskTodoListModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />

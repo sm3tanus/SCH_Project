@@ -153,7 +153,7 @@
       <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\sysdiagrams.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Task.cs">
       <DependentUpon>ModelLayna.tt</DependentUpon>

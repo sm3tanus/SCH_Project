@@ -27,11 +27,12 @@ namespace SCH_Project.Dbconnection
         public string Description { get; set; }
         public Nullable<int> IdUser { get; set; }
         public Nullable<int> IdType { get; set; }
+        public Nullable<int> IdTeam { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Subtask> Subtask { get; set; }
         public virtual TypeTask TypeTask { get; set; }
         public virtual User User { get; set; }
-        public virtual TypeTask TypeTask { get; set; }
+        public virtual Team Team { get; set; }
     }
 }
