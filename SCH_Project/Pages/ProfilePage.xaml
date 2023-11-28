@@ -105,7 +105,7 @@
             Width="200"
             Height="40"
             VerticalAlignment="Top"
-            Foreground="white"
+            Foreground="red"
             Name="MessageTb"
             FontSize="22"
             TextAlignment="Center"></TextBlock>

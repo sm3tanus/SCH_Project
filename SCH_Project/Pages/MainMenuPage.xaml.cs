@@ -24,6 +24,7 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
             MainMenuFrame.Navigate(new MyDayPage());
+            loginTb.Text = AuthorizationPage.user.Login;
         }
 
         private void ProfileBt_Click(object sender, RoutedEventArgs e)
@@ -34,6 +35,11 @@ namespace SCH_Project.Pages
         private void MydayBt_Click(object sender, RoutedEventArgs e)
         {
             MainMenuFrame.Navigate(new MyDayPage());
+        }
+
+        private void AddGroupBt_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuFrame.Navigate (new AddGroupPage());
         }
     }
 }

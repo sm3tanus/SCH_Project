@@ -61,7 +61,9 @@
     <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
     </Reference>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
@@ -96,7 +98,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dbconnection\Application.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Connection.cs" />
     <Compile Include="Dbconnection\Model1.Context.cs">
@@ -129,28 +131,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ModelBulat.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Dbconnection\ModelLayna.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLayna.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\ModelLayna.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\ModelLayna.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelLayna.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Dbconnection\Otdel.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Subtask.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\sysdiagrams.cs">
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Task.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Team.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\TypeTask.cs">
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\User.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\UserTeam.cs">
-      <DependentUpon>ModelBulat.tt</DependentUpon>
+      <DependentUpon>ModelLayna.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AddGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -169,6 +196,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AddGroupPage.xaml.cs">
+      <DependentUpon>AddGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
@@ -215,6 +245,13 @@
     <None Include="Dbconnection\ModelBulat.edmx.diagram">
       <DependentUpon>ModelBulat.edmx</DependentUpon>
     </None>
+    <EntityDeploy Include="Dbconnection\ModelLayna.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelLayna.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Dbconnection\ModelLayna.edmx.diagram">
+      <DependentUpon>ModelLayna.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -250,6 +287,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ModelBulat.edmx</DependentUpon>
       <LastGenOutput>ModelBulat.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dbconnection\ModelLayna.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLayna.edmx</DependentUpon>
+      <LastGenOutput>ModelLayna.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dbconnection\ModelLayna.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelLayna.edmx</DependentUpon>
+      <LastGenOutput>ModelLayna.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

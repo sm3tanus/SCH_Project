@@ -31,10 +31,18 @@ namespace SCH_Project.Pages
         public User user = new User();
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-            AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
-            AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
-            Connection.taskManager.SaveChanges();
-            MessageTb.Text = "сhanges saved";
+            if (LoginTb.Text.Length != 0)
+            {
+                AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
+                AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
+                Connection.taskManager.SaveChanges();
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "сhanges saved";
+            }
+            else
+            {
+                MessageTb.Text = "fill in the details";
+            }
         }
 
         private void OtdelCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

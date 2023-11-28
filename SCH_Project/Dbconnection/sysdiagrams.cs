@@ -12,14 +12,12 @@ namespace SCH_Project.Dbconnection
     using System;
     using System.Collections.Generic;
     
-    public partial class Application
+    public partial class sysdiagrams
     {
-        public int ID { get; set; }
-        public Nullable<int> IdTeam { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<bool> Status { get; set; }
-    
-        public virtual Team Team { get; set; }
-        public virtual User User { get; set; }
+        public string name { get; set; }
+        public int principal_id { get; set; }
+        public int diagram_id { get; set; }
+        public Nullable<int> version { get; set; }
+        public byte[] definition { get; set; }
     }
 }

@@ -12,25 +12,18 @@ namespace SCH_Project.Dbconnection
     using System;
     using System.Collections.Generic;
     
-    public partial class Task
+    public partial class TypeTask
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Task()
+        public TypeTask()
         {
-            this.Subtask = new HashSet<Subtask>();
+            this.Task = new HashSet<Task>();
         }
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Status { get; set; }
-        public Nullable<System.DateTime> FinalDate { get; set; }
-        public string Description { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<int> IdType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Subtask> Subtask { get; set; }
-        public virtual TypeTask TypeTask { get; set; }
-        public virtual User User { get; set; }
+        public virtual ICollection<Task> Task { get; set; }
     }
 }

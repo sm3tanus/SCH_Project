@@ -30,12 +30,10 @@
 
         <Frame Name="MainMenuFrame" Grid.Column="2" Grid.ColumnSpan="4" Grid.RowSpan="7"></Frame>
 
-
         <!--Прямоугольники-->
 
         <Rectangle Fill="#263F76" Width="645" Height="1080" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2"/>
         <Rectangle Fill="#1E3360" Width="645" Height="145" HorizontalAlignment="Left" Grid.RowSpan="7" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
-
 
         <!--Профиль-->
 
@@ -65,7 +63,11 @@
 
                         <materialDesign:PackIcon Kind="Account" Margin="20 0 0 0" Foreground="#121923" Width="100" Height="90" />
 
-                        <TextBlock FontSize="55" Style="{StaticResource CustomFont}" Margin="140 0 0 0" VerticalAlignment="Center">meaucat</TextBlock>
+                        <TextBlock FontSize="55" 
+                                   Style="{StaticResource CustomFont}"
+                                   Margin="140 0 0 0"
+                                   VerticalAlignment="Center"
+                                   Name="loginTb"></TextBlock>
 
                     </Grid>
                 </StackPanel>
@@ -196,13 +198,13 @@
         FontSize="30"
         HorizontalContentAlignment="Left"
         Foreground="White"
-        
+        Name="AddGroupBt"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
         Style="{StaticResource MaterialDesignFlatLightButton}"
         ToolTip="MaterialDesignFlatButton" 
         HorizontalAlignment="Left"
         Grid.Row="6"
-        Grid.ColumnSpan="2">
+        Grid.ColumnSpan="2" Click="AddGroupBt_Click" >
             <Button.Content>
                 <StackPanel Orientation="Horizontal" Width="610">
                     <Grid Width="610">
