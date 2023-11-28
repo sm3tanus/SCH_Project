@@ -17,7 +17,6 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
         }
-        public User newUser = new User();
         private void EnterBt_Click(object sender, System.Windows.RoutedEventArgs e)
         {
             {
@@ -45,6 +44,7 @@ namespace SCH_Project.Pages
 
         private void Regbt_Click(object sender, RoutedEventArgs e)
         {
+            User newUser = new User();
             try
             {   if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
                 {

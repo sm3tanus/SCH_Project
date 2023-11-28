@@ -20,12 +20,15 @@
         <AssociationConnector Association="TaskManagerModel.FK_Team_User" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerModel.FK_UserTeam_Team" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerModel.FK_UserTeam_User" ManuallyRouted="true" >
-          <ConnectorPoint PointX="4.5" PointY="4.65625" />
-          <ConnectorPoint PointX="6.7275" PointY="4.65625" />
-          <ConnectorPoint PointX="6.7275" PointY="3.781249862164259" />
-          <ConnectorPoint PointX="11.25" PointY="3.781249862164259" />
+          <ConnectorPoint PointX="4.5" PointY="5.047841796875" />
+          <ConnectorPoint PointX="6.104166666666667" PointY="5.0478417968749989" />
+          <ConnectorPoint PointX="6.270833333333333" PointY="5.047841796875" />
+          <ConnectorPoint PointX="11.25" PointY="5.047841796875" />
           <ConnectorPoint PointX="11.25" PointY="6.375" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="TaskManagerModel.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="TaskManagerModel.TypeTask" Width="1.5" PointX="5.625" PointY="3.125" />
+        <AssociationConnector Association="TaskManagerModel.FK_Task_TypeTask" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

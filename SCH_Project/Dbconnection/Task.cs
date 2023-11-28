@@ -32,5 +32,6 @@ namespace SCH_Project.Dbconnection
         public virtual ICollection<Subtask> Subtask { get; set; }
         public virtual TypeTask TypeTask { get; set; }
         public virtual User User { get; set; }
+        public virtual TypeTask TypeTask { get; set; }
     }
 }

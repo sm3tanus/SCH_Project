@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,8 +26,22 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            Tasks = Dbconnection.Connection.taskManager.Task.ToList();
+            Tasks = Connection.taskManager.Task.Where(i => i.IdType == 2).ToList();
             DataContext = this;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddTaskPage());
+        }
+
+        private void ListTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var task = ListTask.SelectedItem as Dbconnection.Task;
+            task.Status = !(task.Status);
+            Connection.taskManager.Task.AddOrUpdate(task);
+            Connection.taskManager.SaveChanges();
         }
     }
 }
