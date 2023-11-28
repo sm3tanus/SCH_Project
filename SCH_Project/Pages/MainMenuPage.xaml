@@ -123,13 +123,13 @@
         FontSize="30"
         HorizontalContentAlignment="Left"
         Foreground="White"
-        
+        Name="TeamTasksBt"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
         Style="{StaticResource MaterialDesignFlatLightButton}"
         ToolTip="MaterialDesignFlatButton" 
         HorizontalAlignment="Left"
         Grid.Row="2"
-        Grid.ColumnSpan="2">
+        Grid.ColumnSpan="2" Click="TeamTasksBt_Click">
             <Button.Content>
                 <StackPanel Orientation="Horizontal" Width="610">
                     <Grid Width="610">

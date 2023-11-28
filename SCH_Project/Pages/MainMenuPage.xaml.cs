@@ -41,5 +41,10 @@ namespace SCH_Project.Pages
         {
             MainMenuFrame.Navigate (new AddGroupPage());
         }
+
+        private void TeamTasksBt_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuFrame.Navigate(new TeamTaskPage());
+        }
     }
 }
