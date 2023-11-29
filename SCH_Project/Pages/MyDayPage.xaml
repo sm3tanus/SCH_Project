@@ -44,7 +44,7 @@
                     Width="1000"
                     Height="400"
                     Name="ListTask"
-                ItemsSource="{Binding Tasks}" SelectionChanged="ListTask_SelectionChanged">
+                ItemsSource="{Binding tasks}" SelectionChanged="ListTask_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

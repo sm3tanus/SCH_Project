@@ -20,15 +20,14 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class TeamTaskPage : Page
     {
-        public static List<Dbconnection.Task> tasks {  get; set; }
         public static List<Team> teams { get; set; }
         public TeamTaskPage()
         {
             InitializeComponent();
-            tasks = Connection.taskManager.Task.ToList();
-            //ListTeamTask.ItemsSource = tasks.Where(i => i.User == AuthorizationPage.user);
+            List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
+            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
             teams = Connection.taskManager.Team.ToList();
-            TeamCb.ItemsSource = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
+            TeamCb.ItemsSource = teams.Where(i => i.IdLeader== AuthorizationPage.user.ID).ToList(); //очень сильно доработать
             var teamsSort = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
             if (teamsSort.Count == 0)
             {
@@ -36,7 +35,6 @@ namespace SCH_Project.Pages
                 ErrorTb.Visibility = Visibility.Visible;
             }
             DataContext = this;
-            
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)

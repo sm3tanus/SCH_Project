@@ -17,11 +17,10 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
         }
-        private void EnterBt_Click(object sender, System.Windows.RoutedEventArgs e)
+        private void EnterBt_Click(object sender, RoutedEventArgs e)
         {
             {
-                try
-                {
+                
                     string login = loginTb.Text.Trim().ToLower();
                     string password = PasswordTb.Password.Trim().ToLower();
                     user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
@@ -34,11 +33,7 @@ namespace SCH_Project.Pages
                     {
                         MessageBoxTb.Text = "error";
                     }
-                }
-                catch
-                {
-                    MessageBoxTb.Text = "error";
-                }
+                
             }
         }
 

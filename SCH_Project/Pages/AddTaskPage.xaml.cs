@@ -22,6 +22,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddTaskPage : Page
     {
+        public static List<Dbconnection.UserTeam> userTeams { get; set; }
         public AddTaskPage()
         {
             InitializeComponent();
@@ -29,16 +30,16 @@ namespace SCH_Project.Pages
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            //Dbconnection.Task task = new Dbconnection.Task();
-            //task.User = AuthorizationPage.user;
-            //task.Status = false;
-            //task.FinalDate = TaskDP.SelectedDate;
-            //task.Name = NameTb.Text;
-            //task.Description = DescriptionTb.Text;
-            //task.IdType = 2;
-            //Connection.taskManager.Task.Add(task);
-            //Connection.taskManager.SaveChanges();
-            //NavigationService.Navigate(new MyDayPage());
+            UserTeam UserTeam = userTeams.First(i => i.IdTeam == 1 && i.IdUser == AuthorizationPage.user.ID);
+            Dbconnection.Task task = new Dbconnection.Task();
+            task.UserTeam = UserTeam;
+            task.Status = false;
+            task.FinalDate = TaskDP.SelectedDate;
+            task.Name = NameTb.Text;
+            task.Description = DescriptionTb.Text;
+            Connection.taskManager.Task.Add(task);
+            Connection.taskManager.SaveChanges();
+            NavigationService.Navigate(new MyDayPage());
         }
     }
 }

@@ -22,12 +22,11 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyDayPage : Page
     {
-        public static List<Dbconnection.Task> Tasks { get; set; }
+        public static List<Dbconnection.Task> tasks { get; set; }
         public MyDayPage()
         {
             InitializeComponent();
-
-            //Tasks = Connection.taskManager.Task.Where(i => i.UserTeam).ToList();
+            tasks = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID).ToList();
             DataContext = this;
         }
 
