@@ -18,7 +18,6 @@ namespace SCH_Project.Dbconnection
         public User()
         {
             this.Application = new HashSet<Application>();
-            this.Task = new HashSet<Task>();
             this.Team = new HashSet<Team>();
             this.UserTeam = new HashSet<UserTeam>();
         }
@@ -31,8 +30,6 @@ namespace SCH_Project.Dbconnection
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Application> Application { get; set; }
         public virtual Otdel Otdel { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Task { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Team> Team { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

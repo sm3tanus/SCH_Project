@@ -12,7 +12,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IdTeam" Type="int" />
           <Property Name="IdUser" Type="int" />
-          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="Otdel">
           <Key>
@@ -49,8 +48,7 @@
           <Property Name="Status" Type="bit" />
           <Property Name="FinalDate" Type="date" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="IdUser" Type="int" />
-          <Property Name="IdType" Type="int" />
+          <Property Name="IdUserTeam" Type="int" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -59,13 +57,6 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar(max)" />
           <Property Name="IdLeader" Type="int" />
-        </EntityType>
-        <EntityType Name="TypeTask">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -120,27 +111,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Task_TypeTask">
-          <End Role="TypeTask" Type="Self.TypeTask" Multiplicity="0..1" />
+        <Association Name="FK_Task_UserTeam">
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="0..1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="TypeTask">
+            <Principal Role="UserTeam">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Task">
-              <PropertyRef Name="IdType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Task_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Task" Type="Self.Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="IdUser" />
+              <PropertyRef Name="IdUserTeam" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -192,6 +171,37 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="Хранилище TaskManagerModelContainer">
           <EntitySet Name="Application" EntityType="Self.Application" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Otdel" EntityType="Self.Otdel" Schema="dbo" store:Type="Tables" />
@@ -199,7 +209,6 @@
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TypeTask" EntityType="Self.TypeTask" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserTeam" EntityType="Self.UserTeam" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Application_Team" Association="Self.FK_Application_Team">
@@ -214,12 +223,8 @@
             <End Role="Task" EntitySet="Task" />
             <End Role="Subtask" EntitySet="Subtask" />
           </AssociationSet>
-          <AssociationSet Name="FK_Task_TypeTask" Association="Self.FK_Task_TypeTask">
-            <End Role="TypeTask" EntitySet="TypeTask" />
-            <End Role="Task" EntitySet="Task" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
-            <End Role="User" EntitySet="User" />
+          <AssociationSet Name="FK_Task_UserTeam" Association="Self.FK_Task_UserTeam">
+            <End Role="UserTeam" EntitySet="UserTeam" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Team_User" Association="Self.FK_Team_User">
@@ -243,6 +248,99 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TaskManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="TaskManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="TaskManagerModel.sysdiagrams" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(TaskManagerModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(TaskManagerModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="Application" EntityType="TaskManagerModel.Application" />
+          <EntitySet Name="Otdel" EntityType="TaskManagerModel.Otdel" />
+          <EntitySet Name="Subtask" EntityType="TaskManagerModel.Subtask" />
+          <EntitySet Name="Task" EntityType="TaskManagerModel.Task" />
+          <EntitySet Name="Team" EntityType="TaskManagerModel.Team" />
+          <EntitySet Name="User" EntityType="TaskManagerModel.User" />
+          <EntitySet Name="UserTeam" EntityType="TaskManagerModel.UserTeam" />
+          <AssociationSet Name="FK_Application_Team" Association="TaskManagerModel.FK_Application_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Application_User" Association="TaskManagerModel.FK_Application_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Application" EntitySet="Application" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Otdel" Association="TaskManagerModel.FK_User_Otdel">
+            <End Role="Otdel" EntitySet="Otdel" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Subtask_Task" Association="TaskManagerModel.FK_Subtask_Task">
+            <End Role="Task" EntitySet="Task" />
+            <End Role="Subtask" EntitySet="Subtask" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Task_UserTeam" Association="TaskManagerModel.FK_Task_UserTeam">
+            <End Role="UserTeam" EntitySet="UserTeam" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Team_User" Association="TaskManagerModel.FK_Team_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="Team" EntitySet="Team" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_Team" Association="TaskManagerModel.FK_UserTeam_Team">
+            <End Role="Team" EntitySet="Team" />
+            <End Role="UserTeam" EntitySet="UserTeam" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserTeam_User" Association="TaskManagerModel.FK_UserTeam_User">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserTeam" EntitySet="UserTeam" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="principal_id" Nullable="false" Type="Int32" />
+          <Property Name="diagram_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" MaxLength="Max" FixedLength="false" Type="Binary" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Application">
           <Key>
             <PropertyRef Name="ID" />
@@ -250,9 +348,8 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdTeam" Type="Int32" />
           <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="Team" Relationship="Self.FK_Application_Team" FromRole="Application" ToRole="Team" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Application_User" FromRole="Application" ToRole="User" />
-          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Team" Relationship="TaskManagerModel.FK_Application_Team" FromRole="Application" ToRole="Team" />
+          <NavigationProperty Name="User" Relationship="TaskManagerModel.FK_Application_User" FromRole="Application" ToRole="User" />
         </EntityType>
         <EntityType Name="Otdel">
           <Key>
@@ -260,7 +357,7 @@
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="User" Relationship="Self.FK_User_Otdel" FromRole="Otdel" ToRole="User" />
+          <NavigationProperty Name="User" Relationship="TaskManagerModel.FK_User_Otdel" FromRole="Otdel" ToRole="User" />
         </EntityType>
         <EntityType Name="Subtask">
           <Key>
@@ -270,7 +367,7 @@
           <Property Name="Name" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
           <Property Name="IdTask" Type="Int32" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_Subtask_Task" FromRole="Subtask" ToRole="Task" />
+          <NavigationProperty Name="Task" Relationship="TaskManagerModel.FK_Subtask_Task" FromRole="Subtask" ToRole="Task" />
         </EntityType>
         <EntityType Name="Task">
           <Key>
@@ -281,11 +378,9 @@
           <Property Name="Status" Type="Boolean" />
           <Property Name="FinalDate" Type="DateTime" Precision="0" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="Subtask" Relationship="Self.FK_Subtask_Task" FromRole="Task" ToRole="Subtask" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
-          <Property Name="IdType" Type="Int32" />
-          <NavigationProperty Name="TypeTask" Relationship="TaskManagerModel.FK_Task_TypeTask" FromRole="Task" ToRole="TypeTask" />
+          <Property Name="IdUserTeam" Type="Int32" />
+          <NavigationProperty Name="Subtask" Relationship="TaskManagerModel.FK_Subtask_Task" FromRole="Task" ToRole="Subtask" />
+          <NavigationProperty Name="UserTeam" Relationship="TaskManagerModel.FK_Task_UserTeam" FromRole="Task" ToRole="UserTeam" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -294,23 +389,22 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdLeader" Type="Int32" />
-          <NavigationProperty Name="Application" Relationship="Self.FK_Application_Team" FromRole="Team" ToRole="Application" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Team_User" FromRole="Team" ToRole="User" />
-          <NavigationProperty Name="UserTeam" Relationship="Self.FK_UserTeam_Team" FromRole="Team" ToRole="UserTeam" />
+          <NavigationProperty Name="Application" Relationship="TaskManagerModel.FK_Application_Team" FromRole="Team" ToRole="Application" />
+          <NavigationProperty Name="User" Relationship="TaskManagerModel.FK_Team_User" FromRole="Team" ToRole="User" />
+          <NavigationProperty Name="UserTeam" Relationship="TaskManagerModel.FK_UserTeam_Team" FromRole="Team" ToRole="UserTeam" />
         </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Login" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" Nullable="false" MaxLength="11" FixedLength="false" Unicode="true" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdOtdel" Type="Int32" />
-          <NavigationProperty Name="Application" Relationship="Self.FK_Application_User" FromRole="User" ToRole="Application" />
-          <NavigationProperty Name="Otdel" Relationship="Self.FK_User_Otdel" FromRole="User" ToRole="Otdel" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_Task_User" FromRole="User" ToRole="Task" />
-          <NavigationProperty Name="Team" Relationship="Self.FK_Team_User" FromRole="User" ToRole="Team" />
-          <NavigationProperty Name="UserTeam" Relationship="Self.FK_UserTeam_User" FromRole="User" ToRole="UserTeam" />
+          <NavigationProperty Name="Application" Relationship="TaskManagerModel.FK_Application_User" FromRole="User" ToRole="Application" />
+          <NavigationProperty Name="Otdel" Relationship="TaskManagerModel.FK_User_Otdel" FromRole="User" ToRole="Otdel" />
+          <NavigationProperty Name="Team" Relationship="TaskManagerModel.FK_Team_User" FromRole="User" ToRole="Team" />
+          <NavigationProperty Name="UserTeam" Relationship="TaskManagerModel.FK_UserTeam_User" FromRole="User" ToRole="UserTeam" />
         </EntityType>
         <EntityType Name="UserTeam">
           <Key>
@@ -319,12 +413,13 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="IdTeam" Type="Int32" />
           <Property Name="IdUser" Type="Int32" />
-          <NavigationProperty Name="Team" Relationship="Self.FK_UserTeam_Team" FromRole="UserTeam" ToRole="Team" />
-          <NavigationProperty Name="User" Relationship="Self.FK_UserTeam_User" FromRole="UserTeam" ToRole="User" />
+          <NavigationProperty Name="Task" Relationship="TaskManagerModel.FK_Task_UserTeam" FromRole="UserTeam" ToRole="Task" />
+          <NavigationProperty Name="Team" Relationship="TaskManagerModel.FK_UserTeam_Team" FromRole="UserTeam" ToRole="Team" />
+          <NavigationProperty Name="User" Relationship="TaskManagerModel.FK_UserTeam_User" FromRole="UserTeam" ToRole="User" />
         </EntityType>
         <Association Name="FK_Application_Team">
-          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
-          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <End Type="TaskManagerModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.Application" Role="Application" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="ID" />
@@ -335,8 +430,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Application_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Application" Type="Self.Application" Multiplicity="*" />
+          <End Type="TaskManagerModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.Application" Role="Application" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -347,8 +442,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_User_Otdel">
-          <End Role="Otdel" Type="Self.Otdel" Multiplicity="0..1" />
-          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <End Type="TaskManagerModel.Otdel" Role="Otdel" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Otdel">
               <PropertyRef Name="ID" />
@@ -359,8 +454,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Subtask_Task">
-          <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
-          <End Role="Subtask" Type="Self.Subtask" Multiplicity="*" />
+          <End Type="TaskManagerModel.Task" Role="Task" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.Subtask" Role="Subtask" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Task">
               <PropertyRef Name="ID" />
@@ -370,21 +465,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Task_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+        <Association Name="FK_Task_UserTeam">
+          <End Type="TaskManagerModel.UserTeam" Role="UserTeam" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.Task" Role="Task" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="UserTeam">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Task">
-              <PropertyRef Name="IdUser" />
+              <PropertyRef Name="IdUserTeam" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Team_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Team" Type="Self.Team" Multiplicity="*" />
+          <End Type="TaskManagerModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.Team" Role="Team" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -395,8 +490,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserTeam_Team">
-          <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
-          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <End Type="TaskManagerModel.Team" Role="Team" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.UserTeam" Role="UserTeam" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Team">
               <PropertyRef Name="ID" />
@@ -407,8 +502,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_UserTeam_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="*" />
+          <End Type="TaskManagerModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="TaskManagerModel.UserTeam" Role="UserTeam" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="User">
               <PropertyRef Name="ID" />
@@ -418,158 +513,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="TaskManagerEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Application" EntityType="Self.Application" />
-          <EntitySet Name="Otdel" EntityType="Self.Otdel" />
-          <EntitySet Name="Subtask" EntityType="Self.Subtask" />
-          <EntitySet Name="Task" EntityType="Self.Task" />
-          <EntitySet Name="Team" EntityType="Self.Team" />
-          <EntitySet Name="User" EntityType="Self.User" />
-          <EntitySet Name="UserTeam" EntityType="Self.UserTeam" />
-          <AssociationSet Name="FK_Application_Team" Association="Self.FK_Application_Team">
-            <End Role="Team" EntitySet="Team" />
-            <End Role="Application" EntitySet="Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Application_User" Association="Self.FK_Application_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Application" EntitySet="Application" />
-          </AssociationSet>
-          <AssociationSet Name="FK_User_Otdel" Association="Self.FK_User_Otdel">
-            <End Role="Otdel" EntitySet="Otdel" />
-            <End Role="User" EntitySet="User" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Subtask_Task" Association="Self.FK_Subtask_Task">
-            <End Role="Task" EntitySet="Task" />
-            <End Role="Subtask" EntitySet="Subtask" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Task" EntitySet="Task" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Team_User" Association="Self.FK_Team_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Team" EntitySet="Team" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTeam_Team" Association="Self.FK_UserTeam_Team">
-            <End Role="Team" EntitySet="Team" />
-            <End Role="UserTeam" EntitySet="UserTeam" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserTeam_User" Association="Self.FK_UserTeam_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserTeam" EntitySet="UserTeam" />
-          </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="TaskManagerModel.sysdiagrams" />
-          <EntitySet Name="TypeTask" EntityType="TaskManagerModel.TypeTask" />
-          <AssociationSet Name="FK_Task_TypeTask" Association="TaskManagerModel.FK_Task_TypeTask">
-            <End Role="TypeTask" EntitySet="TypeTask" />
-            <End Role="Task" EntitySet="Task" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="TypeTask">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Task" Relationship="TaskManagerModel.FK_Task_TypeTask" FromRole="TypeTask" ToRole="Task" />
-        </EntityType>
-        <Association Name="FK_Task_TypeTask">
-          <End Type="TaskManagerModel.TypeTask" Role="TypeTask" Multiplicity="0..1" />
-          <End Type="TaskManagerModel.Task" Role="Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TypeTask">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="IdType" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Хранилище TaskManagerModelContainer" CdmEntityContainer="TaskManagerEntities">
-          <EntitySetMapping Name="Application">
-            <EntityTypeMapping TypeName="TaskManagerModel.Application">
-              <MappingFragment StoreEntitySet="Application">
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Otdel">
-            <EntityTypeMapping TypeName="TaskManagerModel.Otdel">
-              <MappingFragment StoreEntitySet="Otdel">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Subtask">
-            <EntityTypeMapping TypeName="TaskManagerModel.Subtask">
-              <MappingFragment StoreEntitySet="Subtask">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Task">
-            <EntityTypeMapping TypeName="TaskManagerModel.Task">
-              <MappingFragment StoreEntitySet="Task">
-                <ScalarProperty Name="IdType" ColumnName="IdType" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="FinalDate" ColumnName="FinalDate" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Team">
-            <EntityTypeMapping TypeName="TaskManagerModel.Team">
-              <MappingFragment StoreEntitySet="Team">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="IdLeader" ColumnName="IdLeader" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="TaskManagerModel.User">
-              <MappingFragment StoreEntitySet="User">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="IdOtdel" ColumnName="IdOtdel" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserTeam">
-            <EntityTypeMapping TypeName="TaskManagerModel.UserTeam">
-              <MappingFragment StoreEntitySet="UserTeam">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
             <EntityTypeMapping TypeName="TaskManagerModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
@@ -581,10 +530,93 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="TypeTask">
-            <EntityTypeMapping TypeName="TaskManagerModel.TypeTask">
-              <MappingFragment StoreEntitySet="TypeTask">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище TaskManagerModel.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище TaskManagerModel.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище TaskManagerModel.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище TaskManagerModel.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище TaskManagerModel.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TaskManagerModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище TaskManagerModel.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище TaskManagerModel.sp_upgraddiagrams" />
+          <EntitySetMapping Name="Application">
+            <EntityTypeMapping TypeName="TaskManagerModel.Application">
+              <MappingFragment StoreEntitySet="Application">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Otdel">
+            <EntityTypeMapping TypeName="TaskManagerModel.Otdel">
+              <MappingFragment StoreEntitySet="Otdel">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subtask">
+            <EntityTypeMapping TypeName="TaskManagerModel.Subtask">
+              <MappingFragment StoreEntitySet="Subtask">
+                <ScalarProperty Name="IdTask" ColumnName="IdTask" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Task">
+            <EntityTypeMapping TypeName="TaskManagerModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="IdUserTeam" ColumnName="IdUserTeam" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="FinalDate" ColumnName="FinalDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Team">
+            <EntityTypeMapping TypeName="TaskManagerModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="IdLeader" ColumnName="IdLeader" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="User">
+            <EntityTypeMapping TypeName="TaskManagerModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="IdOtdel" ColumnName="IdOtdel" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserTeam">
+            <EntityTypeMapping TypeName="TaskManagerModel.UserTeam">
+              <MappingFragment StoreEntitySet="UserTeam">
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdTeam" ColumnName="IdTeam" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

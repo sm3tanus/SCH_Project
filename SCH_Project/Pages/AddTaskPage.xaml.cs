@@ -29,16 +29,16 @@ namespace SCH_Project.Pages
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            Dbconnection.Task task = new Dbconnection.Task();
-            task.User = AuthorizationPage.user;
-            task.Status = false;
-            task.FinalDate = TaskDP.SelectedDate;
-            task.Name = NameTb.Text;
-            task.Description = DescriptionTb.Text;
-            task.IdType = 2;
-            Connection.taskManager.Task.Add(task);
-            Connection.taskManager.SaveChanges();
-            NavigationService.Navigate(new MyDayPage());
+            //Dbconnection.Task task = new Dbconnection.Task();
+            //task.User = AuthorizationPage.user;
+            //task.Status = false;
+            //task.FinalDate = TaskDP.SelectedDate;
+            //task.Name = NameTb.Text;
+            //task.Description = DescriptionTb.Text;
+            //task.IdType = 2;
+            //Connection.taskManager.Task.Add(task);
+            //Connection.taskManager.SaveChanges();
+            //NavigationService.Navigate(new MyDayPage());
         }
     }
 }

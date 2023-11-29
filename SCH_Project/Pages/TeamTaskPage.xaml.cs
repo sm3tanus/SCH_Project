@@ -26,7 +26,7 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
             tasks = Connection.taskManager.Task.ToList();
-            ListTeamTask.ItemsSource = tasks.Where(i => i.User == AuthorizationPage.user);
+            //ListTeamTask.ItemsSource = tasks.Where(i => i.User == AuthorizationPage.user);
             teams = Connection.taskManager.Team.ToList();
             TeamCb.ItemsSource = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
             var teamsSort = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
@@ -46,7 +46,7 @@ namespace SCH_Project.Pages
 
         private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListTeamTask.ItemsSource = tasks.Where(i => i.IdTeam == (TeamCb.SelectedItem as Team).ID).ToList();
+            //ListTeamTask.ItemsSource = tasks.Where(i => i.IdTeam == (TeamCb.SelectedItem as Team).ID).ToList();
         }
     }
 }

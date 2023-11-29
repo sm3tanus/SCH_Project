@@ -26,9 +26,9 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            Tasks = Connection.taskManager.Task.Where(i => i.IdType == 2).ToList();
-            DataContext = this;
 
+            //Tasks = Connection.taskManager.Task.Where(i => i.UserTeam).ToList();
+            DataContext = this;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

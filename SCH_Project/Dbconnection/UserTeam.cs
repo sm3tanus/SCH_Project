@@ -14,10 +14,18 @@ namespace SCH_Project.Dbconnection
     
     public partial class UserTeam
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public UserTeam()
+        {
+            this.Task = new HashSet<Task>();
+        }
+    
         public int ID { get; set; }
         public Nullable<int> IdTeam { get; set; }
         public Nullable<int> IdUser { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Task> Task { get; set; }
         public virtual Team Team { get; set; }
         public virtual User User { get; set; }
     }

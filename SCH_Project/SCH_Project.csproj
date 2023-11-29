@@ -98,7 +98,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Dbconnection\Application.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Connection.cs" />
     <Compile Include="Dbconnection\Model1.Context.cs">
@@ -147,31 +147,31 @@
       <DependentUpon>ModelLayna.edmx</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Otdel.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>ModelBulat.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dbconnection\sp_helpdiagrams_Result.cs">
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Subtask.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\sysdiagrams.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Task.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\Team.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dbconnection\TypeTask.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dbconnection\TypeTask.cs">
       <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\User.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="Dbconnection\UserTeam.cs">
-      <DependentUpon>ModelLayna.tt</DependentUpon>
+      <DependentUpon>ModelBulat.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

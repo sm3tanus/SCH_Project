@@ -30,7 +30,6 @@ namespace SCH_Project.Dbconnection
         public virtual DbSet<Subtask> Subtask { get; set; }
         public virtual DbSet<Task> Task { get; set; }
         public virtual DbSet<Team> Team { get; set; }
-        public virtual DbSet<TypeTask> TypeTask { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserTeam> UserTeam { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

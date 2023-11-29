@@ -10,20 +10,13 @@
 namespace SCH_Project.Dbconnection
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class TypeTask
+    public partial class sp_helpdiagrams_Result
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TypeTask()
-        {
-            this.Task = new HashSet<Task>();
-        }
-    
-        public int ID { get; set; }
+        public string Database { get; set; }
         public string Name { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Task> Task { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }
