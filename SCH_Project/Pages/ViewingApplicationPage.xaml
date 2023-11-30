@@ -1,0 +1,154 @@
+﻿<Page x:Class="SCH_Project.Pages.ViewingApplicationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SCH_Project.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      mc:Ignorable="d" 
+      d:DesignHeight="1080" d:DesignWidth="1280"
+      Title="ViewingApplicationPage" Style="{StaticResource CustomFont}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--Прямоугольник-->
+
+        <Rectangle Fill="#263F76" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Grid.Row="2" Margin="10 0 0 0"></Rectangle>
+
+        <!--Шапка-->
+
+        <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Application</TextBlock>
+
+        <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">Viewing application</TextBlock>
+
+
+        <!--Заполнение данными-->
+
+        <ListView Grid.Column="0"
+            Grid.ColumnSpan="4"
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Width="1000"
+            Height="400"
+            Name="ListTask">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="ФИО" Width="160">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                    <Setter Property="Height" Value="50"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="dfdffdfddfssdf"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn Header="Должность" Width="160">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" Text=""/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn Header="Зарплата" Width="160">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox IsChecked="{Binding Status}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <!--Добавление кнопки-->
+
+        <Button
+        Grid.Column="0"
+        Grid.Row="6"
+        Grid.RowSpan="1"
+        Grid.ColumnSpan="2"
+        HorizontalAlignment="Center"
+        Width="400"
+        Height="80"
+        Margin="100 0 0 0"    
+        materialDesign:ButtonAssist.CornerRadius="40"
+        Background="#FF78B547"
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            <TextBlock
+                Foreground="#121923"
+                Text="Accept"
+                FontSize="30"/>
+        </Button>
+
+        <Button
+        Grid.Column="2"
+        Grid.Row="6"
+        Grid.RowSpan="1"
+        Grid.ColumnSpan="2"
+        HorizontalAlignment="Center"
+        Width="400"
+        Height="80"
+        Margin="0 0 100 0"    
+        materialDesign:ButtonAssist.CornerRadius="40"
+        Background="#FF5858"
+        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+        Style="{StaticResource MaterialDesignRaisedDarkButton}"
+        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            <TextBlock
+                Foreground="#121923"
+                Text="Reject"
+                FontSize="30"/>
+        </Button>
+
+    </Grid>
+</Page>

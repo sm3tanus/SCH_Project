@@ -189,6 +189,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\AddUsersGroupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AuthorizationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -201,11 +205,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MyGroupsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\MyGroupsUsersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\ProfilePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\TeamTaskPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\ViewingApplicationPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,6 +236,9 @@
     <Compile Include="Pages\AddTeamTaskPage.xaml.cs">
       <DependentUpon>AddTeamTaskPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\AddUsersGroupPage.xaml.cs">
+      <DependentUpon>AddUsersGroupPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
     </Compile>
@@ -229,11 +248,20 @@
     <Compile Include="Pages\MyDayPage.xaml.cs">
       <DependentUpon>MyDayPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MyGroupsPage.xaml.cs">
+      <DependentUpon>MyGroupsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MyGroupsUsersPage.xaml.cs">
+      <DependentUpon>MyGroupsUsersPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeamTaskPage.xaml.cs">
       <DependentUpon>TeamTaskPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewingApplicationPage.xaml.cs">
+      <DependentUpon>ViewingApplicationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
