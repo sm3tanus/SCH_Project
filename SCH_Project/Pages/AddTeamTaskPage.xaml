@@ -155,7 +155,7 @@
            Margin="0 0 0 20"
            Foreground="#121923"
            FontSize="30"
-           Text="select the group"
+           Text="select the user"
            />
 
         <ComboBox
@@ -169,16 +169,17 @@
             Background="White"
             Foreground="#121923"
             FontSize="25"
-            Name="GroupCb"
+            Name="UserCb"
             materialDesign:HintAssist.Hint="group"
             materialDesign:HintAssist.Foreground="#121923"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="GroupCb_SelectionChanged">
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="UserCb_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Team.Name}"/>
+                    <TextBlock Text="{Binding Name}"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
+
 
 
 
@@ -191,6 +192,7 @@
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
             Width="600"
+            Name="AddBt"
             Height="80"
             Margin="0 0 0 0"    
             materialDesign:ButtonAssist.CornerRadius="40"
@@ -198,7 +200,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AddBt_Click" Cursor="Hand">
             <TextBlock
                 Foreground="#121923"
                 Text="Add"

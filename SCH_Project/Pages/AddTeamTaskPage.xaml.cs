@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,24 +23,32 @@ namespace SCH_Project.Pages
     public partial class AddTeamTaskPage : Page
     {
         public static List<UserTeam> userTeams {  get; set; }
-        public static List<Dbconnection.Task> tasks { get; set; }
+        public static UserTeam selectedUserTeam = new UserTeam();
+        public static List<User> users { get; set; }
         public static Dbconnection.Task task = new Dbconnection.Task();
         public AddTeamTaskPage()
         {
             InitializeComponent();
+            users = Connection.taskManager.User.ToList();
             userTeams = Connection.taskManager.UserTeam.ToList();
-            tasks = Connection.taskManager.Task.ToList();
-            GroupCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1);
+            UserCb.ItemsSource = users;
+            DataContext = this;
+            
+        }
+
+
+        private void AddBt_Click(object sender, RoutedEventArgs e)
+        {
             task.Name = nameTb.Text.Trim();
             task.FinalDate = dateDp.SelectedDate;
             task.Description = DiscriptionTb.Text.Trim();
-            
-            DataContext = this;
+            Connection.taskManager.Task.Add(task);
+            Connection.taskManager.SaveChanges();
         }
 
-        private void GroupCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void UserCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            selectedUserTeam = userTeams.First(i => i.User == (UserCb.SelectedItem as User));
         }
     }
 }
