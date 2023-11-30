@@ -41,34 +41,30 @@ namespace SCH_Project.Pages
         {
             User newUser = new User();
             UserTeam userTeam = new UserTeam();
-            try
-            {   if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
+            if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
+            {
+                if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
                 {
-                    if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
-                    {
-                        newUser.Login = LoginReg.Text.Trim().ToLower();
-                        newUser.Password = PasswordReg.Password.Trim().ToLower();
-                        Connection.taskManager.User.Add(newUser);
-                        userTeam.User = newUser;
-                        Connection.taskManager.SaveChanges();
-                        MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
-                        MessageBoxTb.Text = "welcome";
-                    }
-                    else
-                    {
-                        LoginReg.Text = " ";
-                        PasswordReg.Password = " ";
-                        MessageBoxRegTb.Text = "incorrect password";
-                    }
+                    newUser.Login = LoginReg.Text.Trim().ToLower();
+                    newUser.Password = PasswordReg.Password.Trim().ToLower();
+                    Connection.taskManager.User.Add(newUser);
+                                    userTeam.IdUser = newUser.ID;
+                    userTeam.IdTeam = 1;
+                    Connection.taskManager.UserTeam.Add(userTeam);
+                    Connection.taskManager.SaveChanges();
+                    MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
+                    MessageBoxTb.Text = "welcome";
                 }
                 else
                 {
-                    MessageBoxTb.Text = "error";
+                    LoginReg.Text = " ";
+                    PasswordReg.Password = " ";
+                    MessageBoxRegTb.Text = "incorrect password";
                 }
             }
-            catch
+            else
             {
-                MessageBoxRegTb.Text = "incorrect password";
+                MessageBoxTb.Text = "error";
             }
         }
     }
