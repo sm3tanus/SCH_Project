@@ -19,21 +19,17 @@ namespace SCH_Project.Pages
         }
         private void EnterBt_Click(object sender, RoutedEventArgs e)
         {
+            string login = loginTb.Text.Trim().ToLower();
+            string password = PasswordTb.Password.Trim().ToLower();
+            user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
+            if (user != null)
             {
-                
-                    string login = loginTb.Text.Trim().ToLower();
-                    string password = PasswordTb.Password.Trim().ToLower();
-                    user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
-                    if (user != null)
-                    {
                         
-                        NavigationService.Navigate(new MainMenuPage());
-                    }
-                    else
-                    {
-                        MessageBoxTb.Text = "error";
-                    }
-                
+                NavigationService.Navigate(new MainMenuPage());
+            }
+            else
+            {
+                MessageBoxTb.Text = "error";
             }
         }
 
@@ -48,7 +44,7 @@ namespace SCH_Project.Pages
                     newUser.Login = LoginReg.Text.Trim().ToLower();
                     newUser.Password = PasswordReg.Password.Trim().ToLower();
                     Connection.taskManager.User.Add(newUser);
-                                    userTeam.IdUser = newUser.ID;
+                    userTeam.IdUser = newUser.ID;
                     userTeam.IdTeam = 1;
                     Connection.taskManager.UserTeam.Add(userTeam);
                     Connection.taskManager.SaveChanges();
