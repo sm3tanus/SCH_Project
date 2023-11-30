@@ -40,6 +40,7 @@ namespace SCH_Project.Pages
         private void Regbt_Click(object sender, RoutedEventArgs e)
         {
             User newUser = new User();
+            UserTeam userTeam = new UserTeam();
             try
             {   if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
                 {
@@ -48,6 +49,7 @@ namespace SCH_Project.Pages
                         newUser.Login = LoginReg.Text.Trim().ToLower();
                         newUser.Password = PasswordReg.Password.Trim().ToLower();
                         Connection.taskManager.User.Add(newUser);
+                        userTeam.User = newUser;
                         Connection.taskManager.SaveChanges();
                         MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
                         MessageBoxTb.Text = "welcome";

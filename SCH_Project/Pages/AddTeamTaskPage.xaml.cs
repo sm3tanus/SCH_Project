@@ -26,7 +26,6 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
             teams = Connection.taskManager.Team.ToList();
-            GroupCb.ItemsSource = teams.;
         }
 
         private void GroupCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -20,11 +20,14 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MainMenuPage : Page
     {
+        public static string MyDayTbValue;
         public MainMenuPage()
         {
             InitializeComponent();
             MainMenuFrame.Navigate(new MyDayPage());
+            MyDayTb.Text = MyDayTbValue;
             loginTb.Text = AuthorizationPage.user.Login;
+            this.DataContext = this;
         }
 
         private void ProfileBt_Click(object sender, RoutedEventArgs e)

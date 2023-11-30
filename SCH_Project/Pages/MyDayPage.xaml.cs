@@ -26,10 +26,10 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            tasks = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID).ToList();
+            tasks = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1).ToList();
+            MainMenuPage.MyDayTbValue = tasks.Count.ToString();
             DataContext = this;
         }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddTaskPage());

@@ -109,7 +109,7 @@
 
                         <TextBlock FontSize="40" Style="{StaticResource CustomFont}" Margin="100 0 0 0" VerticalAlignment="Center">My Day</TextBlock>
 
-                        <TextBlock Text="2" FontSize="40" Grid.Column="1" Style="{StaticResource CustomFont}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
+                        <TextBlock Name="MyDayTb" FontSize="40" Grid.Column="1" Style="{StaticResource CustomFont}" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 0 35 0"/>
                     </Grid>
                 </StackPanel>
             </Button.Content>

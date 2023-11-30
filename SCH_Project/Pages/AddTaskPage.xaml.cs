@@ -22,7 +22,6 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddTaskPage : Page
     {
-        public static List<Dbconnection.UserTeam> userTeams { get; set; }
         public AddTaskPage()
         {
             InitializeComponent();
@@ -30,7 +29,7 @@ namespace SCH_Project.Pages
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            UserTeam UserTeam = userTeams.First(i => i.IdTeam == 1 && i.IdUser == AuthorizationPage.user.ID);
+            UserTeam UserTeam = Connection.taskManager.UserTeam.First(i => i.IdTeam == 1 && i.IdUser == AuthorizationPage.user.ID);
             Dbconnection.Task task = new Dbconnection.Task();
             task.UserTeam = UserTeam;
             task.Status = false;
