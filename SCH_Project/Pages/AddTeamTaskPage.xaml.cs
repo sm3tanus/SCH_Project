@@ -21,11 +21,20 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddTeamTaskPage : Page
     {
-        public static List<Team> teams {  get; set; }
+        public static List<UserTeam> userTeams {  get; set; }
+        public static List<Dbconnection.Task> tasks { get; set; }
+        public static Dbconnection.Task task = new Dbconnection.Task();
         public AddTeamTaskPage()
         {
             InitializeComponent();
-            teams = Connection.taskManager.Team.ToList();
+            userTeams = Connection.taskManager.UserTeam.ToList();
+            tasks = Connection.taskManager.Task.ToList();
+            GroupCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1);
+            task.Name = nameTb.Text.Trim();
+            task.FinalDate = dateDp.SelectedDate;
+            task.Description = DiscriptionTb.Text.Trim();
+            
+            DataContext = this;
         }
 
         private void GroupCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
