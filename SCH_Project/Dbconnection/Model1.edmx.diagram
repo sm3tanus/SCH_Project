@@ -16,10 +16,10 @@
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_Application_User" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_User_Otdel" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_Subtask_Task" ManuallyRouted="false" />
-        <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_Task_User" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_UserTeam_Team" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_UserTeam_User" ManuallyRouted="false" />
         <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_Team_User" />
+        <AssociationConnector Association="TaskManagerBySCHToDoListModel.FK_Task_UserTeam" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

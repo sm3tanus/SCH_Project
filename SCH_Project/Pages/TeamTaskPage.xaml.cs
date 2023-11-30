@@ -21,18 +21,22 @@ namespace SCH_Project.Pages
     public partial class TeamTaskPage : Page
     {
         public static List<Team> teams { get; set; }
+        public static List<Dbconnection.Task> tasks { get; set; }
         public TeamTaskPage()
         {
             InitializeComponent();
             List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
-            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
             teams = Connection.taskManager.Team.ToList();
-            TeamCb.ItemsSource = teams.Where(i => i.IdLeader== AuthorizationPage.user.ID).ToList(); //очень сильно доработать
-            var teamsSort = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
-            if (teamsSort.Count == 0)
+            tasks = Connection.taskManager.Task.ToList();
+            TeamCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count == 1)
             {
-                VisibStack.Visibility = Visibility.Hidden;
-                ErrorTb.Visibility = Visibility.Visible;
+                ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
+            }
+            else
+            {
+                ListTeamTask.ItemsSource= tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
+                AddBt.Visibility = Visibility.Hidden;
             }
             DataContext = this;
         }

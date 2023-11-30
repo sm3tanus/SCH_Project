@@ -92,7 +92,7 @@
         BorderBrush="#121923"
         Background="White"
         Foreground="#121923"
-        FontSize="25"
+        FontSize="35"
         Name="departCb"
         materialDesign:HintAssist.Hint="department"
         materialDesign:HintAssist.Foreground="#121923"

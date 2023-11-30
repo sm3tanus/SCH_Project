@@ -63,6 +63,7 @@
             BorderBrush="#121923"
             Background="White"
             FontSize="25"
+            Name="nameTb"
             materialDesign:HintAssist.Hint="name"
             materialDesign:HintAssist.Foreground="#121923"
             materialDesign:TransitionAssist.DisableTransitions="True"
@@ -93,6 +94,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Width="450"
+            Name="dateDp"
             FontSize="25"
             BorderBrush="#121923"
             Background="White"
@@ -135,6 +137,7 @@
                 materialDesign:HintAssist.Foreground="#121923"
                 materialDesign:HintAssist.HelperText="Optional"
                 MaxLength="120"
+                Name="DiscriptionTb"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 TextWrapping="Wrap"
                 VerticalScrollBarVisibility="Auto"/>
@@ -153,7 +156,7 @@
            Foreground="#121923"
            FontSize="30"
            Text="select the group"
-   />
+           />
 
         <ComboBox
             Grid.Row="4"

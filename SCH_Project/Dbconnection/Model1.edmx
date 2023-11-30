@@ -38,7 +38,7 @@
           <Property Name="Status" Type="bit" />
           <Property Name="FinalDate" Type="date" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="IdUser" Type="int" />
+          <Property Name="IdUserTeam" Type="int" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -101,15 +101,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Task_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+        <Association Name="FK_Task_UserTeam">
+          <End Role="UserTeam" Type="Self.UserTeam" Multiplicity="0..1" />
           <End Role="Task" Type="Self.Task" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="UserTeam">
               <PropertyRef Name="ID" />
             </Principal>
             <Dependent Role="Task">
-              <PropertyRef Name="IdUser" />
+              <PropertyRef Name="IdUserTeam" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -181,8 +181,8 @@
             <End Role="Task" EntitySet="Task" />
             <End Role="Subtask" EntitySet="Subtask" />
           </AssociationSet>
-          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
-            <End Role="User" EntitySet="User" />
+          <AssociationSet Name="FK_Task_UserTeam" Association="Self.FK_Task_UserTeam">
+            <End Role="UserTeam" EntitySet="UserTeam" />
             <End Role="Task" EntitySet="Task" />
           </AssociationSet>
           <AssociationSet Name="FK_Team_User" Association="Self.FK_Team_User">
@@ -243,9 +243,9 @@
           <Property Name="Status" Type="Boolean" />
           <Property Name="FinalDate" Type="DateTime" Precision="0" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="IdUser" Type="Int32" />
           <NavigationProperty Name="Subtask" Relationship="Self.FK_Subtask_Task" FromRole="Task" ToRole="Subtask" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Task_User" FromRole="Task" ToRole="User" />
+          <Property Name="IdUserTeam" Type="Int32" />
+          <NavigationProperty Name="UserTeam" Relationship="TaskManagerBySCHToDoListModel.FK_Task_UserTeam" FromRole="Task" ToRole="UserTeam" />
         </EntityType>
         <EntityType Name="Team">
           <Key>
@@ -268,7 +268,6 @@
           <Property Name="IdOtdel" Type="Int32" />
           <NavigationProperty Name="Application" Relationship="Self.FK_Application_User" FromRole="User" ToRole="Application" />
           <NavigationProperty Name="Otdel" Relationship="Self.FK_User_Otdel" FromRole="User" ToRole="Otdel" />
-          <NavigationProperty Name="Task" Relationship="Self.FK_Task_User" FromRole="User" ToRole="Task" />
           <NavigationProperty Name="UserTeam" Relationship="Self.FK_UserTeam_User" FromRole="User" ToRole="UserTeam" />
           <NavigationProperty Name="Team" Relationship="TaskManagerBySCHToDoListModel.FK_Team_User" FromRole="User" ToRole="Team" />
         </EntityType>
@@ -281,6 +280,7 @@
           <Property Name="IdUser" Type="Int32" />
           <NavigationProperty Name="Team" Relationship="Self.FK_UserTeam_Team" FromRole="UserTeam" ToRole="Team" />
           <NavigationProperty Name="User" Relationship="Self.FK_UserTeam_User" FromRole="UserTeam" ToRole="User" />
+          <NavigationProperty Name="Task" Relationship="TaskManagerBySCHToDoListModel.FK_Task_UserTeam" FromRole="UserTeam" ToRole="Task" />
         </EntityType>
         <Association Name="FK_Application_Team">
           <End Role="Team" Type="Self.Team" Multiplicity="0..1" />
@@ -327,18 +327,6 @@
             </Principal>
             <Dependent Role="Subtask">
               <PropertyRef Name="IdTask" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Task_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Task" Type="Self.Task" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="Task">
-              <PropertyRef Name="IdUser" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -390,10 +378,6 @@
             <End Role="Task" EntitySet="Task" />
             <End Role="Subtask" EntitySet="Subtask" />
           </AssociationSet>
-          <AssociationSet Name="FK_Task_User" Association="Self.FK_Task_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Task" EntitySet="Task" />
-          </AssociationSet>
           <AssociationSet Name="FK_UserTeam_Team" Association="Self.FK_UserTeam_Team">
             <End Role="Team" EntitySet="Team" />
             <End Role="UserTeam" EntitySet="UserTeam" />
@@ -406,6 +390,10 @@
             <End Role="User" EntitySet="User" />
             <End Role="Team" EntitySet="Team" />
           </AssociationSet>
+          <AssociationSet Name="FK_Task_UserTeam" Association="TaskManagerBySCHToDoListModel.FK_Task_UserTeam">
+            <End Role="UserTeam" EntitySet="UserTeam" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
         </EntityContainer>
         <Association Name="FK_Team_User">
           <End Type="TaskManagerBySCHToDoListModel.User" Role="User" Multiplicity="0..1" />
@@ -416,6 +404,18 @@
             </Principal>
             <Dependent Role="Team">
               <PropertyRef Name="IdLeader" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Task_UserTeam">
+          <End Type="TaskManagerBySCHToDoListModel.UserTeam" Role="UserTeam" Multiplicity="0..1" />
+          <End Type="TaskManagerBySCHToDoListModel.Task" Role="Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserTeam">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="IdUserTeam" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -455,12 +455,12 @@
           <EntitySetMapping Name="Task">
             <EntityTypeMapping TypeName="TaskManagerBySCHToDoListModel.Task">
               <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="IdUserTeam" ColumnName="IdUserTeam" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
                 <ScalarProperty Name="FinalDate" ColumnName="FinalDate" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

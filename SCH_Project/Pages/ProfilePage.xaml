@@ -49,6 +49,7 @@
           Background="White"
           FontSize="25"
           Name="LoginTb"
+        MaxLength="11"
         materialDesign:HintAssist.Hint="login"
         materialDesign:HintAssist.Foreground="#121923"
         materialDesign:HintAssist.HelperText="less than 11 characters"
