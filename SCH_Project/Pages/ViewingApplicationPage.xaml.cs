@@ -24,5 +24,15 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
         }
+
+        private void AcceptBt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void RejectBt_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

@@ -167,7 +167,7 @@
         ToolTip="MaterialDesignFlatButton" 
         HorizontalAlignment="Left"
         Grid.Row="3"
-        Grid.ColumnSpan="2">
+        Grid.ColumnSpan="2" Click="MyGroupsBt_Click">
             <Button.Content>
                 <StackPanel Orientation="Horizontal" Width="610">
                     <Grid Width="610">

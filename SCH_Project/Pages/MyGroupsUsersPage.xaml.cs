@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SCH_Project.Dbconnection;
 
 namespace SCH_Project.Pages
 {
@@ -20,9 +21,15 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsUsersPage : Page
     {
+        public static List<Team> Teams { get; set; }
         public MyGroupsUsersPage()
         {
             InitializeComponent();
+            Teams = Connection.taskManager.Team.Where(i=>i.IdLeader==AuthorizationPage.user.ID && i.ID!=1).ToList();
+            DataContext = this;
         }
+
+
+
     }
 }

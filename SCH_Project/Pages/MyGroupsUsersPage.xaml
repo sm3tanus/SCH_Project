@@ -125,7 +125,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
             <TextBlock
                 Foreground="#121923"
                 Text="Add Users"
@@ -146,7 +146,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
             <TextBlock
                 Foreground="#121923"
                 Text="Viewing Application"

@@ -50,6 +50,9 @@ namespace SCH_Project.Pages
             MainMenuFrame.Navigate(new TeamTaskPage());
         }
 
-        
+        private void MyGroupsBt_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenuFrame.Navigate(new MyGroupsPage());
+        }
     }
 }

@@ -46,11 +46,12 @@
         Grid.RowSpan="5"
         Width="1000"
         Height="500"
-        Name="ListTask">
+        Name="ListTask"
+        ItemsSource="{Binding Teams}">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="ФИО" Width="160">
+                        <GridViewColumn Header="Name" Width="650">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background" Value="#263F76" />
@@ -64,14 +65,14 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="dfdffdfddfssdf"/>
+                                        <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
 
-                        <GridViewColumn Header="Должность" Width="160">
+                        <GridViewColumn Header="Leader" Width="350">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background" Value="#263F76" />
@@ -82,27 +83,12 @@
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text=""/>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding IdLeader}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
 
-                        <GridViewColumn Header="Зарплата" Width="160">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding Status}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>
