@@ -42,7 +42,9 @@ namespace SCH_Project.Pages
 
         private void RejectBt_Click(object sender, RoutedEventArgs e)
         {
-
+            Connection.taskManager.Application.Remove(selectedApplication);
+            Connection.taskManager.SaveChanges();
+            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
         }
 
         private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
