@@ -45,11 +45,11 @@
             Grid.RowSpan="4"
             Width="1000"
             Height="400"
-            Name="ListTask">
+            Name="ListUsers">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
-                        <GridViewColumn Header="ФИО" Width="160">
+                        <GridViewColumn Header="Login" Width="160">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background" Value="#263F76" />
@@ -63,7 +63,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="dfdffdfddfssdf"/>
+                                        <TextBlock Text="{Binding Login}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -81,7 +81,7 @@
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text=""/>
+                                    <TextBlock Text="{Binding Otdel.Name}"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>

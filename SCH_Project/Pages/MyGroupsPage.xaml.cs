@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCH_Project.Dbconnection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,20 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsPage : Page
     {
+        public static List<UserTeam> userTeams {  get; set; }
         public MyGroupsPage()
         {
             InitializeComponent();
+            userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam!=1).ToList();
+            ListGroup.ItemsSource = userTeams;
+        }
+
+        private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (userTeams.Where(i => i.Team.IdLeader == AuthorizationPage.user.ID).ToList().Count == 1)
+            {
+                NavigationService.Navigate(new MyGroupsUsersPage());
+            }
         }
     }
 }
