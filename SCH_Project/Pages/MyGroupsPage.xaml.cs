@@ -21,6 +21,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsPage : Page
     {
+        public static string GroupCount;
         public static Team currentTeam;
         public static List<UserTeam> userTeams {  get; set; }
         public MyGroupsPage()
@@ -28,6 +29,7 @@ namespace SCH_Project.Pages
             InitializeComponent();
             userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam!=1).ToList();
             ListGroup.ItemsSource = userTeams;
+            GroupCount = userTeams.Count.ToString();
             DataContext = this;
         }
 

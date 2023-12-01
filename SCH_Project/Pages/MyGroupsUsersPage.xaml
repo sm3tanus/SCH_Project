@@ -34,7 +34,15 @@
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Users Group</TextBlock>
 
-        <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">{Team.Name}</TextBlock>
+        <TextBlock Style="{StaticResource CustomFont}"
+                   Foreground="White" 
+                   Grid.Row="1" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="4"
+                   VerticalAlignment="Bottom"
+                   FontSize="40" 
+                   Margin="10 0 0 0"
+                   Name="NameTeamTb"/>
 
 
         <!--Заполнение данными-->
@@ -43,7 +51,7 @@
             Grid.ColumnSpan="4"
             Grid.Row="2"
             Grid.RowSpan="4"
-            Width="1000"
+            Width="500"
             Height="400"
             Name="ListUsers">
             <ListView.View>
@@ -63,14 +71,15 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Login}"/>
+                                        <TextBlock Text="{Binding User.Login}"
+                                                   Foreground="White"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
 
-                        <GridViewColumn Header="Должность" Width="160">
+                        <GridViewColumn Header="Otdel" Width="300">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
                                     <Setter Property="Background" Value="#263F76" />
@@ -81,24 +90,8 @@
 
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Otdel.Name}"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-
-                        <GridViewColumn Header="Зарплата" Width="160">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <CheckBox IsChecked="{Binding Status}" />
+                                    <TextBlock Text="{Binding User.Otdel.Name}"
+                                               Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -110,28 +103,6 @@
 
 
         <!--Кнопка добавить задание-->
-
-        <Button
-            Grid.Column="1"
-            Grid.Row="5"
-            Grid.RowSpan="1"
-            Grid.ColumnSpan="2"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Width="600"
-            Height="80"
-            Margin="0 0 0 0"    
-            materialDesign:ButtonAssist.CornerRadius="40"
-            Background="#FF5858"
-            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-            Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
-            <TextBlock
-                Foreground="#121923"
-                Text="Add Users"
-                FontSize="30"/>
-        </Button>
-
 
         <Button
             Grid.Column="1"

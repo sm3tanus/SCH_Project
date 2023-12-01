@@ -21,12 +21,14 @@ namespace SCH_Project.Pages
     public partial class MainMenuPage : Page
     {
         public static string MyDayTbValue;
+        public static string CountTeamTasks;
         public MainMenuPage()
         {
             InitializeComponent();
-            MainMenuFrame.Navigate(new MyDayPage());
-            MyDayTb.Text = MyDayTbValue;
             loginTb.Text = AuthorizationPage.user.Login;
+            MainMenuFrame.Navigate(new MyDayPage());
+            MainMenuFrame.Navigate(new MyGroupsPage());
+            MainMenuFrame.Navigate(new TeamTaskPage());
             this.DataContext = this;
         }
 
@@ -38,6 +40,7 @@ namespace SCH_Project.Pages
         private void MydayBt_Click(object sender, RoutedEventArgs e)
         {
             MainMenuFrame.Navigate(new MyDayPage());
+            MyDayTb.Text = MyDayTbValue;
         }
 
         private void AddGroupBt_Click(object sender, RoutedEventArgs e)
@@ -48,11 +51,13 @@ namespace SCH_Project.Pages
         private void TeamTasksBt_Click(object sender, RoutedEventArgs e)
         {
             MainMenuFrame.Navigate(new TeamTaskPage());
+            CountTaskTb.Text = CountTeamTasks;
         }
 
         private void MyGroupsBt_Click(object sender, RoutedEventArgs e)
         {
             MainMenuFrame.Navigate(new MyGroupsPage());
+            MyGroupCountTb.Text = MyGroupsPage.GroupCount;
         }
     }
 }

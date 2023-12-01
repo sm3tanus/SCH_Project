@@ -21,11 +21,13 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsUsersPage : Page
     {
-        public static List<User> users {  get; set; }
+        public static List<UserTeam> userTeams {  get; set; }
         public MyGroupsUsersPage()
         {
             InitializeComponent();
-            ListUsers.ItemsSource = users.Where(i => i.UserTeam == MyGroupsPage.currentUserTeam).ToList();  
+            userTeams = Connection.taskManager.UserTeam.ToList();
+            ListUsers.ItemsSource = userTeams.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID);
+            NameTeamTb.Text = MyGroupsPage.currentTeam.Name;
             DataContext = this;
         }
 

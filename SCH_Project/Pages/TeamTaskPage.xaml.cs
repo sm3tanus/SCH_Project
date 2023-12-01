@@ -38,6 +38,7 @@ namespace SCH_Project.Pages
                 ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
                 AddBt.Visibility = Visibility.Hidden;
             }
+            MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
         }
 
