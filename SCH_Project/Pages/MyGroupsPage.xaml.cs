@@ -21,7 +21,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsPage : Page
     {
-        public static UserTeam currentUserTeam;
+        public static Team currentTeam;
         public static List<UserTeam> userTeams {  get; set; }
         public MyGroupsPage()
         {
@@ -35,7 +35,7 @@ namespace SCH_Project.Pages
         {
             if (userTeams.Where(i => i.Team.IdLeader == AuthorizationPage.user.ID && i.IdTeam != 1).ToList().Count == 1)
             {
-                ListGroup.SelectedItem = currentUserTeam;
+                currentTeam = (ListGroup.SelectedItem as UserTeam).Team;
                 NavigationService.Navigate(new MyGroupsUsersPage());
             }
         }
