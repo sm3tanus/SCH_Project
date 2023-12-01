@@ -35,6 +35,7 @@
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Team Task</TextBlock>
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">View team tasks</TextBlock>
+        
         <TextBlock Text="You are not the group leader!"
                    Foreground="Red"
                    Grid.Column="0"
@@ -47,38 +48,115 @@
                    Visibility="Hidden"
                    Name="ErrorTb"/>
         
-
-            <ComboBox
-                Grid.Column="0"
-                Grid.ColumnSpan="4"
-                Grid.Row="2"
-                HorizontalAlignment="Center"
-                VerticalAlignment="Bottom"
-                Width="450"
-                BorderBrush="#121923"
-                Background="White"
-                Foreground="#121923"
-                FontSize="35"
-                Name="TeamCb"
-                materialDesign:HintAssist.Hint="team"
-                materialDesign:HintAssist.Foreground="#121923"
-                Style="{StaticResource MaterialDesignOutlinedComboBox}" >
-                <ComboBox.ItemTemplate>
-                    <DataTemplate>
-                        <TextBlock Text="{Binding Team.Name}"/>
-                    </DataTemplate>
-                </ComboBox.ItemTemplate>
-            </ComboBox>
+        
+        
             <!--Заполнение данными-->
+            <!--Задачи-->
                 <ListView 
-                    Grid.Column="0"
-            Grid.ColumnSpan="4"
-            Grid.Row="3"
+                Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
             Grid.RowSpan="4"
-            Width="900"
+            Width="600"
             Height="400"
             Name="ListTeamTask"
-                    Margin="0 0 0 100">
+            Margin="35 0 0 0">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Name" Width="150">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                    <Setter Property="Height" Value="50"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}" Foreground="White"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+
+                        <GridViewColumn Header="Ready" Width="100">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" 
+                                               Text="{Binding Status}"
+                                               Foreground="White"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        
+                        <GridViewColumn Header="Final date" Width="150">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" 
+                                    Text="{Binding FinalDate, StringFormat=D}"
+                                               Foreground="White"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <GridViewColumn Header="Description" Width="200">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock HorizontalAlignment="Center" 
+                                            Text="{Binding Description}"
+                                               Foreground="White"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        
+        
+        
+        <!--Подзадачи-->
+
+        <ListView 
+        Grid.Column="2"
+    Grid.ColumnSpan="2"
+    Grid.Row="2"
+    Grid.RowSpan="4"
+    Width="600"
+    Height="400"
+    Name="ListSubtask"
+    Margin="0 0 35 0">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -115,13 +193,13 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" 
-                                               Text="{Binding Status}"
-                                               Foreground="White"/>
+                                       Text="{Binding Status}"
+                                       Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        
+
                         <GridViewColumn Header="Final date" Width="200">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -134,8 +212,8 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" 
-                                    Text="{Binding FinalDate, StringFormat=D}"
-                                               Foreground="White"/>
+                            Text="{Binding FinalDate, StringFormat=D}"
+                                       Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -152,8 +230,8 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" 
-                                            Text="{Binding Description}"
-                                               Foreground="White"/>
+                                    Text="{Binding Description}"
+                                       Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -162,10 +240,92 @@
             </ListView.View>
         </ListView>
 
-            <!--Кнопка добавить задание-->
-    
-        
+        <!--блок добавить Task-->
 
+        <ComboBox
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Width="450"
+            BorderBrush="#121923"
+            Background="White"
+            Foreground="#121923"
+            FontSize="25"
+            Name="TeamCb"
+            materialDesign:HintAssist.Hint="team"
+            materialDesign:HintAssist.Foreground="#121923"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Team.Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <Button
+            Grid.Column="0"
+            Grid.Row="6"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Width="400"
+            Height="80"
+            Margin="0 0 0 0"    
+            materialDesign:ButtonAssist.CornerRadius="40"
+            Background="#FF5858"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+            <TextBlock
+                Foreground="#121923"
+                Text="Add Task"
+                FontSize="30"/>
+        </Button>
+
+        
+        <!--блок добавить Subtask-->
+
+        <TextBox
+            Grid.Row="5"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Width="450"
+            BorderBrush="#121923"
+            Background="White"
+            FontSize="25"
+            Name="LoginTb"
+            MaxLength="11"
+            materialDesign:HintAssist.Hint="name subtask"
+            materialDesign:HintAssist.Foreground="#121923"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}">
+        </TextBox>
+
+
+        <Button
+            Grid.Column="2"
+            Grid.Row="6"
+            Grid.RowSpan="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Width="400"
+            Height="80"
+            Margin="0 0 0 0"    
+            materialDesign:ButtonAssist.CornerRadius="40"
+            Background="#FF5858"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+            <TextBlock
+                Foreground="#121923"
+                Text="Add Subtask"
+                FontSize="30"/>
+        </Button>
+        
         
     </Grid>
 </Page>
