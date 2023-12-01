@@ -21,24 +21,50 @@ namespace SCH_Project.Pages
     public partial class TeamTaskPage : Page
     {
         public static List<Team> teams { get; set; }
+        public static int Nado = 1;
         public static List<Dbconnection.Task> tasks { get; set; }
+        public static List<UserTeam> userTeams { get; set; }
         public TeamTaskPage()
         {
             InitializeComponent();
-            List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
-            teams = Connection.taskManager.Team.ToList();
-            tasks = Connection.taskManager.Task.ToList();
-            TeamCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
-            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count == 1)
-            {
-                ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
-            }
-            else
-            {
-                ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
-            }
+            //userTeams = Connection.taskManager.UserTeam.ToList();
+            //teams = Connection.taskManager.Team.ToList();
+            //tasks = Connection.taskManager.Task.ToList();
+            //TeamCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
+            //Team trueItem = TeamCb.SelectedItem as Team;
+            //if (tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
+            //{ 
+            //    if (trueItem != null)
+            //    {
+            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader ==
+            //        AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == 
+            //        trueItem.ID).ToList();
+            //    }
+            //    else
+            //    {
+            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
+            //    }
+            //}
+            //else
+            //{
+            //    if (trueItem != null)
+            //    {
+            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 
+            //        && i.UserTeam.IdTeam == trueItem.ID).ToList();
+            //    }
+            //    else
+            //    {
+            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
+            //        AddBt.Visibility = Visibility.Hidden;
+            //    }   
+            //}
             MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
+        }
+
+        private void AddBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AddTeamTaskPage());
         }
 
     }

@@ -40,6 +40,7 @@ namespace SCH_Project.Pages
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentUserTeam = ListUsers.SelectedItem as UserTeam;
+            TeamTaskPage.Nado = 0;
             NavigationService.Navigate(new AddTeamTaskPage());
         }
     }
