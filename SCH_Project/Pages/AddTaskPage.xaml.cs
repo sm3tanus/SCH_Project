@@ -29,16 +29,26 @@ namespace SCH_Project.Pages
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            UserTeam UserTeam = Connection.taskManager.UserTeam.First(i => i.IdTeam == 1 && i.IdUser == AuthorizationPage.user.ID);
-            Dbconnection.Task task = new Dbconnection.Task();
-            task.UserTeam = UserTeam;
-            task.Status = false;
-            task.FinalDate = TaskDP.SelectedDate;
-            task.Name = NameTb.Text;
-            task.Description = DescriptionTb.Text;
-            Connection.taskManager.Task.Add(task);
-            Connection.taskManager.SaveChanges();
-            NavigationService.Navigate(new MyDayPage());
+            if (TaskDP.SelectedDate >= DateTime.Today)
+            {
+                UserTeam UserTeam = Connection.taskManager.UserTeam.First(i => i.IdTeam == 1 && i.IdUser == AuthorizationPage.user.ID);
+                Dbconnection.Task task = new Dbconnection.Task();
+                task.UserTeam = UserTeam;
+                task.Status = false;
+                task.FinalDate = TaskDP.SelectedDate;
+                task.Name = NameTb.Text;
+                task.Description = DescriptionTb.Text;
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
+                NavigationService.Navigate(new MyDayPage());
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+            }
+            else
+            {
+                MessageTb.Text = "invalid data";
+            }
+           
         }
     }
 }

@@ -140,7 +140,16 @@
         </StackPanel>
 
 
-
+        <TextBlock Grid.Column="1"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
+                Width="200"
+                Height="40"
+                VerticalAlignment="Bottom"
+                Foreground="red"
+                Name="MessageTb"
+                FontSize="22"
+                TextAlignment="Center"></TextBlock>
         <!--Кнопка добавить-->
 
         <Button

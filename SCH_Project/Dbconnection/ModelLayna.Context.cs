@@ -25,6 +25,7 @@ namespace SCH_Project.Dbconnection
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Application> Application { get; set; }
         public virtual DbSet<Otdel> Otdel { get; set; }
         public virtual DbSet<Subtask> Subtask { get; set; }
@@ -32,6 +33,5 @@ namespace SCH_Project.Dbconnection
         public virtual DbSet<Team> Team { get; set; }
         public virtual DbSet<User> User { get; set; }
         public virtual DbSet<UserTeam> UserTeam { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
     }
 }

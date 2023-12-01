@@ -36,20 +36,10 @@ namespace SCH_Project.Pages
             else
             {
                 ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
-                AddBt.Visibility = Visibility.Hidden;
             }
             MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
         }
 
-        private void AddBt_Click(object sender, RoutedEventArgs e)
-        {
-            NavigationService.Navigate(new AddTeamTaskPage());
-        }
-
-        private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            //ListTeamTask.ItemsSource = tasks.Where(i => i.IdTeam == (TeamCb.SelectedItem as Team).ID).ToList();
-        }
     }
 }

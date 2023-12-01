@@ -24,7 +24,6 @@ namespace SCH_Project.Pages
             user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
             if (user != null)
             {
-                        
                 NavigationService.Navigate(new MainMenuPage());
             }
             else

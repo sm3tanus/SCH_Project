@@ -45,7 +45,7 @@
             Grid.RowSpan="4"
             Width="1000"
             Height="400"
-            Name="ListTask">
+            Name="ListApplication">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

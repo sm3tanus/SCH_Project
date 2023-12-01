@@ -22,33 +22,33 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddTeamTaskPage : Page
     {
-        public static List<UserTeam> userTeams {  get; set; }
-        public static UserTeam selectedUserTeam = new UserTeam();
-        public static List<User> users { get; set; }
-        public static Dbconnection.Task task = new Dbconnection.Task();
         public AddTeamTaskPage()
         {
             InitializeComponent();
-            users = Connection.taskManager.User.ToList();
-            userTeams = Connection.taskManager.UserTeam.ToList();
-            UserCb.ItemsSource = users;
+            
             DataContext = this;
             
         }
-
+        public static Dbconnection.Task task = new Dbconnection.Task();
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            task.Name = nameTb.Text.Trim();
-            task.FinalDate = dateDp.SelectedDate;
-            task.Description = DiscriptionTb.Text.Trim();
-            Connection.taskManager.Task.Add(task);
-            Connection.taskManager.SaveChanges();
-        }
-
-        private void UserCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedUserTeam = userTeams.First(i => i.User == (UserCb.SelectedItem as User));
+            if (dateDp.SelectedDate >= DateTime.Today)
+            {
+                task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
+                task.Name = nameTb.Text.Trim();
+                task.Status = false;
+                task.FinalDate = dateDp.SelectedDate;
+                task.Description = DiscriptionTb.Text.Trim();
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+            }
+            else
+            {
+                MessageTb.Text = "invalid data";
+            }
         }
     }
 }

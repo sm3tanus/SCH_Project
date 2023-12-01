@@ -21,6 +21,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyGroupsUsersPage : Page
     {
+        public static UserTeam currentUserTeam;
         public static List<UserTeam> userTeams {  get; set; }
         public MyGroupsUsersPage()
         {
@@ -34,6 +35,12 @@ namespace SCH_Project.Pages
         private void ViewApplicateBt_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new ViewingApplicationPage());
+        }
+
+        private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currentUserTeam = ListUsers.SelectedItem as UserTeam;
+            NavigationService.Navigate(new AddTeamTaskPage());
         }
     }
 }
