@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SCH_Project;
+using SCH_Project.Dbconnection;
 
 namespace SCH_Project.Pages
 {
@@ -20,9 +22,11 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class ViewingApplicationPage : Page
     {
+        public static Dbconnection.Application selectedApplication;
         public ViewingApplicationPage()
         {
             InitializeComponent();
+            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i=>i.IdTeam==MyGroupsPage.currentTeam.ID).ToList();
         }
 
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
@@ -33,6 +37,11 @@ namespace SCH_Project.Pages
         private void RejectBt_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedApplication = ListApplication.SelectedItem as Dbconnection.Application;
         }
     }
 }

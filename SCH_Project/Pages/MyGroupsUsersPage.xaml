@@ -53,7 +53,7 @@
             Grid.RowSpan="4"
             Width="500"
             Height="400"
-            Name="ListUsers">
+            Name="ListUsers" SelectionChanged="ListUsers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -106,6 +106,7 @@
 
         <Button
             Grid.Column="1"
+            Name="ViewApplicateBt"
             Grid.Row="6"
             Grid.RowSpan="1"
             Grid.ColumnSpan="2"
@@ -117,7 +118,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="ViewApplicateBt_Click">
             <TextBlock
                 Foreground="#121923"
                 Text="Viewing Application"

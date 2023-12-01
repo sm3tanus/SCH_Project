@@ -31,7 +31,9 @@ namespace SCH_Project.Pages
             DataContext = this;
         }
 
-
-
+        private void ViewApplicateBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new ViewingApplicationPage());
+        }
     }
 }
