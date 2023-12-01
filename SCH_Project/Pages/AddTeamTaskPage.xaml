@@ -63,6 +63,7 @@
             BorderBrush="#121923"
             Background="White"
             FontSize="25"
+            MaxLength="55"
             Name="nameTb"
             materialDesign:HintAssist.Hint="name"
             materialDesign:HintAssist.Foreground="#121923"
