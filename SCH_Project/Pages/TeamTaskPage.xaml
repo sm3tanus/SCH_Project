@@ -103,7 +103,7 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        
+
                         <GridViewColumn Header="Final date" Width="150">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -117,24 +117,6 @@
                                 <DataTemplate>
                                     <TextBlock HorizontalAlignment="Center" 
                                     Text="{Binding FinalDate, StringFormat=D}"
-                                               Foreground="White"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Description" Width="200">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" 
-                                            Text="{Binding Description}"
                                                Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
@@ -253,10 +235,34 @@
             Background="White"
             Foreground="#121923"
             FontSize="25"
-            Name="TeamCb"
+            Visibility="Collapsed"
+            Name="TeamCbLeader"
             materialDesign:HintAssist.Hint="team"
             materialDesign:HintAssist.Foreground="#121923"
-            Style="{StaticResource MaterialDesignOutlinedComboBox}" >
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="TeamCb_SelectionChanged" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+        <ComboBox
+            Grid.Column="0"
+            Grid.ColumnSpan="2"
+            Grid.Row="5"
+            Visibility="Collapsed"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Width="450"
+            BorderBrush="#121923"
+            Background="White"
+            Foreground="#121923"
+            FontSize="25"
+            Name="TeamCbUser"
+            materialDesign:HintAssist.Hint="team"
+            materialDesign:HintAssist.Foreground="#121923"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" SelectionChanged="TeamCb_SelectionChanged" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Team.Name}"/>

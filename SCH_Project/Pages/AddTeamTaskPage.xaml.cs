@@ -23,10 +23,10 @@ namespace SCH_Project.Pages
     public partial class AddTeamTaskPage : Page
     {
         public static List<UserTeam> userTeams {  get; set; }
-        public AddTeamTaskPage()
+        public AddTeamTaskPage(int value)
         {
             InitializeComponent();
-            if (TeamTaskPage.Nado == 1)
+            if (value == 1)
             {
                 userTeams = Connection.taskManager.UserTeam.ToList();
                 selectGroup.Visibility = Visibility.Visible;

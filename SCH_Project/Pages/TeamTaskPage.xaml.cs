@@ -1,18 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SCH_Project.Dbconnection;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SCH_Project.Dbconnection;
 namespace SCH_Project.Pages
 {
     /// <summary>
@@ -20,52 +10,37 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class TeamTaskPage : Page
     {
-        public static List<Team> teams { get; set; }
-        public static int Nado = 1;
-        public static List<Dbconnection.Task> tasks { get; set; }
-        public static List<UserTeam> userTeams { get; set; }
         public TeamTaskPage()
         {
             InitializeComponent();
-            //userTeams = Connection.taskManager.UserTeam.ToList();
-            //teams = Connection.taskManager.Team.ToList();
-            //tasks = Connection.taskManager.Task.ToList();
-            //TeamCb.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
-            //Team trueItem = TeamCb.SelectedItem as Team;
-            //if (tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
-            //{ 
-            //    if (trueItem != null)
-            //    {
-            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader ==
-            //        AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == 
-            //        trueItem.ID).ToList();
-            //    }
-            //    else
-            //    {
-            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
-            //    }
-            //}
-            //else
-            //{
-            //    if (trueItem != null)
-            //    {
-            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 
-            //        && i.UserTeam.IdTeam == trueItem.ID).ToList();
-            //    }
-            //    else
-            //    {
-            //        ListTeamTask.ItemsSource = tasks.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1).ToList();
-            //        AddBt.Visibility = Visibility.Hidden;
-            //    }   
-            //}
+
+            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 || i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID).ToList();
+
+            TeamCbUser.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+
+            TeamCbLeader.ItemsSource = Connection.taskManager.Team.Where(i => i.IdLeader == AuthorizationPage.user.ID && i.ID != 1).ToList();
+
+            if (Connection.taskManager.UserTeam.Where(i => i.Team.IdLeader == AuthorizationPage.user.ID).Count() != 0)
+            {
+                TeamCbLeader.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                TeamCbUser.Visibility = Visibility.Visible;
+            }
+
+
             MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddTeamTaskPage());
+            NavigationService.Navigate(new AddTeamTaskPage(1));
         }
-
+        private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == (TeamCbLeader.SelectedItem as Team).ID || i.UserTeam.IdTeam == (TeamCbUser.SelectedItem as UserTeam).IdTeam).ToList();
+        }
     }
 }
