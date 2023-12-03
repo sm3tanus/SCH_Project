@@ -25,7 +25,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-      
+
         <!--Прямоугольник-->
 
         <Rectangle Fill="#263F76" Grid.Column="0" Grid.ColumnSpan="4" Grid.RowSpan="5" Grid.Row="2" Margin="10 0 0 0"></Rectangle>
@@ -35,12 +35,24 @@
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Team Task</TextBlock>
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">View team tasks</TextBlock>
-        
-        
-        
-            <!--Заполнение данными-->
-            <!--Задачи-->
-                <ListView 
+
+        <TextBlock Text="You are not the group leader!"
+                   Foreground="Red"
+                   Grid.Column="0"
+                   Grid.ColumnSpan="4"
+                   Grid.Row="3"
+                   Grid.RowSpan="2"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Center"
+                   FontSize="50"
+                   Visibility="Hidden"
+                   Name="ErrorTb"/>
+
+
+
+        <!--Заполнение данными-->
+        <!--Задачи-->
+        <ListView 
                 Grid.Column="0"
             Grid.ColumnSpan="2"
             Grid.Row="2"
@@ -48,10 +60,28 @@
             Width="600"
             Height="400"
             Name="ListTeamTask"
-            Margin="35 0 0 0">
+            Margin="35 0 0 0" SelectionChanged="ListTeamTask_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
+                        <GridViewColumn Header="Ready" Width="100">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox HorizontalAlignment="Center" 
+                       IsChecked="{Binding Status}"
+                       Foreground="White"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header="Name" Width="150">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -73,23 +103,7 @@
                         </GridViewColumn>
 
 
-                        <GridViewColumn Header="Ready" Width="100">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
 
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" 
-                                               Text="{Binding Status}"
-                                               Foreground="White"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
 
 
                         <GridViewColumn Header="Final date" Width="150">
@@ -113,9 +127,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        
-        
-        
+
+
+
         <!--Подзадачи-->
 
         <ListView 
@@ -130,6 +144,24 @@
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
+                        <GridViewColumn Header="Ready" Width="160">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <CheckBox HorizontalAlignment="Center" 
+                                        IsChecked="{Binding Status}"
+                                        Foreground="White"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
                         <GridViewColumn Header="Name" Width="200">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -146,25 +178,6 @@
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock Text="{Binding Name}" Foreground="White"/>
                                     </StackPanel>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-
-                        <GridViewColumn Header="Ready" Width="160">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" 
-                                       Text="{Binding Status}"
-                                       Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -262,24 +275,24 @@
         <Button
             Grid.Column="0"
             Grid.Row="6"
-            Grid.RowSpan="2"
             Grid.ColumnSpan="2"
-            HorizontalAlignment="Center"
+            HorizontalAlignment="Right"
             Width="400"
+            Name="AddTaskBt"
             Height="80"
-            Margin="0 0 0 0"    
+            Margin="0,37,120,37"    
             materialDesign:ButtonAssist.CornerRadius="40"
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AddTaskBt_Click">
             <TextBlock
                 Foreground="#121923"
                 Text="Add Task"
                 FontSize="30"/>
         </Button>
 
-        
+
         <!--блок добавить Subtask-->
 
         <TextBox
@@ -292,7 +305,7 @@
             BorderBrush="#121923"
             Background="White"
             FontSize="25"
-            Name="LoginTb"
+            Name="SubtaskNameTb"
             MaxLength="11"
             materialDesign:HintAssist.Hint="name subtask"
             materialDesign:HintAssist.Foreground="#121923"
@@ -303,6 +316,7 @@
         <Button
             Grid.Column="2"
             Grid.Row="6"
+            Name="AddSubtaskBt"
             Grid.RowSpan="2"
             Grid.ColumnSpan="2"
             HorizontalAlignment="Center"
@@ -313,13 +327,13 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AddSubtaskBt_Click">
             <TextBlock
                 Foreground="#121923"
                 Text="Add Subtask"
                 FontSize="30"/>
         </Button>
-        
-        
+
+
     </Grid>
 </Page>
