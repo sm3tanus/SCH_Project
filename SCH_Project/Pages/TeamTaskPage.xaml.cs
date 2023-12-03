@@ -1,4 +1,5 @@
 ﻿using SCH_Project.Dbconnection;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,8 +14,6 @@ namespace SCH_Project.Pages
         public TeamTaskPage()
         {
             InitializeComponent();
-
-
 
             ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 || i.UserTeam.Team.IdLeader == AuthorizationPage.user.ID).ToList();
 
@@ -41,7 +40,12 @@ namespace SCH_Project.Pages
         }
         private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == (TeamCbLeader.SelectedItem as Team).ID || i.UserTeam.IdTeam == (TeamCbUser.SelectedItem as UserTeam).IdTeam).ToList();
+            int selectedIdTeam = 1;
+            if(TeamCbUser.SelectedItem != null)
+                selectedIdTeam = Convert.ToInt32((TeamCbUser.SelectedItem as UserTeam).IdTeam);
+            else if(TeamCbLeader.SelectedItem != null)
+                selectedIdTeam = Convert.ToInt32((TeamCbLeader.SelectedItem as Team).ID);
+            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == selectedIdTeam || i.UserTeam.IdTeam == selectedIdTeam).ToList();
         }
 
         private void ListTeamTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
