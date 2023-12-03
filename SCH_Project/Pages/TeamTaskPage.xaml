@@ -47,10 +47,7 @@
                    FontSize="50"
                    Visibility="Hidden"
                    Name="ErrorTb"/>
-
-
-
-        <!--Заполнение данными-->
+        
         <!--Задачи-->
         <ListView 
                 Grid.Column="0"
