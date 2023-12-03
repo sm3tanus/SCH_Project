@@ -26,17 +26,25 @@ namespace SCH_Project.Pages
         public ViewingApplicationPage()
         {
             InitializeComponent();
-            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i=>i.IdTeam==MyGroupsPage.currentTeam.ID).ToList();
+            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i=>i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
         }
 
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-
+            UserTeam userTeam = new UserTeam();
+            userTeam.IdTeam = selectedApplication.IdTeam;
+            userTeam.IdUser = selectedApplication.IdUser;
+            Connection.taskManager.UserTeam.Add(userTeam);
+            Connection.taskManager.Application.Remove(selectedApplication);
+            Connection.taskManager.SaveChanges();
+            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
         }
 
         private void RejectBt_Click(object sender, RoutedEventArgs e)
         {
-
+            Connection.taskManager.Application.Remove(selectedApplication);
+            Connection.taskManager.SaveChanges();
+            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
         }
 
         private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)

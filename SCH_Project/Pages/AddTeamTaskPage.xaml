@@ -144,18 +144,95 @@
                 VerticalScrollBarVisibility="Auto"/>
         </StackPanel>
 
-        <TextBlock Grid.Column="1"
+
+
+        <!--Выбрать сотрудника-->
+
+        <TextBlock
+           Grid.Row="5"
+           Grid.ColumnSpan="2"
+           HorizontalAlignment="Center"
+           VerticalAlignment="Center"
+           Margin="0 0 0 80"
+           Foreground="#121923"
+           FontSize="30"
+           Text="select the user"
+           Name="selectUser"
+           Visibility="Hidden"
+           />
+
+        <ComboBox
             Grid.Row="5"
+            Grid.Column="0"
             Grid.ColumnSpan="2"
-            Width="200"
-            Height="40"
+            HorizontalAlignment="Center"
             VerticalAlignment="Bottom"
-            Foreground="red"
-            Name="MessageTb"
-            FontSize="22"
-            TextAlignment="Center"></TextBlock>
+            Width="450"
+            Margin="0 0 0 30"
+            BorderBrush="#121923"
+            Background="White"
+            Foreground="#121923"
+            FontSize="25"
+            Name="UserCb"
+            Visibility="Hidden"
+            materialDesign:HintAssist.Hint="user"
+            materialDesign:HintAssist.Foreground="#121923"
+            Style="{StaticResource MaterialDesignOutlinedComboBox}" >
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding User.Login}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
+
+
+        <TextBlock
+               Grid.Row="4"
+               Grid.ColumnSpan="2"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Center"
+               Margin="0 0 0 20"
+               Foreground="#121923"
+               FontSize="30"
+               Text="select the group"
+               Name="selectGroup"
+               Visibility="Hidden"
+               />
+        <ComboBox
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Bottom"
+                Width="450"
+                Margin="0 0 0 0"
+                BorderBrush="#121923"
+                Background="White"
+                Foreground="#121923"
+                FontSize="25"
+                Name="TeamCb"
+                Visibility="Hidden"
+                materialDesign:HintAssist.Hint="group"
+                materialDesign:HintAssist.Foreground="#121923"
+                Style="{StaticResource MaterialDesignOutlinedComboBox}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Team.Name}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox> 
 
         <!--Кнопка добавить-->
+        <TextBlock Grid.Column="1"
+        Grid.Row="5"
+        Grid.ColumnSpan="2"
+        Width="200"
+        Height="40"
+        VerticalAlignment="Bottom"
+        Foreground="red"
+        Name="MessageTb"
+        FontSize="22"
+        TextAlignment="Center"></TextBlock>
 
         <Button
             Grid.Column="1"
@@ -172,7 +249,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Cursor="Hand" Click="AddBt_Click">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Cursor="Hand">
             <TextBlock
                 Foreground="#121923"
                 Text="Add"

@@ -45,7 +45,7 @@
             Grid.RowSpan="4"
             Width="1000"
             Height="400"
-            Name="ListApplication">
+            Name="ListApplication" SelectionChanged="ListApplication_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -112,6 +112,7 @@
 
         <Button
         Grid.Column="0"
+        Name="AcceptBt"
         Grid.Row="6"
         Grid.RowSpan="1"
         Grid.ColumnSpan="2"
@@ -123,7 +124,7 @@
         Background="#FF78B547"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" >
+        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="AcceptBt_Click">
             <TextBlock
                 Foreground="#121923"
                 Text="Accept"
@@ -132,6 +133,7 @@
 
         <Button
         Grid.Column="2"
+        Name="RejectBt"
         Grid.Row="6"
         Grid.RowSpan="1"
         Grid.ColumnSpan="2"
@@ -143,7 +145,7 @@
         Background="#FF5858"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
         Style="{StaticResource MaterialDesignRaisedDarkButton}"
-        ToolTip="MaterialDesignRaisedDarkButton with Round Corners">
+        ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="RejectBt_Click" Cursor="Hand">
             <TextBlock
                 Foreground="#121923"
                 Text="Reject"

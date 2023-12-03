@@ -40,7 +40,7 @@ namespace SCH_Project.Pages
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currentUserTeam = ListUsers.SelectedItem as UserTeam;
-            NavigationService.Navigate(new AddTeamTaskPage());
+            NavigationService.Navigate(new AddTeamTaskPage(0));
         }
     }
 }

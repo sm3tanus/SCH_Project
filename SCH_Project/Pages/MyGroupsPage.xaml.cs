@@ -27,7 +27,7 @@ namespace SCH_Project.Pages
         public MyGroupsPage()
         {
             InitializeComponent();
-            userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam!=1).ToList();
+            userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam!=1 || i.Team.IdLeader == AuthorizationPage.user.ID).ToList();
             ListGroup.ItemsSource = userTeams;
             GroupCount = userTeams.Count.ToString();
             DataContext = this;
