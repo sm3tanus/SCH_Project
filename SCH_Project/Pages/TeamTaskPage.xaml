@@ -36,18 +36,6 @@
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">View team tasks</TextBlock>
         
-        <TextBlock Text="You are not the group leader!"
-                   Foreground="Red"
-                   Grid.Column="0"
-                   Grid.ColumnSpan="4"
-                   Grid.Row="3"
-                   Grid.RowSpan="2"
-                   VerticalAlignment="Center"
-                   HorizontalAlignment="Center"
-                   FontSize="50"
-                   Visibility="Hidden"
-                   Name="ErrorTb"/>
-        
         
         
             <!--Заполнение данными-->

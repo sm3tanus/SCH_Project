@@ -217,6 +217,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\SubmitAnApplicationPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TeamSubtaskPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -260,6 +264,9 @@
     </Compile>
     <Compile Include="Pages\ProfilePage.xaml.cs">
       <DependentUpon>ProfilePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\SubmitAnApplicationPage.xaml.cs">
+      <DependentUpon>SubmitAnApplicationPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\TeamSubtaskPage.xaml.cs">
       <DependentUpon>TeamSubtaskPage.xaml</DependentUpon>

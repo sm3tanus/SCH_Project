@@ -43,7 +43,7 @@
         <ListView Grid.Column="0"
         Grid.ColumnSpan="4"
         Grid.Row="2"
-        Grid.RowSpan="5"
+        Grid.RowSpan="4"
         Width="900"
         Height="500"
         Name="ListGroup" SelectionChanged="ListGroup_SelectionChanged">
@@ -96,6 +96,26 @@
 
         <!--Кнопка добавить сотрудников-->
 
+        <Button
+            Grid.Column="1"
+            Grid.Row="6"
+            Grid.RowSpan="1"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            Width="600"
+            VerticalAlignment="Center"
+            Height="80"
+            Margin="0 0 0 0"    
+            materialDesign:ButtonAssist.CornerRadius="40"
+            Background="#FF5858"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+            Style="{StaticResource MaterialDesignRaisedDarkButton}"
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            <TextBlock
+            Foreground="#121923"
+                Text="Submit An Application"
+                FontSize="30"/>
+        </Button>
 
     </Grid>
 </Page>
