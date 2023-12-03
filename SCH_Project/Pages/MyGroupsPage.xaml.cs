@@ -23,23 +23,32 @@ namespace SCH_Project.Pages
     {
         public static string GroupCount;
         public static Team currentTeam;
-        public static List<UserTeam> userTeams {  get; set; }
+        public static List<Team> teams = Connection.taskManager.Team.ToList();
+        public static List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
         public MyGroupsPage()
         {
             InitializeComponent();
-            userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam!=1 || i.Team.IdLeader == AuthorizationPage.user.ID).ToList();
-            ListGroup.ItemsSource = userTeams;
-            GroupCount = userTeams.Count.ToString();
+            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
+            {
+                ListGroupLeader.ItemsSource = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
+            }
+            else
+            {
+                ListGroupUser.Visibility = Visibility.Visible;
+                ListGroupUser.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
+            }
             DataContext = this;
         }
 
         private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (userTeams.Where(i => i.Team.IdLeader == AuthorizationPage.user.ID && i.IdTeam != 1).ToList().Count == 1)
-            {
-                currentTeam = (ListGroup.SelectedItem as UserTeam).Team;
+                currentTeam = ListGroupLeader.SelectedItem as Team;
                 NavigationService.Navigate(new MyGroupsUsersPage());
-            }
+        }
+
+        private void SubmitAdd_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new SubmitAnApplicationPage()); 
         }
     }
 }

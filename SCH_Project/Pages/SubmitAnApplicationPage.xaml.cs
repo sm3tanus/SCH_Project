@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SCH_Project.Dbconnection;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace SCH_Project.Pages
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
+            ListApplication.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser != AuthorizationPage.user.ID && i.Team.IdLeader != AuthorizationPage.user.ID).ToList();
         }
     }
 }

@@ -60,7 +60,6 @@ namespace SCH_Project.Pages
             Connection.taskManager.SaveChanges();
             ListSubtask.ItemsSource = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
         }
-
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddTeamTaskPage(0));

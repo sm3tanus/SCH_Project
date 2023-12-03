@@ -46,7 +46,61 @@
         Grid.RowSpan="4"
         Width="900"
         Height="500"
-        Name="ListGroup" SelectionChanged="ListGroup_SelectionChanged">
+        Name="ListGroupLeader" SelectionChanged="ListGroup_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Name" Width="600">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                    <Setter Property="Height" Value="50"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Leader" Width="200">
+                            <GridViewColumn.HeaderContainerStyle>
+                                <Style TargetType="{x:Type GridViewColumnHeader}">
+                                    <Setter Property="Background" Value="#263F76" />
+                                    <Setter Property="Foreground" Value="White"/>
+                                    <Setter Property="BorderBrush" Value="#263F76"/>
+                                    <Setter Property="Height" Value="50"/>
+                                </Style>
+                            </GridViewColumn.HeaderContainerStyle>
+
+
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding User.Login}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <ListView Grid.Column="0"
+        Grid.ColumnSpan="4"
+        Grid.Row="2"
+        Grid.RowSpan="4"
+        Width="900"
+        Height="500"
+        Visibility="Hidden"
+        Name="ListGroupUser">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -105,12 +159,13 @@
             Width="600"
             VerticalAlignment="Center"
             Height="80"
-            Margin="0 0 0 0"    
+            Margin="0 0 0 0" 
+            Name="SubmitAdd"
             materialDesign:ButtonAssist.CornerRadius="40"
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="Button_Click">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="SubmitAdd_Click">
             <TextBlock
             Foreground="#121923"
                 Text="Submit An Application"
