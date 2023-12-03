@@ -21,10 +21,14 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class SubmitAnApplicationPage : Page
     {
+        public static List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
-            ListApplication.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser != AuthorizationPage.user.ID && i.Team.IdLeader != AuthorizationPage.user.ID).ToList();
+            List<Team> team = new List<Team>();
+            //сделать фор
+            ListApplication.ItemsSource = userTeams.Where(i => i.IdUser != AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+            DataContext = this;
         }
     }
 }

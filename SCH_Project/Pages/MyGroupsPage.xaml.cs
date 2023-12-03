@@ -30,19 +30,23 @@ namespace SCH_Project.Pages
             InitializeComponent();
             if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
             {
-                ListGroupLeader.ItemsSource = teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList();
+                ListGroupLeader.ItemsSource = Connection.taskManager.Team.Where(i => i.IdLeader == AuthorizationPage.user.ID && i.ID != 1).ToList();
             }
             else
             {
                 ListGroupUser.Visibility = Visibility.Visible;
-                ListGroupUser.ItemsSource = userTeams.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
+                ListGroupUser.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+            }
+            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).Count() == 0)
+            {
+                SubmitAdd.Visibility = Visibility.Visible;
             }
             DataContext = this;
         }
 
         private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                currentTeam = ListGroupLeader.SelectedItem as Team;
+                currentTeam = (ListGroupLeader.SelectedItem as UserTeam).Team;
                 NavigationService.Navigate(new MyGroupsUsersPage());
         }
 

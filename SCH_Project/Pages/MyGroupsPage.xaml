@@ -163,6 +163,7 @@
             Name="SubmitAdd"
             materialDesign:ButtonAssist.CornerRadius="40"
             Background="#FF5858"
+            Visibility="Hidden"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
             ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Click="SubmitAdd_Click">
