@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.WebControls;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,24 +22,35 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class SubmitAnApplicationPage : Page
     {
-        public static List<UserTeam> userTeams = Connection.taskManager.UserTeam.ToList();
+        public static List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i => i.IdTeam != 1).ToList();
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
-            List<Team> team = new List<Team>();
-            foreach (UserTeam teamItem in userTeams)
+            //ListApplication.ItemsSource = userTeams.Where(i => i.IdTeam != (userTeams.First(x => x.IdUser == AuthorizationPage.user.ID && x.IdTeam != 1) as UserTeam).IdTeam && i.IdTeam != 1).ToList();
+            List<Team> sortTeam = new List<Team>(); 
+            List<Team> teams = new List<Team>();
+            foreach (UserTeam team in userTeams)
             {
-                if (!(team.Contains(teamItem.Team)))
+                if (team.IdUser == AuthorizationPage.user.ID && !teams.Contains(team.Team))
                 {
-                    team.Add(teamItem.Team);
+                    teams.Add(team.Team);
                 }
             }
-            foreach (Team teamItem in team)
+            foreach (UserTeam teamItem in userTeams)
             {
-                MessageBox.Show(teamItem.Name);
+                if (!(teams.Contains(teamItem.Team)))
+                {
+                    sortTeam.Add(teamItem.Team);
+                }
             }
-            ListApplication.ItemsSource = userTeams.Where(i => i.IdUser != AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+            ListApplication.ItemsSource = sortTeam;
             DataContext = this;
+          
+        }
+
+        private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

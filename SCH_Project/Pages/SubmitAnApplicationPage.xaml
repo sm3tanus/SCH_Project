@@ -47,7 +47,7 @@
             Grid.RowSpan="4"
             Width="1000"
             Height="400"
-            Name="ListApplication">
+            Name="ListApplication" SelectionChanged="ListApplication_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -63,7 +63,7 @@
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal">
-                                        <TextBlock Text="{Binding Team.Name}"/>
+                                        <TextBlock Text="{Binding Name}"/>
                                     </StackPanel>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
