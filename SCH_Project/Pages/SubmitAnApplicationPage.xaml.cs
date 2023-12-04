@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI.WebControls;
@@ -26,7 +27,6 @@ namespace SCH_Project.Pages
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
-            //ListApplication.ItemsSource = userTeams.Where(i => i.IdTeam != (userTeams.First(x => x.IdUser == AuthorizationPage.user.ID && x.IdTeam != 1) as UserTeam).IdTeam && i.IdTeam != 1).ToList();
             List<Team> sortTeam = new List<Team>(); 
             List<Team> teams = new List<Team>();
             foreach (UserTeam team in userTeams)
@@ -45,12 +45,16 @@ namespace SCH_Project.Pages
             }
             ListApplication.ItemsSource = sortTeam;
             DataContext = this;
-          
         }
 
         private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Dbconnection.Application application = new Dbconnection.Application();
+            application.Team = ListApplication.SelectedItem as Team;
+            application.User = AuthorizationPage.user;
+            Connection.taskManager.Application.Add(application);
+            Connection.taskManager.SaveChanges();
+            ListApplication.Items.Refresh();
         }
     }
 }
