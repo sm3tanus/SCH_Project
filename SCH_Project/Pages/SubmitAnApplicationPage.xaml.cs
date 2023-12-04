@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace SCH_Project.Pages
 {
@@ -29,11 +30,19 @@ namespace SCH_Project.Pages
             InitializeComponent();
             List<Team> sortTeam = new List<Team>(); 
             List<Team> teams = new List<Team>();
+            List<Dbconnection.Application> applications = Connection.taskManager.Application.ToList();
             foreach (UserTeam team in userTeams)
             {
-                if (team.IdUser == AuthorizationPage.user.ID && !teams.Contains(team.Team))
+                    if (team.IdUser == AuthorizationPage.user.ID && !teams.Contains(team.Team))
+                    {
+                        teams.Add(team.Team);
+                    }
+            }
+            foreach (Dbconnection.Application application in applications)
+            {
+                if (!teams.Contains(application.Team))
                 {
-                    teams.Add(team.Team);
+                    teams.Add(application.Team);
                 }
             }
             foreach (UserTeam teamItem in userTeams)
@@ -47,7 +56,7 @@ namespace SCH_Project.Pages
             DataContext = this;
         }
 
-        private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void AddBt_Click(object sender, RoutedEventArgs e)
         {
             Dbconnection.Application application = new Dbconnection.Application();
             application.Team = ListApplication.SelectedItem as Team;

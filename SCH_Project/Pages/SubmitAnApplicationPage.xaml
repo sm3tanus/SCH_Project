@@ -47,7 +47,7 @@
             Grid.RowSpan="4"
             Width="1000"
             Height="400"
-            Name="ListApplication" SelectionChanged="ListApplication_SelectionChanged">
+            Name="ListApplication">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -92,7 +92,7 @@
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
             Style="{StaticResource MaterialDesignRaisedDarkButton}"
-            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Cursor="Hand">
+            ToolTip="MaterialDesignRaisedDarkButton with Round Corners" Cursor="Hand" Click="AddBt_Click">
             <TextBlock
                 Foreground="#121923"
                 Text="Apply To The Group"
