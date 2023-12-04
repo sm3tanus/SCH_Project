@@ -26,7 +26,17 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
             List<Team> team = new List<Team>();
-            //сделать фор
+            foreach (UserTeam teamItem in userTeams)
+            {
+                if (!(team.Contains(teamItem.Team)))
+                {
+                    team.Add(teamItem.Team);
+                }
+            }
+            foreach (Team teamItem in team)
+            {
+                MessageBox.Show(teamItem.Name);
+            }
             ListApplication.ItemsSource = userTeams.Where(i => i.IdUser != AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
             DataContext = this;
         }
