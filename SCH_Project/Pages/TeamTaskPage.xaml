@@ -118,17 +118,18 @@
         <!--Подзадачи-->
 
         <ListView 
-        Grid.Column="2"
-    Grid.ColumnSpan="2"
-    Grid.Row="2"
-    Grid.RowSpan="4"
-    Width="600"
-    Height="400"
-    Name="ListSubtask"
-    Margin="0 0 35 0" SelectionChanged="ListSubtask_SelectionChanged">
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Grid.Row="2"
+            Grid.RowSpan="4"
+            Width="600"
+            Height="400"
+            Name="ListSubtask"
+            Margin="0 0 35 0" SelectionChanged="ListSubtask_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
+                        
                         <GridViewColumn Header="Ready" Width="160">
                             <GridViewColumn.HeaderContainerStyle>
                                 <Style TargetType="{x:Type GridViewColumnHeader}">
@@ -167,42 +168,6 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-
-                        <GridViewColumn Header="Final date" Width="200">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" 
-                            Text="{Binding FinalDate, StringFormat=D}"
-                                       Foreground="White"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <GridViewColumn Header="Description" Width="300">
-                            <GridViewColumn.HeaderContainerStyle>
-                                <Style TargetType="{x:Type GridViewColumnHeader}">
-                                    <Setter Property="Background" Value="#263F76" />
-                                    <Setter Property="Foreground" Value="White"/>
-                                    <Setter Property="BorderBrush" Value="#263F76"/>
-                                </Style>
-                            </GridViewColumn.HeaderContainerStyle>
-
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" 
-                                    Text="{Binding Description}"
-                                       Foreground="White"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
                     </GridView.Columns>
                 </GridView>
             </ListView.View>

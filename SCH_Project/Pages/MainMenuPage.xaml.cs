@@ -59,5 +59,10 @@ namespace SCH_Project.Pages
             MainMenuFrame.Navigate(new MyGroupsPage());
             MyGroupCountTb.Text = MyGroupsPage.GroupCount;
         }
+
+        private void ExitBt_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(new AuthorizationPage());
+        }
     }
 }

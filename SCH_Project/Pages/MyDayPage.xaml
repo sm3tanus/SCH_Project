@@ -58,7 +58,7 @@
                             </GridViewColumn.HeaderContainerStyle>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <CheckBox Name ="fsdfd" IsChecked="{Binding Status}" />
+                                    <CheckBox Name ="fsdfd" IsChecked="{Binding Status}" Foreground="White" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -91,7 +91,7 @@
                             </GridViewColumn.HeaderContainerStyle>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Description}"/>
+                                    <TextBlock HorizontalAlignment="Center" Text="{Binding Description}" Foreground="White"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -99,6 +99,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        
+        
         <Button
             Grid.Column="1"
             Grid.Row="6"

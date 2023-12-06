@@ -68,14 +68,26 @@
                                    Margin="140 0 0 0"
                                    VerticalAlignment="Center"
                                    Name="loginTb"></TextBlock>
-
                     </Grid>
                 </StackPanel>
             </Button.Content>
         </Button>
 
+        <Button
+            Width="120"
+            Height="160"
+            Name="ExitBt"
+            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
+            Style="{StaticResource MaterialDesignFlatLightButton}"
+            ToolTip="MaterialDesignFlatButton" 
+            HorizontalAlignment="Right"
+            Margin="0 0 20 0"
+            Grid.Column="1"
+            Click="ExitBt_Click">
+            <materialDesign:PackIcon Kind="ExitToApp" Foreground="#121923" Width="100" Height="90"/>
+        </Button>
 
-        
+
         <!--Навигационные кнопки-->
 
         <!--My Day-->
