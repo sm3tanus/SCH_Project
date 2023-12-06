@@ -118,7 +118,7 @@
         <!--Подзадачи-->
 
         <ListView 
-            Grid.Column="2"
+             Grid.Column="2"
             Grid.ColumnSpan="2"
             Grid.Row="2"
             Grid.RowSpan="4"
@@ -226,12 +226,11 @@
             Grid.Column="0"
             Grid.Row="6"
             Grid.ColumnSpan="2"
-            HorizontalAlignment="Right"
+            HorizontalAlignment="Center"
+            Visibility="Collapsed"
             Width="400"
             Name="AddTaskBt"
-            Visibility="Collapsed"
             Height="80"
-            Margin="0,37,120,37"    
             materialDesign:ButtonAssist.CornerRadius="40"
             Background="#FF5858"
             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
