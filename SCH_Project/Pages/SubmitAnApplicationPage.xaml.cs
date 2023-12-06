@@ -55,6 +55,7 @@ namespace SCH_Project.Pages
             application.User = AuthorizationPage.user;
             Connection.taskManager.Application.Add(application);
             Connection.taskManager.SaveChanges();
+            MessageTb.Text = "successfully";
             ListApplication.Items.Refresh();
         }
     }
