@@ -42,22 +42,8 @@ namespace SCH_Project.Pages
         }
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            if (dateDp.SelectedDate >= DateTime.Today && UserCb.SelectedItem != null && TypeUser == 0)
-            {
-                task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
-                task.Name = nameTb.Text.Trim();
-                task.Status = false;
-                task.FinalDate = dateDp.SelectedDate;
-                task.Description = DiscriptionTb.Text.Trim();
-                nameTb.Clear();
-                DiscriptionTb.Clear();
-                dateDp.SelectedDate = null;
-                MessageTb.Foreground = System.Windows.Media.Brushes.White;
-                MessageTb.Text = "task added";
-                Connection.taskManager.Task.Add(task);
-                Connection.taskManager.SaveChanges();
-            }
-            else if (dateDp.SelectedDate >= DateTime.Today && TypeUser == 1)
+            MessageBox.Show(TypeUser.ToString());
+            if (dateDp.SelectedDate >= DateTime.Today && UserCb.SelectedItem != null && TypeUser == 1)
             {
                 task.IdUserTeam = (UserCb.SelectedItem as UserTeam).ID;
                 task.Name = nameTb.Text.Trim();
@@ -75,6 +61,23 @@ namespace SCH_Project.Pages
                 MessageTb.Text = "task added";
                 Connection.taskManager.Task.Add(task);
                 Connection.taskManager.SaveChanges();
+            }
+            
+            else if (dateDp.SelectedDate >= DateTime.Today && TypeUser == 0)
+            {
+                task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
+                task.Name = nameTb.Text.Trim();
+                task.Status = false;
+                task.FinalDate = dateDp.SelectedDate;
+                task.Description = DiscriptionTb.Text.Trim();
+                nameTb.Clear();
+                DiscriptionTb.Clear();
+                dateDp.SelectedDate = null;
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
+                
             }
             else
             {
