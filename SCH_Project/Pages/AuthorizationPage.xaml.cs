@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,16 +20,23 @@ namespace SCH_Project.Pages
         }
         private void EnterBt_Click(object sender, RoutedEventArgs e)
         {
-            string login = loginTb.Text.Trim().ToLower();
-            string password = PasswordTb.Password.Trim().ToLower();
-            user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
-            if (user != null)
+            try
             {
-                NavigationService.Navigate(new MainMenuPage());
+                string login = loginTb.Text.Trim().ToLower();
+                string password = PasswordTb.Password.Trim().ToLower();
+                user = Connection.taskManager.User.FirstOrDefault(i => i.Login == login && i.Password == password);
+                if (user != null)
+                {
+                    NavigationService.Navigate(new MainMenuPage());
+                }
+                else
+                {
+                    MessageBoxTb.Text = "error";
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBoxTb.Text = "error";
+                throw;
             }
         }
 
