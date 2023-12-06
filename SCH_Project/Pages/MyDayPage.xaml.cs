@@ -33,9 +33,9 @@ namespace SCH_Project.Pages
                 MyDayTbValue = ListTask.Items.Count.ToString();
                 DataContext = this;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -53,10 +53,10 @@ namespace SCH_Project.Pages
                 Connection.taskManager.SaveChanges();
                 ListTask.Items.Refresh();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
-            } 
+                throw;
+            }
         }
 
         private void View_Click(object sender, RoutedEventArgs e)

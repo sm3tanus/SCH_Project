@@ -32,17 +32,24 @@ namespace SCH_Project.Pages
         public User user = new User();
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTb.Text.Length != 0 && passwordTb.Password.Length != 0)
+            try
             {
-                AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
-                AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
-                Connection.taskManager.SaveChanges();
-                MessageTb.Foreground = System.Windows.Media.Brushes.White;
-                MessageTb.Text = "сhanges saved";
+                if (LoginTb.Text.Length != 0 && passwordTb.Password.Length != 0)
+                {
+                    AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
+                    AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
+                    Connection.taskManager.SaveChanges();
+                    MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                    MessageTb.Text = "сhanges saved";
+                }
+                else
+                {
+                    MessageTb.Text = "fill in the details";
+                }
             }
-            else
+            catch
             {
-                MessageTb.Text = "fill in the details";
+                throw;
             }
         }
 

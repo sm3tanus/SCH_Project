@@ -47,9 +47,9 @@ namespace SCH_Project.Pages
                 }
                 DataContext = this;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -60,9 +60,9 @@ namespace SCH_Project.Pages
                 currentTeam = (ListGroupLeader.SelectedItem as Team);
                 NavigationService.Navigate(new MyGroupsUsersPage());
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
 
         }

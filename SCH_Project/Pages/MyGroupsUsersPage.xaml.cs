@@ -33,9 +33,9 @@ namespace SCH_Project.Pages
                 NameTeamTb.Text = MyGroupsPage.currentTeam.Name;
                 DataContext = this;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -51,11 +51,11 @@ namespace SCH_Project.Pages
                 currentUserTeam = ListUsers.SelectedItem as UserTeam;
                 NavigationService.Navigate(new AddTeamTaskPage(0));
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
-            
+
         }
     }
 }

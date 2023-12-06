@@ -31,24 +31,36 @@ namespace SCH_Project.Pages
 
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-            UserTeam userTeam = new UserTeam();
-            userTeam.IdTeam = selectedApplication.IdTeam;
-            userTeam.IdUser = selectedApplication.IdUser;
-            Connection.taskManager.UserTeam.Add(userTeam);
-            Connection.taskManager.Application.Remove(selectedApplication);
-            Connection.taskManager.SaveChanges();
-            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
-            NavigationService.Navigate(new MyGroupsUsersPage());
+            try
+            {
+                UserTeam userTeam = new UserTeam();
+                userTeam.IdTeam = selectedApplication.IdTeam;
+                userTeam.IdUser = selectedApplication.IdUser;
+                Connection.taskManager.UserTeam.Add(userTeam);
+                Connection.taskManager.Application.Remove(selectedApplication);
+                Connection.taskManager.SaveChanges();
+                ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
+                NavigationService.Navigate(new MyGroupsUsersPage());
+            } 
+            catch
+            {
+                throw;
+            }
         }
-
         private void RejectBt_Click(object sender, RoutedEventArgs e)
         {
-            Connection.taskManager.Application.Remove(selectedApplication);
-            Connection.taskManager.SaveChanges();
-            ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
-            NavigationService.Navigate(new MyGroupsUsersPage());
+            try
+            {
+                Connection.taskManager.Application.Remove(selectedApplication);
+                Connection.taskManager.SaveChanges();
+                ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
+                NavigationService.Navigate(new MyGroupsUsersPage());
+            }   
+            catch
+            {
+                throw;
+            }
         }
-
         private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             selectedApplication = ListApplication.SelectedItem as Dbconnection.Application;

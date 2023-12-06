@@ -46,9 +46,9 @@ namespace SCH_Project.Pages
                 ListUsers.ItemsSource = users;
                 DataContext = this;
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
         public static Team team = new Team();
@@ -71,9 +71,9 @@ namespace SCH_Project.Pages
                 }
                 NavigationService.Navigate(new MyGroupsPage());
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -83,9 +83,9 @@ namespace SCH_Project.Pages
             {
                 ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
         }
 
@@ -98,9 +98,9 @@ namespace SCH_Project.Pages
                 users.Remove(currentUser);
                 ListUsers.Items.Refresh();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
 
         }

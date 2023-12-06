@@ -51,9 +51,9 @@ namespace SCH_Project.Pages
                     MessageTb.Text = "invalid data";
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                throw;
             }
 
         }

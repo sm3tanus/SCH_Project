@@ -27,36 +27,50 @@ namespace SCH_Project.Pages
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
-            List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
-            List<Team> teams = Connection.taskManager.Team.Where(i => i.ID != 1).ToList();
-            List<Dbconnection.Application> applications = Connection.taskManager.Application.ToList();
-            foreach (UserTeam userTeam in userTeams)
+            try
             {
-                if (teams.Contains(userTeam.Team))
+                List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
+                List<Team> teams = Connection.taskManager.Team.Where(i => i.ID != 1).ToList();
+                List<Dbconnection.Application> applications = Connection.taskManager.Application.ToList();
+                foreach (UserTeam userTeam in userTeams)
                 {
-                    teams.Remove(userTeam.Team);
+                    if (teams.Contains(userTeam.Team))
+                    {
+                        teams.Remove(userTeam.Team);
+                    }
                 }
+                foreach (Dbconnection.Application application in applications)
+                {
+                    if (teams.Contains(application.Team))
+                    {
+                        teams.Remove(application.Team);
+                    }
+                }
+                ListApplication.ItemsSource = teams;
+                DataContext = this;
             }
-            foreach (Dbconnection.Application application in applications)
+            catch
             {
-                if (teams.Contains(application.Team))
-                {
-                    teams.Remove(application.Team);
-                }
+                throw;
             }
-            ListApplication.ItemsSource = teams;
-            DataContext = this;
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            Dbconnection.Application application = new Dbconnection.Application();
-            application.Team = ListApplication.SelectedItem as Team;
-            application.User = AuthorizationPage.user;
-            Connection.taskManager.Application.Add(application);
-            Connection.taskManager.SaveChanges();
-            MessageTb.Text = "successfully";
-            ListApplication.Items.Refresh();
+            try
+            {
+                Dbconnection.Application application = new Dbconnection.Application();
+                application.Team = ListApplication.SelectedItem as Team;
+                application.User = AuthorizationPage.user;
+                Connection.taskManager.Application.Add(application);
+                Connection.taskManager.SaveChanges();
+                MessageTb.Text = "successfully";
+                ListApplication.Items.Refresh();
+            } 
+            catch
+            {
+                throw;
+            }
         }
     }
 }
