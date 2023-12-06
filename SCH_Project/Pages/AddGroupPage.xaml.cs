@@ -3,6 +3,7 @@ using SCH_Project.Dbconnection;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
@@ -37,17 +38,9 @@ namespace SCH_Project.Pages
             List<User> leaders = new List<User>();
             foreach (Team team in teams)
             {
-                if (leaders.Contains(team.User))
-                    leaders.Add(team.User);
-            }
-            foreach (User user in users)
-            {
-                foreach (User leader in leaders)
+                if (!users.Contains(team.User))
                 {
-                    if (user == leader)
-                    {
-                        users.Remove(user);
-                    }
+                    users.Remove(team.User);
                 }
             }
             ListUsers.ItemsSource = users;
