@@ -24,7 +24,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddGroupPage : System.Windows.Controls.Page
     {
-        public static List<User> users { get; set; }
+        public static List<User> users = new List<User>();
         public static List<Otdel> otdels { get; set; }
         public static List<User> list = new List<User>();
         public static List<Team> teams { get; set; }
@@ -35,13 +35,12 @@ namespace SCH_Project.Pages
             teams = Connection.taskManager.Team.ToList();
             otdels = Connection.taskManager.Otdel.ToList();
             users = Connection.taskManager.User.ToList();
-            List<User> leaders = new List<User>();
             foreach (Team team in teams)
             {
-                if (!users.Contains(team.User))
+                if (users.Contains(team.User))
                 {
                     users.Remove(team.User);
-                }
+                }   
             }
             ListUsers.ItemsSource = users;
             DataContext = this;
