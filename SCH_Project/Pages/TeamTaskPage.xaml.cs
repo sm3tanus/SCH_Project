@@ -13,7 +13,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class TeamTaskPage : Page
     {
-        public static List<Subtask> subtasks = new List<Subtask>();
+        public static List<Subtask> subtasks = Connection.taskManager.Subtask.ToList();
         public TeamTaskPage()
         {
             InitializeComponent();
@@ -75,6 +75,10 @@ namespace SCH_Project.Pages
             Connection.taskManager.SaveChanges();
             subtasks = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
             ListSubtask.ItemsSource = subtasks;
+            selectedTask.Status = false;
+            Connection.taskManager.Task.AddOrUpdate(selectedTask);
+            Connection.taskManager.SaveChanges();
+            ListTeamTask.Items.Refresh();
         }
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
@@ -83,7 +87,6 @@ namespace SCH_Project.Pages
 
         private void ListSubtask_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            subtasks = Connection.taskManager.Subtask.ToList();
             selectedTask = ListTeamTask.SelectedItem as Task;
             var task = ListSubtask.SelectedItem as Dbconnection.Subtask;
             task.Status = !(task.Status);
