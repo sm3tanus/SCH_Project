@@ -21,7 +21,6 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MainMenuPage : Page
     {
-        public static string MyDayTbValue;
         public static string CountTeamTasks;
         public MainMenuPage()
         {
@@ -43,7 +42,7 @@ namespace SCH_Project.Pages
         private void MydayBt_Click(object sender, RoutedEventArgs e)
         {
             MainMenuFrame.Navigate(new MyDayPage());
-            MyDayTb.Text = MyDayTbValue;
+            MyDayTb.Text = MyDayPage.MyDayTbValue;
         }
 
         private void AddGroupBt_Click(object sender, RoutedEventArgs e)

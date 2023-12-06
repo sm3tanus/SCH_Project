@@ -26,12 +26,13 @@ namespace SCH_Project.Pages
         {
             InitializeComponent();
             otdels = Connection.taskManager.Otdel.ToList();
-            this.DataContext = this;
+            LoginTb.Text = AuthorizationPage.user.Login;
+            DataContext = this;
         }
         public User user = new User();
         private void AcceptBt_Click(object sender, RoutedEventArgs e)
         {
-            if (LoginTb.Text.Length != 0)
+            if (LoginTb.Text.Length != 0 && passwordTb.Password.Length != 0)
             {
                 AuthorizationPage.user.Login = LoginTb.Text.Trim().ToLower();
                 AuthorizationPage.user.Password = passwordTb.Password.Trim().ToLower();
