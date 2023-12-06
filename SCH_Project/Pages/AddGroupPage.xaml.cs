@@ -23,21 +23,38 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddGroupPage : System.Windows.Controls.Page
     {
-        public static List<User> users {  get; set; }
-        public static List<Otdel> otdels { get;set;}
+        public static List<User> users { get; set; }
+        public static List<Otdel> otdels { get; set; }
         public static List<User> list = new List<User>();
-        public static List<Team> teams { get;set;}
+        public static List<Team> teams { get; set; }
+
         public AddGroupPage()
         {
             InitializeComponent();
             teams = Connection.taskManager.Team.ToList();
             otdels = Connection.taskManager.Otdel.ToList();
             users = Connection.taskManager.User.ToList();
-            //ListUsers.ItemsSource = users.Where(i => i.ID != (teams.Where(x => x.IdLeader == AuthorizationPage.user.ID) as User));
+            List<User> leaders = new List<User>();
+            foreach (Team team in teams)
+            {
+                if (leaders.Contains(team.User))
+                    leaders.Add(team.User);
+            }
+            foreach (User user in users)
+            {
+                foreach (User leader in leaders)
+                {
+                    if (user == leader)
+                    {
+                        users.Remove(user);
+                    }
+                }
+            }
+            ListUsers.ItemsSource = users;
             DataContext = this;
         }
         public static Team team = new Team();
-        public static UserTeam userTeam = new UserTeam() ;
+        public static UserTeam userTeam = new UserTeam();
         private void CreateBt_Click(object sender, RoutedEventArgs e)
         {
             team.Name = nameTb.Text.Trim();
@@ -54,7 +71,7 @@ namespace SCH_Project.Pages
             }
             NavigationService.Navigate(new MyGroupsPage());
         }
-    
+
         private void departCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
