@@ -24,7 +24,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class AddGroupPage : System.Windows.Controls.Page
     {
-        public static List<User> users = new List<User>();
+        public static List<User> users = Connection.taskManager.User.Where(i => i.ID != AuthorizationPage.user.ID).ToList();
         public static List<Otdel> otdels { get; set; }
         public static List<User> list = new List<User>();
         public static List<Team> teams { get; set; }
@@ -34,7 +34,6 @@ namespace SCH_Project.Pages
             InitializeComponent();
             teams = Connection.taskManager.Team.ToList();
             otdels = Connection.taskManager.Otdel.ToList();
-            users = Connection.taskManager.User.ToList();
             foreach (Team team in teams)
             {
                 if (users.Contains(team.User))
