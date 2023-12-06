@@ -42,41 +42,39 @@ namespace SCH_Project.Pages
         }
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            if (dateDp.SelectedDate >= DateTime.Today)
+            if (dateDp.SelectedDate >= DateTime.Today && UserCb.SelectedItem != null && TypeUser == 0)
             {
-                if (UserCb.SelectedItem != null)
-                {
-                    if (TypeUser == 0)
-                    {
-                        task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
-                        task.Name = nameTb.Text.Trim();
-                        task.Status = false;
-                        task.FinalDate = dateDp.SelectedDate;
-                        task.Description = DiscriptionTb.Text.Trim();
-                        nameTb.Clear();
-                        DiscriptionTb.Clear();
-                        dateDp.SelectedDate = null;
-                    }
-                    else if (TypeUser == 1)
-                    {
-                        task.IdUserTeam = (UserCb.SelectedItem as UserTeam).ID;
-                        task.Name = nameTb.Text.Trim();
-                        task.Status = false;
-                        task.FinalDate = dateDp.SelectedDate;
-                        task.Description = DiscriptionTb.Text.Trim();
-                        nameTb.Clear();
-                        DiscriptionTb.Clear();
-                        dateDp.SelectedDate = null;
-                        UserCb.SelectedItem = null;
-                        TeamCb.SelectedItem = null;
-                        UserCb.Visibility = Visibility.Hidden;
-                        selectUser.Visibility = Visibility.Hidden;
-                    }
-                    MessageTb.Foreground = System.Windows.Media.Brushes.White;
-                    MessageTb.Text = "task added";
-                    Connection.taskManager.Task.Add(task);
-                    Connection.taskManager.SaveChanges();
-                }
+                task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
+                task.Name = nameTb.Text.Trim();
+                task.Status = false;
+                task.FinalDate = dateDp.SelectedDate;
+                task.Description = DiscriptionTb.Text.Trim();
+                nameTb.Clear();
+                DiscriptionTb.Clear();
+                dateDp.SelectedDate = null;
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
+            }
+            else if (dateDp.SelectedDate >= DateTime.Today && TypeUser == 1)
+            {
+                task.IdUserTeam = (UserCb.SelectedItem as UserTeam).ID;
+                task.Name = nameTb.Text.Trim();
+                task.Status = false;
+                task.FinalDate = dateDp.SelectedDate;
+                task.Description = DiscriptionTb.Text.Trim();
+                nameTb.Clear();
+                DiscriptionTb.Clear();
+                dateDp.SelectedDate = null;
+                UserCb.SelectedItem = null;
+                TeamCb.SelectedItem = null;
+                UserCb.Visibility = Visibility.Hidden;
+                selectUser.Visibility = Visibility.Hidden;
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
             }
             else
             {

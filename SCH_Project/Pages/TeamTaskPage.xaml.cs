@@ -48,7 +48,7 @@ namespace SCH_Project.Pages
                 selectedIdTeam = Convert.ToInt32((TeamCbUser.SelectedItem as UserTeam).IdTeam);
             else if(TeamCbLeader.SelectedItem != null)
                 selectedIdTeam = Convert.ToInt32((TeamCbLeader.SelectedItem as Team).ID);
-            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == selectedIdTeam || i.UserTeam.IdTeam == selectedIdTeam).ToList();
+            ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == selectedIdTeam).ToList();
         }
         public static Task selectedTask;
         private void ListTeamTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
