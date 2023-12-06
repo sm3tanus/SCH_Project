@@ -31,9 +31,6 @@ namespace SCH_Project.Pages
             {
                 TeamCbUser.Visibility = Visibility.Visible;
             }
-
-
-
             MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
         }
