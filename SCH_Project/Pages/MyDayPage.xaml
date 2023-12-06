@@ -48,14 +48,13 @@
                   Margin="10 0 0 0"
                   FontSize="14" 
                   Name="DateTaskTb"
-                  Foreground="White"
                   BorderBrush="#121923"
                   materialDesign:HintAssist.Hint="Pick Date"
                   Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
         <Button
                   Grid.Row="1" 
                   Grid.Column="1"
-                    VerticalAlignment="Bottom"
+                   VerticalAlignment="Bottom"
                     HorizontalAlignment="Left"
                    Margin="30 0 0 0 "
                     Name="View"

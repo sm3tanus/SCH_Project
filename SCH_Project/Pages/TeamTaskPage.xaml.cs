@@ -83,15 +83,17 @@ namespace SCH_Project.Pages
 
         private void ListSubtask_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            subtasks = Connection.taskManager.Subtask.ToList();
             selectedTask = ListTeamTask.SelectedItem as Task;
             var task = ListSubtask.SelectedItem as Dbconnection.Subtask;
             task.Status = !(task.Status);
             Connection.taskManager.Subtask.AddOrUpdate(task);
             Connection.taskManager.SaveChanges();
             ListSubtask.Items.Refresh();
-            if (subtasks.Where(i => i.Status == true).Count() == ListSubtask.Items.Count)
+            if (subtasks.Where(i => i.Status == true && i.IdTask == selectedTask.ID).Count() == ListSubtask.Items.Count)
             {
                 selectedTask.Status = true;
+                Connection.taskManager.Task.AddOrUpdate(selectedTask);
                 Connection.taskManager.SaveChanges();
                 ListTeamTask.Items.Refresh();
             }
