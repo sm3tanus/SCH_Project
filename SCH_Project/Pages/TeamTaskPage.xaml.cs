@@ -1,5 +1,6 @@
 ﻿using SCH_Project.Dbconnection;
 using System;
+using System.Collections.Generic;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Windows;
@@ -12,6 +13,7 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class TeamTaskPage : Page
     {
+        public static List<Subtask> subtasks = new List<Subtask>();
         public TeamTaskPage()
         {
             InitializeComponent();
@@ -48,10 +50,10 @@ namespace SCH_Project.Pages
                 selectedIdTeam = Convert.ToInt32((TeamCbLeader.SelectedItem as Team).ID);
             ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == selectedIdTeam || i.UserTeam.IdTeam == selectedIdTeam).ToList();
         }
-
+        public static Task selectedTask;
         private void ListTeamTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Task selectedTask = ListTeamTask.SelectedItem as Task;
+            selectedTask = ListTeamTask.SelectedItem as Task;
             ListSubtask.ItemsSource = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
             if (ListSubtask.Items.Count == 0)
             {
@@ -62,16 +64,17 @@ namespace SCH_Project.Pages
                 ListTeamTask.Items.Refresh();
             }
         }
-
+       
         private void AddSubtaskBt_Click(object sender, RoutedEventArgs e)
         {
-            Task selectedTask = ListTeamTask.SelectedItem as Task;
+            selectedTask = ListTeamTask.SelectedItem as Task;
             Subtask subtask = new Subtask();
             subtask.IdTask = selectedTask.ID;
             subtask.Name = SubtaskNameTb.Text;
             Connection.taskManager.Subtask.Add(subtask);
             Connection.taskManager.SaveChanges();
-            ListSubtask.ItemsSource = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
+            subtasks = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
+            ListSubtask.ItemsSource = subtasks;
         }
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
@@ -80,11 +83,18 @@ namespace SCH_Project.Pages
 
         private void ListSubtask_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            selectedTask = ListTeamTask.SelectedItem as Task;
             var task = ListSubtask.SelectedItem as Dbconnection.Subtask;
             task.Status = !(task.Status);
             Connection.taskManager.Subtask.AddOrUpdate(task);
             Connection.taskManager.SaveChanges();
             ListSubtask.Items.Refresh();
+            if (subtasks.Where(i => i.Status == true).Count() == ListSubtask.Items.Count)
+            {
+                selectedTask.Status = true;
+                Connection.taskManager.SaveChanges();
+                ListTeamTask.Items.Refresh();
+            }
         }
     }
 }
