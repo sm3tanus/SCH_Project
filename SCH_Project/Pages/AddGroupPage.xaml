@@ -110,7 +110,7 @@
         Grid.Row="4"
         Grid.RowSpan="2"
         Name="ListUsers"
-        SelectionChanged="ListUsers_SelectionChanged_1">
+        SelectionChanged="ListUsers_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>

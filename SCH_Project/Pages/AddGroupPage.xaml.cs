@@ -68,10 +68,12 @@ namespace SCH_Project.Pages
             ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
         }
 
-        private void ListUsers_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var currentUser = (ListUsers.SelectedItem as User);
             list.Add(currentUser);
+            users.Remove(currentUser);
+            ListUsers.Items.Refresh();
         }
     }
 }
