@@ -88,14 +88,9 @@ namespace SCH_Project.Pages
 
         private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            try
-            {
                 UserCb.ItemsSource = userTeams.Where(i => i.IdTeam != 1 && i.IdTeam == (TeamCb.SelectedItem as Team).ID);
                 selectUser.Visibility = Visibility.Visible;
                 UserCb.Visibility = Visibility.Visible;
-            }
-            catch { }
-            
         }
     }
 }

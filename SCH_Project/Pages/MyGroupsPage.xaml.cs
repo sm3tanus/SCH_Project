@@ -28,28 +28,43 @@ namespace SCH_Project.Pages
         public MyGroupsPage()
         {
             InitializeComponent();
-            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
+            try
             {
-                ListGroupLeader.ItemsSource = Connection.taskManager.Team.Where(i => i.IdLeader == AuthorizationPage.user.ID && i.ID != 1).ToList();
-                GroupCount = ListGroupLeader.Items.Count.ToString();
+                if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
+                {
+                    ListGroupLeader.ItemsSource = Connection.taskManager.Team.Where(i => i.IdLeader == AuthorizationPage.user.ID && i.ID != 1).ToList();
+                    GroupCount = ListGroupLeader.Items.Count.ToString();
+                }
+                else
+                {
+                    ListGroupUser.Visibility = Visibility.Visible;
+                    ListGroupUser.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+                    GroupCount = ListGroupUser.Items.Count.ToString();
+                }
+                if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).Count() == 0)
+                {
+                    SubmitAdd.Visibility = Visibility.Visible;
+                }
+                DataContext = this;
             }
-            else
+            catch (Exception ex)
             {
-                ListGroupUser.Visibility = Visibility.Visible;
-                ListGroupUser.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
-                GroupCount = ListGroupUser.Items.Count.ToString();
+                throw ex;
             }
-            if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).Count() == 0)
-            {
-                SubmitAdd.Visibility = Visibility.Visible;
-            }
-            DataContext = this;
         }
 
         private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            try
+            {
                 currentTeam = (ListGroupLeader.SelectedItem as Team);
                 NavigationService.Navigate(new MyGroupsUsersPage());
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
 
         private void SubmitAdd_Click(object sender, RoutedEventArgs e)

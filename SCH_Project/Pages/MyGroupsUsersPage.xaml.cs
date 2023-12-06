@@ -26,10 +26,17 @@ namespace SCH_Project.Pages
         public MyGroupsUsersPage()
         {
             InitializeComponent();
-            userTeams = Connection.taskManager.UserTeam.ToList();
-            ListUsers.ItemsSource = userTeams.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID);
-            NameTeamTb.Text = MyGroupsPage.currentTeam.Name;
-            DataContext = this;
+            try
+            {
+                userTeams = Connection.taskManager.UserTeam.ToList();
+                ListUsers.ItemsSource = userTeams.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID);
+                NameTeamTb.Text = MyGroupsPage.currentTeam.Name;
+                DataContext = this;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void ViewApplicateBt_Click(object sender, RoutedEventArgs e)
@@ -39,8 +46,16 @@ namespace SCH_Project.Pages
 
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            currentUserTeam = ListUsers.SelectedItem as UserTeam;
-            NavigationService.Navigate(new AddTeamTaskPage(0));
+            try
+            {
+                currentUserTeam = ListUsers.SelectedItem as UserTeam;
+                NavigationService.Navigate(new AddTeamTaskPage(0));
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
     }
 }

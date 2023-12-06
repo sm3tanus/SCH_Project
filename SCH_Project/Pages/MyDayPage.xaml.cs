@@ -27,9 +27,16 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1).ToList();
-            MyDayTbValue = ListTask.Items.Count.ToString();
-            DataContext = this;
+            try
+            {
+                ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1).ToList();
+                MyDayTbValue = ListTask.Items.Count.ToString();
+                DataContext = this;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -48,7 +55,7 @@ namespace SCH_Project.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             } 
         }
 
@@ -60,7 +67,7 @@ namespace SCH_Project.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
             
         }

@@ -32,17 +32,24 @@ namespace SCH_Project.Pages
         public AddGroupPage()
         {
             InitializeComponent();
-            teams = Connection.taskManager.Team.ToList();
-            otdels = Connection.taskManager.Otdel.ToList();
-            foreach (Team team in teams)
+            try
             {
-                if (users.Contains(team.User))
+                teams = Connection.taskManager.Team.ToList();
+                otdels = Connection.taskManager.Otdel.ToList();
+                foreach (Team team in teams)
                 {
-                    users.Remove(team.User);
-                }   
+                    if (users.Contains(team.User))
+                    {
+                        users.Remove(team.User);
+                    }
+                }
+                ListUsers.ItemsSource = users;
+                DataContext = this;
             }
-            ListUsers.ItemsSource = users;
-            DataContext = this;
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
         public static Team team = new Team();
         public static UserTeam userTeam = new UserTeam();
@@ -64,10 +71,10 @@ namespace SCH_Project.Pages
                 }
                 NavigationService.Navigate(new MyGroupsPage());
             }
-            catch(Exception ex)
-            { 
-                MessageBox.Show(ex.Message);
-            } 
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         private void departCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -78,7 +85,7 @@ namespace SCH_Project.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
         }
 
@@ -93,7 +100,7 @@ namespace SCH_Project.Pages
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw ex;
             }
 
         }
