@@ -23,6 +23,8 @@ namespace SCH_Project.Pages
     public partial class AddTeamTaskPage : Page
     {
         public static List<UserTeam> userTeams {  get; set; }
+
+        public static Dbconnection.Task task = new Dbconnection.Task();
         public AddTeamTaskPage(int value)
         {
             InitializeComponent();
@@ -59,7 +61,7 @@ namespace SCH_Project.Pages
             DataContext = this;
             
         }
-        public static Dbconnection.Task task = new Dbconnection.Task();
+
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
