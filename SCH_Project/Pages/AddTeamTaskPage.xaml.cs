@@ -23,6 +23,7 @@ namespace SCH_Project.Pages
     public partial class AddTeamTaskPage : Page
     {
         public static List<UserTeam> userTeams {  get; set; }
+        public static List<Team> teams = Connection.taskManager.Team.ToList();
 
         public static Dbconnection.Task task = new Dbconnection.Task();
         public AddTeamTaskPage(int value)
@@ -33,30 +34,42 @@ namespace SCH_Project.Pages
                 userTeams = Connection.taskManager.UserTeam.ToList();
                 selectGroup.Visibility = Visibility.Visible;
                 TeamCb.Visibility = Visibility.Visible;
-                TeamCb.ItemsSource = userTeams.Where(i => i.IdTeam != 1);
+                TeamCb.ItemsSource = teams.Where(i => i.ID != 1);
+                task.Name = nameTb.Text.Trim();
+                task.FinalDate = dateDp.SelectedDate;
                 if (TeamCb.SelectedItem != null)
                 {
                     selectUser.Visibility = Visibility.Visible;
                     UserCb.Visibility = Visibility.Visible;
                     UserCb.ItemsSource = userTeams.Where(i => i.IdTeam != 1 && i.IdTeam == (TeamCb.SelectedItem as Team).ID);
+                    task.Description = DiscriptionTb.Text.Trim();
+                    task.IdUserTeam = (UserCb.SelectedItem as UserTeam).ID;
                 }
             }
-            else
+            else if (value == 0) 
             {
-                    task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
-                    task.Name = nameTb.Text.Trim();
-                    task.Status = false;
-                    task.FinalDate = dateDp.SelectedDate;
-                    task.Description = DiscriptionTb.Text.Trim();
-                    MessageTb.Foreground = System.Windows.Media.Brushes.White;
-                    MessageTb.Text = "task added";
+                task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
+                task.Name = nameTb.Text.Trim();
+                task.Status = false;
+                task.FinalDate = dateDp.SelectedDate;
+                task.Description = DiscriptionTb.Text.Trim();
             }
             DataContext = this; 
         }
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
-            Connection.taskManager.Task.Add(task);
-            Connection.taskManager.SaveChanges();
+            if (dateDp.SelectedDate >= DateTime.Today)
+            {
+                MessageTb.Foreground = System.Windows.Media.Brushes.White;
+                MessageTb.Text = "task added";
+                Connection.taskManager.Task.Add(task);
+                Connection.taskManager.SaveChanges();
+            }
+            else
+            {
+                MessageTb.Text = "invalid data";
+            }
+
         }
     }
 }
