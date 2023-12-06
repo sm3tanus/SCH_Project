@@ -78,7 +78,7 @@ namespace SCH_Project.Pages
         }
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new AddTeamTaskPage(0));
+            NavigationService.Navigate(new AddTeamTaskPage(1));
         }
 
         private void ListSubtask_SelectionChanged(object sender, SelectionChangedEventArgs e)
