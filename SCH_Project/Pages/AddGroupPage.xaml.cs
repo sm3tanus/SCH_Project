@@ -48,32 +48,54 @@ namespace SCH_Project.Pages
         public static UserTeam userTeam = new UserTeam();
         private void CreateBt_Click(object sender, RoutedEventArgs e)
         {
-            team.Name = nameTb.Text.Trim();
-            team.IdLeader = AuthorizationPage.user.ID;
-            Connection.taskManager.Team.Add(team);
-            Connection.taskManager.SaveChanges();
-            teams = Connection.taskManager.Team.ToList();
-            foreach (User user in list)
+            try
             {
-                userTeam.IdUser = user.ID;
-                userTeam.IdTeam = teams.Last().ID;
-                Connection.taskManager.UserTeam.Add(userTeam);
+                team.Name = nameTb.Text.Trim();
+                team.IdLeader = AuthorizationPage.user.ID;
+                Connection.taskManager.Team.Add(team);
                 Connection.taskManager.SaveChanges();
+                teams = Connection.taskManager.Team.ToList();
+                foreach (User user in list)
+                {
+                    userTeam.IdUser = user.ID;
+                    userTeam.IdTeam = teams.Last().ID;
+                    Connection.taskManager.UserTeam.Add(userTeam);
+                    Connection.taskManager.SaveChanges();
+                }
+                NavigationService.Navigate(new MyGroupsPage());
             }
-            NavigationService.Navigate(new MyGroupsPage());
+            catch(Exception ex)
+            { 
+                MessageBox.Show(ex.Message);
+            } 
         }
 
         private void departCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
+            try
+            {
+                ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var currentUser = (ListUsers.SelectedItem as User);
-            list.Add(currentUser);
-            users.Remove(currentUser);
-            ListUsers.Items.Refresh();
+            try
+            {
+                var currentUser = (ListUsers.SelectedItem as User);
+                list.Add(currentUser);
+                users.Remove(currentUser);
+                ListUsers.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }
