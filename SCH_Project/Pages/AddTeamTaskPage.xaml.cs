@@ -43,8 +43,6 @@ namespace SCH_Project.Pages
             }
             else
             {
-                if (dateDp.SelectedDate >= DateTime.Today)
-                {
                     task.IdUserTeam = MyGroupsUsersPage.currentUserTeam.ID;
                     task.Name = nameTb.Text.Trim();
                     task.Status = false;
@@ -52,17 +50,9 @@ namespace SCH_Project.Pages
                     task.Description = DiscriptionTb.Text.Trim();
                     MessageTb.Foreground = System.Windows.Media.Brushes.White;
                     MessageTb.Text = "task added";
-                }
-                else
-                {
-                    MessageTb.Text = "invalid data";
-                }
             }
-            DataContext = this;
-            
+            DataContext = this; 
         }
-
-
         private void AddBt_Click(object sender, RoutedEventArgs e)
         {
             Connection.taskManager.Task.Add(task);

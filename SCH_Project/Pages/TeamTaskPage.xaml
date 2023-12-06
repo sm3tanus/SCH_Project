@@ -125,7 +125,7 @@
     Width="600"
     Height="400"
     Name="ListSubtask"
-    Margin="0 0 35 0">
+    Margin="0 0 35 0" SelectionChanged="ListSubtask_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridView.Columns>
@@ -264,6 +264,7 @@
             HorizontalAlignment="Right"
             Width="400"
             Name="AddTaskBt"
+            Visibility="Collapsed"
             Height="80"
             Margin="0,37,120,37"    
             materialDesign:ButtonAssist.CornerRadius="40"

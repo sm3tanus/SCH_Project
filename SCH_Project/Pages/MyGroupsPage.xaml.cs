@@ -46,7 +46,7 @@ namespace SCH_Project.Pages
 
         private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-                currentTeam = (ListGroupLeader.SelectedItem as UserTeam).Team;
+                currentTeam = (ListGroupLeader.SelectedItem as Team);
                 NavigationService.Navigate(new MyGroupsUsersPage());
         }
 

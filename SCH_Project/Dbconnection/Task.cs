@@ -22,7 +22,7 @@ namespace SCH_Project.Dbconnection
     
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
         public Nullable<System.DateTime> FinalDate { get; set; }
         public string Description { get; set; }
         public Nullable<int> IdUserTeam { get; set; }

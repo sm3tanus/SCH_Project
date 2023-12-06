@@ -1,5 +1,6 @@
 ﻿using SCH_Project.Dbconnection;
 using System;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,11 +25,14 @@ namespace SCH_Project.Pages
             if (Connection.taskManager.UserTeam.Where(i => i.Team.IdLeader == AuthorizationPage.user.ID).Count() != 0)
             {
                 TeamCbLeader.Visibility = Visibility.Visible;
+                AddTaskBt.Visibility = Visibility.Visible;
             }
             else
             {
                 TeamCbUser.Visibility = Visibility.Visible;
             }
+
+
 
             MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
             DataContext = this;
@@ -52,6 +56,14 @@ namespace SCH_Project.Pages
         {
             Task selectedTask = ListTeamTask.SelectedItem as Task;
             ListSubtask.ItemsSource = Connection.taskManager.Subtask.Where(i => i.IdTask == selectedTask.ID).ToList();
+            if (ListSubtask.Items.Count == 0)
+            {
+                var task = ListTeamTask.SelectedItem as Dbconnection.Task;
+                task.Status = !(task.Status);
+                Connection.taskManager.Task.AddOrUpdate(task);
+                Connection.taskManager.SaveChanges();
+                ListTeamTask.Items.Refresh();
+            }
         }
 
         private void AddSubtaskBt_Click(object sender, RoutedEventArgs e)
@@ -67,6 +79,15 @@ namespace SCH_Project.Pages
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new AddTeamTaskPage(0));
+        }
+
+        private void ListSubtask_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var task = ListSubtask.SelectedItem as Dbconnection.Subtask;
+            task.Status = !(task.Status);
+            Connection.taskManager.Subtask.AddOrUpdate(task);
+            Connection.taskManager.SaveChanges();
+            ListSubtask.Items.Refresh();
         }
     }
 }

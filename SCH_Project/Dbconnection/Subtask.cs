@@ -16,7 +16,7 @@ namespace SCH_Project.Dbconnection
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public Nullable<bool> Status { get; set; }
+        public bool Status { get; set; }
         public Nullable<int> IdTask { get; set; }
     
         public virtual Task Task { get; set; }

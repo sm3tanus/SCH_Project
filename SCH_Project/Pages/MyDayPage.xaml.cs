@@ -41,6 +41,7 @@ namespace SCH_Project.Pages
             task.Status = !(task.Status);
             Connection.taskManager.Task.AddOrUpdate(task);
             Connection.taskManager.SaveChanges();
+            ListTask.Items.Refresh();
         }
     }
 }

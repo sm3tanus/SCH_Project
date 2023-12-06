@@ -30,10 +30,10 @@ namespace SCH_Project.Pages
         public AddGroupPage()
         {
             InitializeComponent();
-            
+            teams = Connection.taskManager.Team.ToList();
             otdels = Connection.taskManager.Otdel.ToList();
             users = Connection.taskManager.User.ToList();
-            ListUsers.ItemsSource = users;
+            //ListUsers.ItemsSource = users.Where(i => i.ID != (teams.Where(x => x.IdLeader == AuthorizationPage.user.ID) as User));
             DataContext = this;
         }
         public static Team team = new Team();
@@ -51,7 +51,8 @@ namespace SCH_Project.Pages
                 userTeam.IdTeam = teams.Last().ID;
                 Connection.taskManager.UserTeam.Add(userTeam);
                 Connection.taskManager.SaveChanges();
-            }     
+            }
+            NavigationService.Navigate(new MyGroupsPage());
         }
     
         private void departCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
