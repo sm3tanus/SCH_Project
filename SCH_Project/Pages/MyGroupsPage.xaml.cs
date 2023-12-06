@@ -31,11 +31,13 @@ namespace SCH_Project.Pages
             if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).ToList().Count >= 1)
             {
                 ListGroupLeader.ItemsSource = Connection.taskManager.Team.Where(i => i.IdLeader == AuthorizationPage.user.ID && i.ID != 1).ToList();
+                GroupCount = ListGroupLeader.Items.Count.ToString();
             }
             else
             {
                 ListGroupUser.Visibility = Visibility.Visible;
                 ListGroupUser.ItemsSource = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID && i.IdTeam != 1).ToList();
+                GroupCount = ListGroupUser.Items.Count.ToString();
             }
             if (teams.Where(i => i.IdLeader == AuthorizationPage.user.ID).Count() == 0)
             {

@@ -24,35 +24,27 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class SubmitAnApplicationPage : Page
     {
-        public static List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i => i.IdTeam != 1).ToList();
         public SubmitAnApplicationPage()
         {
             InitializeComponent();
-            List<Team> sortTeam = new List<Team>(); 
-            List<Team> teams = new List<Team>();
+            List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i => i.IdUser == AuthorizationPage.user.ID).ToList();
+            List<Team> teams = Connection.taskManager.Team.Where(i => i.ID != 1).ToList();
             List<Dbconnection.Application> applications = Connection.taskManager.Application.ToList();
-            foreach (UserTeam team in userTeams)
+            foreach (UserTeam userTeam in userTeams)
             {
-                    if (team.IdUser == AuthorizationPage.user.ID && !teams.Contains(team.Team))
-                    {
-                        teams.Add(team.Team);
-                    }
+                if (teams.Contains(userTeam.Team))
+                {
+                    teams.Remove(userTeam.Team);
+                }
             }
             foreach (Dbconnection.Application application in applications)
             {
-                if (!teams.Contains(application.Team))
+                if (teams.Contains(application.Team))
                 {
-                    teams.Add(application.Team);
+                    teams.Remove(application.Team);
                 }
             }
-            foreach (UserTeam teamItem in userTeams)
-            {
-                if (!(teams.Contains(teamItem.Team)))
-                {
-                    sortTeam.Add(teamItem.Team);
-                }
-            }
-            ListApplication.ItemsSource = sortTeam;
+            ListApplication.ItemsSource = teams;
             DataContext = this;
         }
 
