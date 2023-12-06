@@ -38,16 +38,31 @@ namespace SCH_Project.Pages
 
         private void ListTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var task = ListTask.SelectedItem as Dbconnection.Task;
-            task.Status = !(task.Status);
-            Connection.taskManager.Task.AddOrUpdate(task);
-            Connection.taskManager.SaveChanges();
-            ListTask.Items.Refresh();
+            try
+            {
+                var task = ListTask.SelectedItem as Dbconnection.Task;
+                task.Status = !(task.Status);
+                Connection.taskManager.Task.AddOrUpdate(task);
+                Connection.taskManager.SaveChanges();
+                ListTask.Items.Refresh();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            } 
         }
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-            ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1 && i.FinalDate == DateTaskTb.SelectedDate.Value).ToList();
+            try
+            {
+                ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1 && i.FinalDate == DateTaskTb.SelectedDate.Value).ToList();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
     }
 }

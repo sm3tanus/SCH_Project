@@ -34,40 +34,47 @@ namespace SCH_Project.Pages
                     MessageBoxTb.Text = "error";
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                throw;
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void Regbt_Click(object sender, RoutedEventArgs e)
         {
-            User newUser = new User();
-            UserTeam userTeam = new UserTeam();
-            if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length !=0)
+            try
             {
-                if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
+                User newUser = new User();
+                UserTeam userTeam = new UserTeam();
+                if (LoginReg.Text.Length != 0 && PasswordReg.Password.Length != 0)
                 {
-                    newUser.Login = LoginReg.Text.Trim().ToLower();
-                    newUser.Password = PasswordReg.Password.Trim().ToLower();
-                    Connection.taskManager.User.Add(newUser);
-                    userTeam.IdUser = newUser.ID;
-                    userTeam.IdTeam = 1;
-                    Connection.taskManager.UserTeam.Add(userTeam);
-                    Connection.taskManager.SaveChanges();
-                    MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
-                    MessageBoxTb.Text = "welcome";
+                    if (PasswordReg.Password.Trim() == PasswordConfirmReg.Password.Trim())
+                    {
+                        newUser.Login = LoginReg.Text.Trim().ToLower();
+                        newUser.Password = PasswordReg.Password.Trim().ToLower();
+                        Connection.taskManager.User.Add(newUser);
+                        userTeam.IdUser = newUser.ID;
+                        userTeam.IdTeam = 1;
+                        Connection.taskManager.UserTeam.Add(userTeam);
+                        Connection.taskManager.SaveChanges();
+                        MessageBoxTb.Foreground = System.Windows.Media.Brushes.White;
+                        MessageBoxTb.Text = "welcome";
+                    }
+                    else
+                    {
+                        LoginReg.Text = " ";
+                        PasswordReg.Password = " ";
+                        MessageBoxRegTb.Text = "incorrect password";
+                    }
                 }
                 else
                 {
-                    LoginReg.Text = " ";
-                    PasswordReg.Password = " ";
-                    MessageBoxRegTb.Text = "incorrect password";
+                    MessageBoxTb.Text = "error";
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBoxTb.Text = "error";
+                MessageBox.Show(ex.Message);
             }
         }
     }
