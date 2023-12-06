@@ -22,10 +22,13 @@ namespace SCH_Project.Pages
     /// </summary>
     public partial class MyDayPage : Page
     {
+        public static string MyDayTbValue;
         public static List<Dbconnection.Task> tasks { get; set; }
         public MyDayPage()
         {
             InitializeComponent();
+            ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1).ToList();
+            MyDayTbValue = ListTask.Items.Count.ToString();
             DataContext = this;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
