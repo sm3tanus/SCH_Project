@@ -47,9 +47,7 @@ namespace SCH_Project.Pages
                 DataContext = this;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
         public static Team team = new Team();
         public static UserTeam userTeam = new UserTeam();
@@ -72,9 +70,7 @@ namespace SCH_Project.Pages
                 NavigationService.Navigate(new MyGroupsPage());
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void departCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -84,9 +80,7 @@ namespace SCH_Project.Pages
                 ListUsers.ItemsSource = users.Where(i => i.IdOtdel == (departCb.SelectedItem as Otdel).ID).ToList();
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void ListUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -99,9 +93,7 @@ namespace SCH_Project.Pages
                 ListUsers.Items.Refresh();
             }
             catch
-            {
-                throw;
-            }
+            { }
 
         }
     }

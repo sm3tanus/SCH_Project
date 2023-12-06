@@ -48,9 +48,7 @@ namespace SCH_Project.Pages
                 }
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void OtdelCb_SelectionChanged(object sender, SelectionChangedEventArgs e)

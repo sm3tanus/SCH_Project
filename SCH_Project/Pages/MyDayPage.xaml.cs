@@ -34,9 +34,7 @@ namespace SCH_Project.Pages
                 DataContext = this;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -54,9 +52,7 @@ namespace SCH_Project.Pages
                 ListTask.Items.Refresh();
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void View_Click(object sender, RoutedEventArgs e)
@@ -65,11 +61,9 @@ namespace SCH_Project.Pages
             {
                 ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1 && i.FinalDate == DateTaskTb.SelectedDate.Value).ToList();
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-            
+            catch
+            { }
+
         }
     }
 }

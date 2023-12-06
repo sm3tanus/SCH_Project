@@ -34,10 +34,8 @@ namespace SCH_Project.Pages
                     MessageBoxTb.Text = "error";
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch
+            { }
         }
 
         private void Regbt_Click(object sender, RoutedEventArgs e)
@@ -72,10 +70,8 @@ namespace SCH_Project.Pages
                     MessageBoxTb.Text = "error";
                 }
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
+            catch
+            { }
         }
     }
 }

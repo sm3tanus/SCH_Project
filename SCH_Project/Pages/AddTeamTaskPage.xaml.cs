@@ -85,11 +85,9 @@ namespace SCH_Project.Pages
                     MessageTb.Text = "invalid data";
                 }
             }
-            
+
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void TeamCb_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -101,9 +99,7 @@ namespace SCH_Project.Pages
                 UserCb.Visibility = Visibility.Visible;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
     }
 }

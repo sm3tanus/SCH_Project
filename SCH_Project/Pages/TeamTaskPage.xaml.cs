@@ -37,11 +37,9 @@ namespace SCH_Project.Pages
                 MainMenuPage.CountTeamTasks = ListTeamTask.Items.Count.ToString();
                 DataContext = this;
             }
-            
+
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
@@ -60,9 +58,7 @@ namespace SCH_Project.Pages
                 ListTeamTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam != 1 && i.UserTeam.IdTeam == selectedIdTeam).ToList();
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
         public static Task selectedTask;
         private void ListTeamTask_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,11 +75,9 @@ namespace SCH_Project.Pages
                     Connection.taskManager.SaveChanges();
                     ListTeamTask.Items.Refresh();
                 }
-            }  
-            catch
-            {
-                throw;
             }
+            catch
+            { }
         }
        
         private void AddSubtaskBt_Click(object sender, RoutedEventArgs e)
@@ -103,11 +97,9 @@ namespace SCH_Project.Pages
                 Connection.taskManager.SaveChanges();
                 ListTeamTask.Items.Refresh();
             }
-            
+
             catch
-            {
-                throw;
-            }
+            { }
         }
         private void AddTaskBt_Click(object sender, RoutedEventArgs e)
         {
@@ -134,9 +126,7 @@ namespace SCH_Project.Pages
             }
             
             catch
-            {
-                throw;
-            }
+            { }
         }
     }
 }

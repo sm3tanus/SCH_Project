@@ -48,9 +48,7 @@ namespace SCH_Project.Pages
                 DataContext = this;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void ListGroup_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -61,9 +59,7 @@ namespace SCH_Project.Pages
                 NavigationService.Navigate(new MyGroupsUsersPage());
             }
             catch
-            {
-                throw;
-            }
+            { }
 
         }
 

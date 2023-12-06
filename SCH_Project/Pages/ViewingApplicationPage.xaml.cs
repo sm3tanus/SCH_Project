@@ -41,11 +41,9 @@ namespace SCH_Project.Pages
                 Connection.taskManager.SaveChanges();
                 ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
                 NavigationService.Navigate(new MyGroupsUsersPage());
-            } 
-            catch
-            {
-                throw;
             }
+            catch
+            { }
         }
         private void RejectBt_Click(object sender, RoutedEventArgs e)
         {
@@ -55,11 +53,9 @@ namespace SCH_Project.Pages
                 Connection.taskManager.SaveChanges();
                 ListApplication.ItemsSource = Connection.taskManager.Application.Where(i => i.IdTeam == MyGroupsPage.currentTeam.ID).ToList();
                 NavigationService.Navigate(new MyGroupsUsersPage());
-            }   
-            catch
-            {
-                throw;
             }
+            catch
+            { }
         }
         private void ListApplication_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

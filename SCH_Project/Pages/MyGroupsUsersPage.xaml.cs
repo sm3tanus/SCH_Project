@@ -34,9 +34,7 @@ namespace SCH_Project.Pages
                 DataContext = this;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void ViewApplicateBt_Click(object sender, RoutedEventArgs e)
@@ -52,9 +50,7 @@ namespace SCH_Project.Pages
                 NavigationService.Navigate(new AddTeamTaskPage(0));
             }
             catch
-            {
-                throw;
-            }
+            { }
 
         }
     }

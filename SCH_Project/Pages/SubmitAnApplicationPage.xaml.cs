@@ -50,9 +50,7 @@ namespace SCH_Project.Pages
                 DataContext = this;
             }
             catch
-            {
-                throw;
-            }
+            { }
         }
 
         private void AddBt_Click(object sender, RoutedEventArgs e)
@@ -66,11 +64,9 @@ namespace SCH_Project.Pages
                 Connection.taskManager.SaveChanges();
                 MessageTb.Text = "successfully";
                 ListApplication.Items.Refresh();
-            } 
-            catch
-            {
-                throw;
             }
+            catch
+            { }
         }
     }
 }

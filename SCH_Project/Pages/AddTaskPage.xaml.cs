@@ -52,9 +52,7 @@ namespace SCH_Project.Pages
                 }
             }
             catch
-            {
-                throw;
-            }
+            { }
 
         }
     }
