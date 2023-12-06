@@ -26,8 +26,6 @@ namespace SCH_Project.Pages
         public MyDayPage()
         {
             InitializeComponent();
-            tasks = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1).ToList();
-            MainMenuPage.MyDayTbValue = tasks.Count.ToString();
             DataContext = this;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -42,6 +40,11 @@ namespace SCH_Project.Pages
             Connection.taskManager.Task.AddOrUpdate(task);
             Connection.taskManager.SaveChanges();
             ListTask.Items.Refresh();
+        }
+
+        private void View_Click(object sender, RoutedEventArgs e)
+        {
+            ListTask.ItemsSource = Connection.taskManager.Task.Where(i => i.UserTeam.IdUser == AuthorizationPage.user.ID && i.UserTeam.IdTeam == 1 && i.FinalDate == DateTaskTb.SelectedDate.Value).ToList();
         }
     }
 }
