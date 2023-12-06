@@ -35,7 +35,16 @@
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" VerticalAlignment="Center" FontSize="100" Margin="10 0 0 50">Submit an application</TextBlock>
 
         <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Bottom" FontSize="40" Margin="10 0 0 0">Create your application</TextBlock>
-
+        <TextBlock Grid.Column="1"
+            Grid.Row="5"
+            Grid.ColumnSpan="2"
+            Width="200"
+            Height="40"
+            VerticalAlignment="Bottom"
+            Foreground="white"
+            Name="MessageTb"
+            FontSize="22"
+            TextAlignment="Center"/>
 
 
 
