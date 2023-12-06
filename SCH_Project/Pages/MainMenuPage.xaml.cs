@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SCH_Project.Dbconnection;
 
 namespace SCH_Project.Pages
 {
@@ -25,10 +26,12 @@ namespace SCH_Project.Pages
         public MainMenuPage()
         {
             InitializeComponent();
+            List<UserTeam> userTeams = Connection.taskManager.UserTeam.Where(i=>i.IdTeam != 1 && i.IdUser==AuthorizationPage.user.ID).ToList();
+            if(userTeams.Count == 0 )
+            {
+                AddGroupBt.Visibility = Visibility.Visible;
+            }
             loginTb.Text = AuthorizationPage.user.Login;
-            MainMenuFrame.Navigate(new MyDayPage());
-            MainMenuFrame.Navigate(new MyGroupsPage());
-            MainMenuFrame.Navigate(new TeamTaskPage());
             this.DataContext = this;
         }
 

@@ -224,6 +224,7 @@
         HorizontalContentAlignment="Left"
         Foreground="White"
         Name="AddGroupBt"
+        Visibility="Collapsed"
         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource AncestorType={x:Type Window}, Mode=FindAncestor}}"
         Style="{StaticResource MaterialDesignFlatLightButton}"
         ToolTip="MaterialDesignFlatButton" 
