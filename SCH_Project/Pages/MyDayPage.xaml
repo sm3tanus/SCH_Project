@@ -45,8 +45,11 @@
                   Grid.ColumnSpan="2" 
                   HorizontalAlignment="Left"
                   VerticalAlignment="Bottom"
-                  FontSize="25" 
+                  Margin="10 0 0 0"
+                  FontSize="14" 
                   Name="DateTaskTb"
+                  Foreground="White"
+                  BorderBrush="#121923"
                   materialDesign:HintAssist.Hint="Pick Date"
                   Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
         <Button
