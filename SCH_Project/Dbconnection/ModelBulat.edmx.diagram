@@ -7,7 +7,7 @@
       <Diagram DiagramId="d11a7ff70a454dafb755edac4009774f" Name="Diagram1">
         <EntityTypeShape EntityType="TaskManagerModel.sysdiagrams" PointX="0.75" PointY="7.5" Width="1.5" />
         <EntityTypeShape EntityType="TaskManagerModel.Application" Width="1.5" PointX="7.5" PointY="4" />
-        <EntityTypeShape EntityType="TaskManagerModel.Otdel" Width="1.5" PointX="0.75" PointY="2.875" />
+        <EntityTypeShape EntityType="TaskManagerModel.Otdel" Width="1.5" PointX="0.75" PointY="3" />
         <EntityTypeShape EntityType="TaskManagerModel.Subtask" Width="1.5" PointX="12" PointY="7" />
         <EntityTypeShape EntityType="TaskManagerModel.Task" Width="1.5" PointX="9.75" PointY="6.75" />
         <EntityTypeShape EntityType="TaskManagerModel.Team" Width="1.5" PointX="5.25" PointY="5.375" />
