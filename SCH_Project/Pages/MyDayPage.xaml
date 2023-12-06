@@ -37,38 +37,46 @@
                    Grid.Column="0" Grid.ColumnSpan="2"
                    VerticalAlignment="Center" FontSize="100"
                    Margin="10 0 0 50">My Day</TextBlock>
-        
+
+
+        <TextBlock Style="{StaticResource CustomFont}" Foreground="White" Grid.Row="1"
+                   Grid.Column="0" Grid.ColumnSpan="2" 
+                   VerticalAlignment="Bottom" FontSize="40"
+                   Margin="10 0 0 0">Tuesday, December 5</TextBlock>
+
+
         <DatePicker
-                  Width="340"
-                  Grid.Row="1" 
-                  Grid.Column="0"
-                  Grid.ColumnSpan="2" 
-                  HorizontalAlignment="Left"
-                  VerticalAlignment="Bottom"
-                  Margin="10 0 0 0"
-                  FontSize="14" 
-                  Name="DateTaskTb"
-                  Foreground="White"
-                  BorderBrush="#121923"
-                  materialDesign:HintAssist.Hint="Pick Date"
-                  Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+            Grid.Row="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Width="450"
+            Name="DateTaskTb"
+            FontSize="20"
+            BorderBrush="#121923"
+            Background="White"
+            materialDesign:HintAssist.Foreground="#121923"
+            materialDesign:HintAssist.Hint="date"
+            Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+
         <Button
-                  Grid.Row="1" 
-                  Grid.Column="1"
-                    VerticalAlignment="Bottom"
-                    HorizontalAlignment="Left"
-                   Margin="30 0 0 0 "
-                    Name="View"
+                  Grid.Row="2" 
+                  Grid.Column="2"
+            Margin="30 0 0 0"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Left"
+                  Name="View"
                   IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                   Style="{StaticResource MaterialDesignIconForegroundButton}"
                   ToolTip="MaterialDesignIconForegroundButton" Click="View_Click" Cursor="Hand">
-                        <materialDesign:PackIcon
-                    Kind="Play" />  
+            <materialDesign:PackIcon Kind="CalendarCheckOutline" />
         </Button>
+        
         <ListView Grid.Column="0"
                     Grid.ColumnSpan="4"
-                    Grid.Row="2"
-                    Grid.RowSpan="4"
+                    Grid.Row="3"
+                    Grid.RowSpan="3"
                     Width="1000"
                     Height="400"
                     Name="ListTask"
